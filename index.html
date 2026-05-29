@@ -4,6 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pranay Kapoor — Portfolio</title>
+  <meta name="description" content="Portfolio of Pranay Kapoor, a Computer Science student and Machine Learning researcher at Manipal Institute of Technology, Bengaluru. Exploring LLMs, distributed systems, and local inference orchestration.">
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Pranay Kapoor",
+      "jobTitle": "Computer Science Student & Machine Learning Researcher",
+      "url": "https://github.com/Theroid00",
+      "sameAs": [
+        "https://github.com/Theroid00",
+        "https://linkedin.com/in/pranay-kapoor"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Manipal Institute of Technology, Bengaluru"
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -48,7 +67,7 @@
       color:var(--muted);text-decoration:none;letter-spacing:.09em;
       text-transform:uppercase;transition:color .2s;
     }
-    .nav-links a:hover{color:var(--accent)}
+    .nav-links a:hover, .nav-links a.active{color:var(--accent)}
 
     /* HERO */
     #hero{
@@ -123,9 +142,11 @@
       cursor:pointer;display:grid;grid-template-columns:1fr auto;
       align-items:center;gap:2rem;
       transition:border-color .3s var(--ease),background .3s,transform .3s var(--ease),box-shadow .3s;
-      opacity:0;transform:translateY(38px);
+      opacity:0;
+      transform:translate3d(0,38px,0);
+      will-change:transform,opacity;
     }
-    .proj-card.in{opacity:1;transform:translateY(0)}
+    .proj-card.in{opacity:1;transform:translate3d(0,0,0)}
     .proj-card:hover{
       border-color:rgba(232,136,74,.38);
       background:rgba(232,136,74,.03);
@@ -202,16 +223,39 @@
       font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.08em;
     }
 
-    /* SCROLL REVEAL */
-    .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-    .reveal.in{opacity:1;transform:translateY(0)}
-    .stagger > *{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-    .stagger.in > *:nth-child(1){opacity:1;transform:none;transition-delay:.00s}
-    .stagger.in > *:nth-child(2){opacity:1;transform:none;transition-delay:.09s}
-    .stagger.in > *:nth-child(3){opacity:1;transform:none;transition-delay:.18s}
-    .stagger.in > *:nth-child(4){opacity:1;transform:none;transition-delay:.27s}
+    /* TOAST NOTIFICATION */
+    .toast{
+      position:fixed;bottom:2.4rem;right:2.4rem;
+      background:var(--card);border:1px solid var(--accent);
+      color:var(--cream);font-family:'JetBrains Mono',monospace;
+      font-size:.74rem;padding:.75rem 1.4rem;border-radius:var(--r);
+      z-index:300;opacity:0;transform:translateY(12px);
+      transition:opacity .3s var(--ease),transform .3s var(--ease);
+      pointer-events:none;
+      box-shadow:0 8px 30px rgba(0,0,0,0.5);
+    }
+    .toast.show{opacity:1;transform:translateY(0)}
 
-    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    /* SCROLL REVEAL */
+    .reveal{
+      opacity:0;
+      transform:translate3d(0,30px,0);
+      transition:opacity .7s var(--ease),transform .7s var(--ease);
+      will-change:transform,opacity;
+    }
+    .reveal.in{opacity:1;transform:translate3d(0,0,0)}
+    .stagger > *{
+      opacity:0;
+      transform:translate3d(0,22px,0);
+      transition:opacity .6s var(--ease),transform .6s var(--ease);
+      will-change:transform,opacity;
+    }
+    .stagger.in > *:nth-child(1){opacity:1;transform:translate3d(0,0,0);transition-delay:.00s}
+    .stagger.in > *:nth-child(2){opacity:1;transform:translate3d(0,0,0);transition-delay:.09s}
+    .stagger.in > *:nth-child(3){opacity:1;transform:translate3d(0,0,0);transition-delay:.18s}
+    .stagger.in > *:nth-child(4){opacity:1;transform:translate3d(0,0,0);transition-delay:.27s}
+
+    @keyframes fadeUp{from{opacity:0;transform:translate3d(0,22px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
 
     /* MOBILE */
     @media(max-width:768px){
@@ -354,9 +398,9 @@
           <div class="link-icon">GH</div>
           <div><div class="link-label">GitHub</div><div class="link-val">github.com/Theroid00</div></div>
         </a>
-        <a href="mailto:pranay35789@gmail.com" class="link-row">
+        <a href="mailto:pranay35789@gmail.com" class="link-row" id="email-link">
           <div class="link-icon">✉</div>
-          <div><div class="link-label">Email</div><div class="link-val">pranay35789@gmail.com</div></div>
+          <div><div class="link-label">Email (Click to copy)</div><div class="link-val">pranay35789@gmail.com</div></div>
         </a>
         <a href="https://www.linkedin.com/in/pranay-kapoor-b57b34291/" class="link-row" target="_blank">
           <div class="link-icon">in</div>
@@ -380,6 +424,9 @@
     <div class="modal-links" id="mlinks"></div>
   </div>
 </div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="toast">Email copied to clipboard!</div>
 
 <script>
   /* ── PROJECT DATA ─────────────────────────────────── */
@@ -491,7 +538,7 @@
 
     // W, H, mx, my all initialised AFTER we know the window size
     let W, H, mx, my;
-    let scrollT = 0, scrollTarget = 0;
+    let scrollT = 0;
 
     function resize(){
       W = cv.width  = window.innerWidth;
@@ -502,15 +549,10 @@
     resize();
     window.addEventListener('resize', resize);
 
-    window.addEventListener('scroll', () => {
-      const max = document.body.scrollHeight - window.innerHeight;
-      scrollTarget = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
-    });
-
     window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
     // Particles (normalised 0-1 coords so resize is free)
-    const N = 70;
+    const N = 45;
     const pts = Array.from({length: N}, () => ({
       x: Math.random(), y: Math.random(),
       vx: (Math.random() - .5) * 0.00055,
@@ -533,7 +575,9 @@
       requestAnimationFrame(loop);
       const now = performance.now() * 0.001;
 
-      // Smooth scroll lerp
+      // Smooth scroll lerp (read directly from window.scrollY to avoid scroll listener overhead)
+      const max = document.body.scrollHeight - H;
+      const scrollTarget = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
       scrollT += (scrollTarget - scrollT) * 0.04;
       const t = scrollT;
 
@@ -598,6 +642,42 @@
 
     loop();
   })();
+
+  /* ── EMAIL COPY TO CLIPBOARD ──────────────────────── */
+  const emailLink = document.getElementById('email-link');
+  const toast = document.getElementById('toast');
+  if (emailLink && toast) {
+    emailLink.addEventListener('click', e => {
+      e.preventDefault();
+      const email = 'pranay35789@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        window.location.href = `mailto:${email}`;
+      });
+    });
+  }
+
+  /* ── ACTIVE NAV SCROLL SPY ────────────────────────── */
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section');
+  const spyObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '-20% 0px -55% 0px' });
+  sections.forEach(s => spyObs.observe(s));
 </script>
 </body>
 </html>
