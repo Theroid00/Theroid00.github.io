@@ -1,683 +1,903 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pranay Kapoor — Portfolio</title>
-  <meta name="description" content="Portfolio of Pranay Kapoor, a Computer Science student and Machine Learning researcher at Manipal Institute of Technology, Bengaluru. Exploring LLMs, distributed systems, and local inference orchestration.">
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Pranay Kapoor",
-      "jobTitle": "Computer Science Student & Machine Learning Researcher",
-      "url": "https://github.com/Theroid00",
-      "sameAs": [
-        "https://github.com/Theroid00",
-        "https://linkedin.com/in/pranay-kapoor"
-      ],
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Manipal Institute of Technology, Bengaluru"
-      }
-    }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#0e0c0a;
-      --card:#1c1814;
-      --accent:#e8884a;
-      --accent2:#f5c278;
-      --cream:#f0e6d3;
-      --muted:#8a7f74;
-      --border:rgba(232,136,74,0.13);
-      --ease:cubic-bezier(0.16,1,0.3,1);
-      --r:12px;
-    }
-    html{scroll-behavior:smooth}
-    body{
-      background:var(--bg);color:var(--cream);
-      font-family:'DM Sans',sans-serif;font-weight:300;
-      line-height:1.75;overflow-x:hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranay Kapoor — Portfolio</title>
+    <meta name="description" content="Portfolio of Pranay Kapoor, a Computer Science student and ML researcher at MIT Bengaluru. Exploring LLMs, distributed systems, and local inference orchestration.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pranaykapoor.github.io">
+    <meta property="og:title" content="Pranay Kapoor — CS Engineer & ML Researcher">
+    <meta property="og:description" content="Portfolio of Pranay Kapoor, exploring LLMs, distributed systems, and local inference orchestration on a dual RTX 4060 setup.">
+    <meta property="og:image" content="./assets/og-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pranay Kapoor — CS Engineer & ML Researcher">
+    <meta name="twitter:image" content="./assets/og-preview.png">
+    <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"Person","name":"Pranay Kapoor","jobTitle":"Computer Science Student & ML Researcher","url":"https://pranaykapoor.github.io","sameAs":["https://github.com/Theroid00","https://linkedin.com/in/pranay-kapoor-b57b34291"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Manipal Institute of Technology, Bengaluru"}}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{
+            --bg:#0e0c0a; --card:#1c1814; --accent:#e8884a; --accent2:#f5c278;
+            --cream:#f0e6d3; --muted:#8a7f74; --border:rgba(232,136,74,0.16);
+            --ease:cubic-bezier(0.16,1,0.3,1); --ease-spring:cubic-bezier(0.25,1,0.2,1.02); --r:12px;
+        }
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:400;font-size:18px;line-height:1.8;overflow-x:hidden}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:var(--bg)}
+        ::-webkit-scrollbar-thumb{background:rgba(232,136,74,.25);border-radius:4px;border:2px solid var(--bg)}
+        ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+        :focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
 
-    /* CANVAS — fixed behind everything */
-    #bg{
-      position:fixed;inset:0;
-      z-index:0;pointer-events:none;
-    }
+        /* CANVAS */
+        #bg{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-    /* NAV */
-    nav{
-      position:sticky;top:0;z-index:100;
-      padding:1.1rem 3rem;
-      display:flex;justify-content:space-between;align-items:center;
-      background:rgba(14,12,10,0.82);backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--border);
-    }
-    .nav-logo{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--cream);text-decoration:none}
-    .nav-links{display:flex;gap:2rem;list-style:none}
-    .nav-links a{
-      font-family:'JetBrains Mono',monospace;font-size:.72rem;
-      color:var(--muted);text-decoration:none;letter-spacing:.09em;
-      text-transform:uppercase;transition:color .2s;
-    }
-    .nav-links a:hover, .nav-links a.active{color:var(--accent)}
+        /* NAV */
+        nav{position:sticky;top:0;z-index:100;padding:1.3rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(14,12,10,0.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+        .nav-logo{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:400;color:var(--cream);text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);text-decoration:none;letter-spacing:.09em;text-transform:uppercase;transition:color .2s}
+        .nav-links a:hover,.nav-links a.active{color:var(--accent)}
 
-    /* HERO */
-    #hero{
-      position:relative;z-index:1;
-      min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-      padding:5rem 3rem 4rem;overflow:hidden;
-    }
-    .hero-label{
-      font-family:'JetBrains Mono',monospace;font-size:.72rem;
-      color:var(--accent);letter-spacing:.18em;text-transform:uppercase;
-      margin-bottom:1.4rem;opacity:0;animation:fadeUp .8s var(--ease) .15s forwards;
-    }
-    .hero-name{
-      font-family:'Fraunces',serif;
-      font-size:clamp(3.2rem,8vw,6.8rem);
-      font-weight:300;line-height:1.0;letter-spacing:-.025em;
-      margin-bottom:1.6rem;opacity:0;animation:fadeUp .9s var(--ease) .3s forwards;
-    }
-    .hero-name em{font-style:italic;color:var(--accent)}
-    .hero-sub{
-      max-width:44ch;font-size:1.05rem;color:var(--muted);line-height:1.85;
-      margin-bottom:3rem;opacity:0;animation:fadeUp .9s var(--ease) .5s forwards;
-    }
-    .hero-btns{
-      display:flex;gap:1rem;flex-wrap:wrap;
-      opacity:0;animation:fadeUp .9s var(--ease) .7s forwards;
-    }
-    .btn{
-      display:inline-flex;align-items:center;gap:.45rem;
-      padding:.7rem 1.7rem;border-radius:var(--r);
-      font-family:'JetBrains Mono',monospace;font-size:.78rem;
-      letter-spacing:.06em;text-decoration:none;cursor:pointer;border:none;transition:all .22s;
-    }
-    .btn-fill{background:var(--accent);color:#0e0c0a}
-    .btn-fill:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,136,74,.28)}
-    .btn-out{background:transparent;color:var(--cream);border:1px solid var(--border)}
-    .btn-out:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-    .scroll-hint{
-      position:absolute;bottom:2.5rem;left:3rem;
-      display:flex;align-items:center;gap:.75rem;
-      font-family:'JetBrains Mono',monospace;font-size:.68rem;
-      color:var(--muted);letter-spacing:.12em;text-transform:uppercase;
-      opacity:0;animation:fadeUp .8s var(--ease) 1.1s forwards;
-    }
-    .scroll-line{width:36px;height:1px;background:var(--accent)}
+        /* ── HERO (two-column grid) ─────────────────────────────── */
+        #hero{
+            position:relative;z-index:1;min-height:100vh;overflow:hidden;
+            display:grid;grid-template-columns:1fr 340px;align-items:center;gap:3rem;
+            padding:5rem 3rem 6rem;
+        }
+        .hero-label{font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem;opacity:0;animation:fadeUp .8s var(--ease) .15s forwards}
+        .hero-name{font-family:'Fraunces',serif;font-size:clamp(3.2rem,8vw,6.8rem);font-weight:300;line-height:1.0;letter-spacing:-.025em;margin-bottom:1.8rem;opacity:0;animation:fadeUp .9s var(--ease) .3s forwards}
+        .hero-name em{font-style:italic;color:var(--accent)}
+        .hero-sub{max-width:44ch;font-size:1.15rem;color:var(--muted);line-height:1.85;margin-bottom:2.5rem;opacity:0;animation:fadeUp .9s var(--ease) .5s forwards}
+        .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .9s var(--ease) .7s forwards}
 
-    /* SECTIONS */
-    .wrap{border-top:1px solid var(--border);position:relative;z-index:1}
-    .section{padding:6rem 3rem;max-width:1100px;margin:0 auto}
-    .s-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.9rem}
-    .s-title{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,2.9rem);font-weight:300;line-height:1.15;color:var(--cream);margin-bottom:3rem}
+        /* Buttons */
+        .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border-radius:var(--r);font-family:'JetBrains Mono',monospace;font-size:.84rem;letter-spacing:.06em;text-decoration:none;cursor:pointer;border:none;transition:all .22s}
+        .btn-fill{background:var(--accent);color:#0e0c0a}
+        .btn-fill:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,136,74,.28)}
+        .btn-out{background:transparent;color:var(--cream);border:1px solid var(--border)}
+        .btn-out:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+        .btn-ghost{background:rgba(232,136,74,.06);color:var(--muted);border:1px solid var(--border)}
+        .btn-ghost:hover{background:rgba(232,136,74,.12);color:var(--cream);border-color:rgba(232,136,74,.35);transform:translateY(-2px)}
+        .btn-ghost svg{flex-shrink:0}
 
-    /* ABOUT */
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-    .about-text p{color:var(--muted);font-size:.98rem;margin-bottom:1.2rem;line-height:1.9}
-    .about-text strong{color:var(--cream);font-weight:500}
-    .stats{display:flex;flex-direction:column;gap:1rem}
-    .stat{
-      padding:1.1rem 1.4rem;background:var(--card);
-      border:1px solid var(--border);border-radius:var(--r);
-      transition:border-color .2s,transform .2s;
-    }
-    .stat:hover{border-color:rgba(232,136,74,.4);transform:translateX(5px)}
-    .stat-val{font-family:'Fraunces',serif;font-size:1.75rem;color:var(--accent);line-height:1;margin-bottom:.25rem}
-    .stat-desc{font-size:.78rem;color:var(--muted)}
+        /* Scroll hint */
+        .scroll-hint{position:absolute;bottom:2.5rem;left:3rem;display:flex;align-items:center;gap:.75rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;opacity:0;animation:fadeUp .8s var(--ease) 1.1s forwards}
+        .scroll-line{width:36px;height:1px;background:var(--accent)}
 
-    /* PROJECTS */
-    .proj-list{display:flex;flex-direction:column;gap:1.4rem}
-    .proj-card{
-      padding:2rem 2.4rem;background:var(--card);
-      border:1px solid var(--border);border-radius:var(--r);
-      cursor:pointer;display:grid;grid-template-columns:1fr auto;
-      align-items:center;gap:2rem;
-      transition:border-color .3s var(--ease),background .3s,transform .3s var(--ease),box-shadow .3s;
-      opacity:0;
-      transform:translate3d(0,38px,0);
-      will-change:transform,opacity;
-    }
-    .proj-card.in{opacity:1;transform:translate3d(0,0,0)}
-    .proj-card:hover{
-      border-color:rgba(232,136,74,.38);
-      background:rgba(232,136,74,.03);
-      transform:translateY(-3px);
-      box-shadow:0 18px 44px rgba(0,0,0,.4);
-    }
-    .proj-num{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.1em;opacity:.7;margin-bottom:.55rem}
-    .proj-name{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:300;color:var(--cream);margin-bottom:.45rem}
-    .proj-brief{font-size:.88rem;color:var(--muted);max-width:56ch}
-    .proj-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.9rem}
-    .tag{
-      font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.28rem .65rem;
-      background:rgba(232,136,74,.07);border:1px solid rgba(232,136,74,.2);
-      border-radius:4px;color:var(--accent);letter-spacing:.05em;
-    }
-    .proj-arrow{font-size:1.4rem;color:var(--accent);opacity:.45;transition:all .2s;flex-shrink:0}
-    .proj-card:hover .proj-arrow{opacity:1;transform:translateX(5px)}
+        /* ── TERMINAL CARD (hero right panel) ───────────────────── */
+        .hero-panel{opacity:0;animation:fadeUp 1s var(--ease) .85s forwards}
+        .terminal-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+        .terminal-bar{background:rgba(232,136,74,.05);border-bottom:1px solid var(--border);padding:.75rem 1.1rem;display:flex;align-items:center;gap:.45rem}
+        .t-dot{width:10px;height:10px;border-radius:50%}
+        .t-dot.r{background:#ff5f56}.t-dot.y{background:#ffbd2e}.t-dot.g{background:#27c93f}
+        .t-file{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.06em;margin-left:auto}
+        .terminal-body{padding:1.3rem 1.5rem;display:flex;flex-direction:column;gap:.28rem}
+        .t-line{font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.65;color:var(--muted)}
+        .t-line.cmd .t-p{color:var(--accent);margin-right:.4rem}
+        .t-line.out{padding-left:.1rem}
+        .t-green{color:#4ade80}
+        .t-hi{color:var(--cream)}
+        .t-dim{opacity:.45}
+        .t-cursor{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent);margin-top:.3rem;animation:blink 1.1s step-end infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
-    /* MODAL */
-    .overlay{
-      position:fixed;inset:0;
-      background:rgba(8,6,4,.88);backdrop-filter:blur(10px);
-      z-index:200;display:flex;align-items:center;justify-content:center;
-      padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s;
-    }
-    .overlay.open{opacity:1;pointer-events:all}
-    .modal{
-      background:var(--card);border:1px solid var(--border);border-radius:16px;
-      max-width:660px;width:100%;max-height:82vh;overflow-y:auto;
-      padding:2.8rem;position:relative;
-      transform:translateY(22px) scale(.98);
-      transition:transform .38s var(--ease);
-    }
-    .overlay.open .modal{transform:translateY(0) scale(1)}
-    .modal-x{
-      position:absolute;top:1.4rem;right:1.4rem;
-      background:none;border:none;color:var(--muted);
-      font-size:1.3rem;cursor:pointer;padding:.3rem;line-height:1;transition:color .2s;
-    }
-    .modal-x:hover{color:var(--cream)}
-    .modal-tag{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.9rem}
-    .modal-title{font-family:'Fraunces',serif;font-size:2rem;font-weight:300;color:var(--cream);margin-bottom:1.5rem;line-height:1.1}
-    .modal-body{font-size:.93rem;color:var(--muted);line-height:1.9;margin-bottom:1.8rem}
-    .modal-body p{margin-bottom:.9rem}
-    .modal-body strong{color:var(--cream);font-weight:500}
-    .modal-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.8rem}
-    .modal-links{display:flex;gap:.9rem;flex-wrap:wrap}
+        /* ── SECTIONS ───────────────────────────────────────────── */
+        .wrap{border-top:1px solid var(--border);position:relative;z-index:1}
+        .section{padding:6rem 3rem;max-width:1100px;margin:0 auto}
+        .s-label{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.9rem}
+        .s-title{font-family:'Fraunces',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;line-height:1.15;color:var(--cream);margin-bottom:3rem}
 
-    /* CONTACT */
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-    .contact-text p{color:var(--muted);font-size:.98rem;line-height:1.9;margin-bottom:1rem}
-    .contact-text strong{color:var(--cream);font-weight:500}
-    .links{display:flex;flex-direction:column;gap:.9rem}
-    .link-row{
-      display:flex;align-items:center;gap:1rem;
-      padding:.95rem 1.4rem;background:var(--card);
-      border:1px solid var(--border);border-radius:var(--r);
-      text-decoration:none;transition:all .22s;
-    }
-    .link-row:hover{border-color:rgba(232,136,74,.38);transform:translateX(7px)}
-    .link-icon{
-      width:2rem;height:2rem;border-radius:8px;
-      background:rgba(232,136,74,.1);border:1px solid var(--border);
-      display:flex;align-items:center;justify-content:center;
-      font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);flex-shrink:0;
-    }
-    .link-label{font-size:.78rem;color:var(--muted)}
-    .link-val{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--cream)}
+        /* ── ABOUT ──────────────────────────────────────────────── */
+        .avail-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#4ade80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);border-radius:4px;padding:.2rem .6rem;letter-spacing:.08em;text-transform:uppercase;margin-left:.75rem;vertical-align:middle}
+        .avail-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:pdot 2s ease-in-out infinite}
+        @keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+        .about-text p{color:var(--muted);font-size:1.1rem;margin-bottom:1.4rem;line-height:1.9}
+        .about-text strong{color:var(--cream);font-weight:500}
+        .stats{display:flex;flex-direction:column;gap:1.1rem}
+        .stat{padding:1.3rem 1.6rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);transition:border-color .2s,transform .2s}
+        .stat:hover{border-color:rgba(232,136,74,.4);transform:translateX(5px)}
+        .stat-val{font-family:'Fraunces',serif;font-size:2.1rem;color:var(--accent);line-height:1;margin-bottom:.3rem}
+        .stat-desc{font-size:.85rem;color:var(--muted)}
 
-    /* FOOTER */
-    footer{
-      text-align:center;padding:2.5rem;border-top:1px solid var(--border);
-      position:relative;z-index:1;
-      font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.08em;
-    }
+        /* ── SKILLS ─────────────────────────────────────────────── */
+        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.5rem}
+        .skill-col{display:flex;flex-direction:column;gap:.85rem}
+        .skill-cat{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+        .skill-chips{display:flex;flex-wrap:wrap;gap:.45rem}
+        .skill-chip{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:.3rem .75rem;background:var(--card);border:1px solid var(--border);border-radius:6px;color:var(--cream);letter-spacing:.04em;transition:border-color .2s,color .2s,background .2s;cursor:default}
+        .skill-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(232,136,74,.04)}
 
-    /* TOAST NOTIFICATION */
-    .toast{
-      position:fixed;bottom:2.4rem;right:2.4rem;
-      background:var(--card);border:1px solid var(--accent);
-      color:var(--cream);font-family:'JetBrains Mono',monospace;
-      font-size:.74rem;padding:.75rem 1.4rem;border-radius:var(--r);
-      z-index:300;opacity:0;transform:translateY(12px);
-      transition:opacity .3s var(--ease),transform .3s var(--ease);
-      pointer-events:none;
-      box-shadow:0 8px 30px rgba(0,0,0,0.5);
-    }
-    .toast.show{opacity:1;transform:translateY(0)}
+        /* ── PROJECTS ───────────────────────────────────────────── */
+        .proj-list{display:flex;flex-direction:column;gap:1.6rem}
+        .proj-card{
+            padding:2.4rem 2.8rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+            cursor:pointer;display:grid;grid-template-columns:1fr 220px auto;align-items:center;gap:2.2rem;
+            box-shadow:0 4px 20px rgba(0,0,0,.15);
+            transition:border-color .4s var(--ease),background .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease);
+            opacity:0;transform:translate3d(0,38px,0);will-change:transform,opacity;
+        }
+        .proj-card.in{opacity:1;transform:translate3d(0,0,0)}
+        .proj-card:hover{border-color:rgba(232,136,74,.45);background:rgba(232,136,74,.03);transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,.45)}
+        .proj-card:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+        .proj-num{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);letter-spacing:.1em;opacity:.7;margin-bottom:.55rem;display:flex;align-items:center;gap:.5rem}
+        .live-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.58rem;color:#4ade80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.22);border-radius:4px;padding:.15rem .5rem;letter-spacing:.08em;text-transform:uppercase;opacity:1}
+        .live-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:pdot 2s ease-in-out infinite}
+        .proj-name{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:300;color:var(--cream);margin-bottom:.45rem}
+        .proj-brief{font-size:1.05rem;color:var(--muted);line-height:1.8;max-width:56ch}
+        .proj-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.9rem}
+        .tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:.3rem .75rem;background:rgba(232,136,74,.07);border:1px solid rgba(232,136,74,.2);border-radius:4px;color:var(--accent);letter-spacing:.05em}
+        .proj-arrow{font-size:1.6rem;color:var(--accent);opacity:.45;transition:all .2s;flex-shrink:0}
+        .proj-card:hover .proj-arrow{opacity:1;transform:translateX(5px)}
 
-    /* SCROLL REVEAL */
-    .reveal{
-      opacity:0;
-      transform:translate3d(0,30px,0);
-      transition:opacity .7s var(--ease),transform .7s var(--ease);
-      will-change:transform,opacity;
-    }
-    .reveal.in{opacity:1;transform:translate3d(0,0,0)}
-    .stagger > *{
-      opacity:0;
-      transform:translate3d(0,22px,0);
-      transition:opacity .6s var(--ease),transform .6s var(--ease);
-      will-change:transform,opacity;
-    }
-    .stagger.in > *:nth-child(1){opacity:1;transform:translate3d(0,0,0);transition-delay:.00s}
-    .stagger.in > *:nth-child(2){opacity:1;transform:translate3d(0,0,0);transition-delay:.09s}
-    .stagger.in > *:nth-child(3){opacity:1;transform:translate3d(0,0,0);transition-delay:.18s}
-    .stagger.in > *:nth-child(4){opacity:1;transform:translate3d(0,0,0);transition-delay:.27s}
+        /* Project visual pane */
+        .proj-visual{width:220px;height:140px;border-radius:8px;border:1px solid rgba(232,136,74,.18);background:rgba(14,12,10,.5);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 20px rgba(0,0,0,.5);transition:border-color .4s var(--ease),box-shadow .4s var(--ease),background .4s var(--ease)}
+        .proj-card:hover .proj-visual{border-color:rgba(232,136,74,.38);background:rgba(14,12,10,.1);box-shadow:inset 0 0 15px rgba(0,0,0,.3),0 0 20px rgba(232,136,74,.05)}
+        .proj-img{width:100%;height:100%;object-fit:cover;border-radius:7px;display:block}
 
-    @keyframes fadeUp{from{opacity:0;transform:translate3d(0,22px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+        /* Image / Video slot placeholders */
+        .img-slot,.vid-slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;height:100%;width:100%;color:var(--muted);opacity:.45;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.06em;text-align:center;user-select:none;padding:.5rem}
+        .img-slot svg,.vid-slot svg{opacity:.7;flex-shrink:0}
+        .img-slot span,.vid-slot span{color:var(--cream);opacity:.7}
+        .img-slot small,.vid-slot small{opacity:.6;font-size:.54rem}
 
-    /* MOBILE */
-    @media(max-width:768px){
-      nav{padding:1rem 1.4rem}
-      .nav-links{gap:1rem}
-      #hero{padding:5rem 1.4rem 3.5rem}
-      .scroll-hint{left:1.4rem}
-      .section{padding:4rem 1.4rem}
-      .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
-      .proj-card{grid-template-columns:1fr}
-      .proj-arrow{display:none}
-      .modal{padding:2rem}
-      .modal-title{font-size:1.6rem}
-    }
-  </style>
+        /* ── MODAL ──────────────────────────────────────────────── */
+        .overlay{position:fixed;inset:0;background:rgba(10,8,7,.88);backdrop-filter:blur(18px);z-index:200;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .45s var(--ease);will-change:opacity}
+        .overlay.open{opacity:1;pointer-events:all}
+        .modal{background:var(--card);border:1px solid rgba(232,136,74,.22);border-radius:16px;max-width:1040px;width:92vw;max-height:85vh;overflow-y:auto;padding:2.8rem;position:relative;transform:translateY(35px) scale(.96);transition:transform .5s var(--ease-spring);box-shadow:0 30px 70px rgba(0,0,0,.6);will-change:transform}
+        .overlay.open .modal{transform:translateY(0) scale(1)}
+        .modal-x{position:absolute;top:1.4rem;right:1.4rem;background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;padding:.3rem;line-height:1;transition:color .2s;z-index:10}
+        .modal-x:hover{color:var(--cream)}
+        .modal-content-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:2.5rem;align-items:start}
+        .modal-media{width:100%;aspect-ratio:16/10.5;border-radius:var(--r);border:1px solid var(--border);background:#110e0c;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 35px rgba(0,0,0,.7);opacity:0;transform:translateY(15px);transition:opacity .6s var(--ease),transform .6s var(--ease);will-change:opacity,transform}
+        .overlay.open .modal-media{opacity:1;transform:translateY(0);transition-delay:.12s}
+        .modal-media video,.modal-media img{width:100%;height:100%;object-fit:cover;display:block}
+        .schematic-svg{width:100%;height:100%;padding:1rem;display:block}
+        .modal-details{display:flex;flex-direction:column}
+        .modal-details>*{opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease);will-change:opacity,transform}
+        .overlay.open .modal-details>*:nth-child(1){opacity:1;transform:none;transition-delay:.18s}
+        .overlay.open .modal-details>*:nth-child(2){opacity:1;transform:none;transition-delay:.24s}
+        .overlay.open .modal-details>*:nth-child(3){opacity:1;transform:none;transition-delay:.30s}
+        .overlay.open .modal-details>*:nth-child(4){opacity:1;transform:none;transition-delay:.36s}
+        .overlay.open .modal-details>*:nth-child(5){opacity:1;transform:none;transition-delay:.42s}
+        .modal-tag{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.9rem}
+        .modal-title{font-family:'Fraunces',serif;font-size:2.3rem;font-weight:300;color:var(--cream);margin-bottom:1.5rem;line-height:1.1}
+        .modal-body{font-size:1.1rem;color:var(--muted);line-height:1.9;margin-bottom:1.8rem}
+        .modal-body p{margin-bottom:.9rem}
+        .modal-body strong{color:var(--cream);font-weight:500}
+        .modal-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.8rem}
+        .modal-links{display:flex;gap:.9rem;flex-wrap:wrap}
+
+        /* ── CONTACT ────────────────────────────────────────────── */
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+        .contact-text p{color:var(--muted);font-size:1.1rem;line-height:1.9;margin-bottom:1rem}
+        .contact-text strong{color:var(--cream);font-weight:500}
+        .links{display:flex;flex-direction:column;gap:.9rem}
+        .link-row{display:flex;align-items:center;gap:1.1rem;padding:1.1rem 1.6rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);text-decoration:none;transition:all .22s}
+        .link-row:hover{border-color:rgba(232,136,74,.38);transform:translateX(7px)}
+        .link-icon{width:2.4rem;height:2.4rem;border-radius:8px;background:rgba(232,136,74,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;transition:all .22s}
+        .link-row:hover .link-icon{background:rgba(232,136,74,.2);border-color:var(--accent);color:var(--accent2)}
+        .link-label{font-size:.88rem;color:var(--muted)}
+        .link-val{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--cream)}
+
+        /* ── FOOTER ─────────────────────────────────────────────── */
+        footer{text-align:center;padding:2.5rem;border-top:1px solid var(--border);position:relative;z-index:1;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);letter-spacing:.08em}
+
+        /* ── TOAST ──────────────────────────────────────────────── */
+        .toast{position:fixed;bottom:2.4rem;right:2.4rem;background:var(--card);border:1px solid var(--accent);color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:.82rem;padding:.75rem 1.4rem;border-radius:var(--r);z-index:300;opacity:0;transform:translateY(12px);transition:opacity .3s var(--ease),transform .3s var(--ease);pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+        .toast.show{opacity:1;transform:translateY(0)}
+
+        /* ── SCROLL REVEAL (one-directional — animates in once) ─── */
+        .reveal{opacity:0;transform:translate3d(0,30px,0);transition:opacity .7s var(--ease),transform .7s var(--ease);will-change:transform,opacity}
+        .reveal.in{opacity:1;transform:translate3d(0,0,0)}
+        .stagger>*{opacity:0;transform:translate3d(0,22px,0);transition:opacity .6s var(--ease),transform .6s var(--ease);will-change:transform,opacity}
+        .stagger.in>*:nth-child(1){opacity:1;transform:none;transition-delay:.00s}
+        .stagger.in>*:nth-child(2){opacity:1;transform:none;transition-delay:.09s}
+        .stagger.in>*:nth-child(3){opacity:1;transform:none;transition-delay:.18s}
+        .stagger.in>*:nth-child(4){opacity:1;transform:none;transition-delay:.27s}
+        .stagger.in>*:nth-child(5){opacity:1;transform:none;transition-delay:.36s}
+
+        @keyframes fadeUp{from{opacity:0;transform:translate3d(0,22px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+
+        /* ── RESPONSIVE ─────────────────────────────────────────── */
+        @media(max-width:900px){
+            #hero{grid-template-columns:1fr;gap:2.5rem;padding:5rem 2rem 5rem}
+            .hero-panel{display:none} /* hide terminal on narrow screens */
+            .proj-card{grid-template-columns:1fr auto;gap:1.5rem}
+            .proj-visual{display:none} /* hide card visual on mobile — saves space */
+            .modal-content-grid{grid-template-columns:1fr;gap:1.8rem}
+            .modal{padding:2.2rem 2rem;max-height:90vh}
+            .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+            .skills-grid{grid-template-columns:1fr 1fr}
+        }
+        @media(max-width:768px){
+            nav{padding:1rem 1.4rem}
+            .nav-links{gap:1rem}
+            .section{padding:4rem 1.4rem}
+            .scroll-hint{left:1.4rem;bottom:2rem}
+            .proj-arrow{display:none}
+            .proj-card{grid-template-columns:1fr;padding:1.8rem}
+            .modal-title{font-size:1.6rem}
+            .skills-grid{grid-template-columns:1fr}
+        }
+    </style>
 </head>
 <body>
-
 <canvas id="bg"></canvas>
 
-<!-- NAV -->
+<!-- ═══════════════════════════════════════════════════════════
+  NAV
+═══════════════════════════════════════════════════════════ -->
 <nav>
-  <a href="#hero" class="nav-logo">Pranay Kapoor</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+    <a href="#hero" class="nav-logo">Pranay Kapoor</a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════════════════════════════════════════════════════
+  HERO — two-column: text left, terminal right
+═══════════════════════════════════════════════════════════ -->
 <section id="hero">
-  <div class="hero-label">// CS Engineer &amp; ML Researcher</div>
-  <h1 class="hero-name">Pranay<br><em>Kapoor.</em></h1>
-  <p class="hero-sub">Building intelligent systems at the edge of machine learning, distributed systems, and language model internals. 3rd year CS at MIT Bengaluru.</p>
-  <div class="hero-btns">
-    <a href="#projects" class="btn btn-fill">View Projects →</a>
-    <a href="#contact" class="btn btn-out">Get in Touch</a>
-  </div>
-  <div class="scroll-hint"><span class="scroll-line"></span>Scroll to explore</div>
+
+    <!-- LEFT: text content -->
+    <div class="hero-content">
+        <div class="hero-label">// CS Engineer &amp; ML Researcher</div>
+        <h1 class="hero-name">Pranay<br><em>Kapoor.</em></h1>
+        <p class="hero-sub">Building intelligent systems at the edge of machine learning, distributed systems, and language model internals. 3rd year CS at MIT Bengaluru.</p>
+        <div class="hero-btns">
+            <a href="#projects" class="btn btn-fill">View Projects →</a>
+            <a href="#contact" class="btn btn-out">Get in Touch</a>
+            <!--
+              ══════════════════════════════════════════════════════
+              RESUME BUTTON — add your resume PDF to ./assets/
+              and update the href below. Recommended filename:
+              pranay-kapoor-resume.pdf
+              ══════════════════════════════════════════════════════
+            -->
+            <a href="./assets/pranay-kapoor-resume.pdf" class="btn btn-ghost" download aria-label="Download Resume PDF">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Resume
+            </a>
+        </div>
+    </div>
+
+    <!-- RIGHT: terminal status card -->
+    <div class="hero-panel">
+        <div class="terminal-card" aria-hidden="true">
+            <div class="terminal-bar">
+                <span class="t-dot r"></span>
+                <span class="t-dot y"></span>
+                <span class="t-dot g"></span>
+                <span class="t-file">~/pranay/status.sh</span>
+            </div>
+            <div class="terminal-body">
+                <div class="t-line cmd"><span class="t-p">$</span> git log --oneline -1</div>
+                <div class="t-line out"><span class="t-dim">3a7f2bc</span> <span class="t-hi">NOOS: entropy-based graph traversal</span></div>
+                <br>
+                <div class="t-line cmd"><span class="t-p">$</span> cat availability.txt</div>
+                <div class="t-line out"><span class="t-green">● open</span> <span class="t-hi">SWE / ML internships</span></div>
+                <div class="t-line out t-dim">  Bengaluru · Remote</div>
+                <br>
+                <div class="t-line cmd"><span class="t-p">$</span> cat stack.sh</div>
+                <div class="t-line out"><span class="t-dim">→</span> <span class="t-hi">Python · PyTorch · FastAPI</span></div>
+                <div class="t-line out"><span class="t-dim">→</span> <span class="t-hi">Next.js · Solidity · Docker</span></div>
+                <div class="t-line out"><span class="t-dim">→</span> <span class="t-hi">Ollama · AWS · CUDA</span></div>
+                <br>
+                <div class="t-cursor">▋</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-hint"><span class="scroll-line"></span>Scroll to explore</div>
 </section>
 
-<!-- ABOUT -->
+<!-- ═══════════════════════════════════════════════════════════
+  01 — ABOUT
+═══════════════════════════════════════════════════════════ -->
 <div class="wrap">
-  <section class="section" id="about">
-    <div class="s-label">// 01 — About</div>
-    <h2 class="s-title reveal">Who I am</h2>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>I'm a <strong>Computer Science student</strong> at Manipal Institute of Technology, Bengaluru — drawn to problems at the frontier of what's understood: ML architecture design, language model internals, and distributed systems.</p>
-        <p>Outside code, I think about <strong>economics, global development trends</strong>, and what it means for software to be genuinely intelligent rather than just statistically fluent.</p>
-        <p>I run local LLMs on a <strong>dual RTX 4060 setup</strong> via Ollama, which lets me experiment with inference-time orchestration at a depth that cloud APIs don't easily allow.</p>
-      </div>
-      <div class="stats stagger">
-        <div class="stat"><div class="stat-val">8.68</div><div class="stat-desc">CGPA — Scholars Scholarship recipient</div></div>
-        <div class="stat"><div class="stat-val">3rd yr</div><div class="stat-desc">B.Tech Computer Science, MIT Bengaluru</div></div>
-        <div class="stat"><div class="stat-val">6+</div><div class="stat-desc">Projects across ML, Web &amp; Systems</div></div>
-        <div class="stat"><div class="stat-val">RTX ×2</div><div class="stat-desc">Dual GPU setup for local LLM inference</div></div>
-      </div>
-    </div>
-  </section>
+    <section class="section" id="about">
+        <div class="s-label">// 01 — About</div>
+        <h2 class="s-title reveal">
+            Who I am
+            
+        </h2>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>I'm a <strong>Computer Science student</strong> at Manipal Institute of Technology, Bengaluru — drawn to problems at the frontier of what's understood: ML architecture design, language model internals, and distributed systems.</p>
+                <p>Outside code, I think about <strong>economics, global development trends</strong>, and what it means for software to be genuinely intelligent rather than just statistically fluent.</p>
+                <p>I run local LLMs on a <strong>dual RTX 4060 setup</strong> via Ollama, which lets me experiment with inference-time orchestration at a depth that cloud APIs don't easily allow.</p>
+            </div>
+            <div class="stats stagger">
+                <div class="stat"><div class="stat-val">8.68</div><div class="stat-desc">CGPA — Scholars Scholarship recipient</div></div>
+                <div class="stat"><div class="stat-val">3rd yr</div><div class="stat-desc">B.Tech Computer Science, MIT Bengaluru</div></div>
+                <div class="stat"><div class="stat-val">6+</div><div class="stat-desc">Projects across ML, Web &amp; Systems</div></div>
+                <div class="stat"><div class="stat-val">RTX ×2</div><div class="stat-desc">Dual GPU setup for local LLM inference</div></div>
+            </div>
+        </div>
+    </section>
 </div>
 
-<!-- PROJECTS -->
+<!-- ═══════════════════════════════════════════════════════════
+  02 — SKILLS
+═══════════════════════════════════════════════════════════ -->
 <div class="wrap">
-  <section class="section" id="projects">
-    <div class="s-label">// 02 — Projects</div>
-    <h2 class="s-title reveal">Things I've built</h2>
-    <div class="proj-list">
-      <div class="proj-card" data-key="noos">
-        <div>
-          <div class="proj-num">01</div>
-          <div class="proj-name">NOOS</div>
-          <div class="proj-brief">A curiosity-driven belief graph engine using temperature-corrected Shannon entropy over LLM logit distributions as a traversal heuristic.</div>
-          <div class="proj-tags"><span class="tag">LLM</span><span class="tag">Graph Engine</span><span class="tag">Ollama</span><span class="tag">Shannon Entropy</span><span class="tag">Python</span></div>
+    <section class="section" id="skills">
+        <div class="s-label">// 02 — Skills</div>
+        <h2 class="s-title reveal">Tech Stack</h2>
+        <div class="skills-grid reveal">
+            <div class="skill-col">
+                <div class="skill-cat">ML / AI</div>
+                <div class="skill-chips">
+                    <span class="skill-chip">PyTorch</span>
+                    <span class="skill-chip">TensorFlow</span>
+                    <span class="skill-chip">Keras</span>
+                    <span class="skill-chip">Scikit-learn</span>
+                    <span class="skill-chip">LightGBM</span>
+                    <span class="skill-chip">OpenCV</span>
+                    <span class="skill-chip">MediaPipe</span>
+                    <span class="skill-chip">CTGAN</span>
+                    <span class="skill-chip">Ollama</span>
+                    <span class="skill-chip">Transformers</span>
+                </div>
+            </div>
+            <div class="skill-col">
+                <div class="skill-cat">Languages</div>
+                <div class="skill-chips">
+                    <span class="skill-chip">Python</span>
+                    <span class="skill-chip">Java</span>
+                    <span class="skill-chip">JavaScript</span>
+                    <span class="skill-chip">C</span>
+                    <span class="skill-chip">Solidity</span>
+                    <span class="skill-chip">SQL</span>
+                </div>
+            </div>
+            <div class="skill-col">
+                <div class="skill-cat">Web / Full-Stack</div>
+                <div class="skill-chips">
+                    <span class="skill-chip">Next.js</span>
+                    <span class="skill-chip">React</span>
+                    <span class="skill-chip">FastAPI</span>
+                    <span class="skill-chip">Node.js</span>
+                    <span class="skill-chip">MySQL</span>
+                    <span class="skill-chip">MongoDB</span>
+                    <span class="skill-chip">REST APIs</span>
+                </div>
+            </div>
+            <div class="skill-col">
+                <div class="skill-cat">Systems &amp; DevOps</div>
+                <div class="skill-chips">
+                    <span class="skill-chip">Docker</span>
+                    <span class="skill-chip">AWS</span>
+                    <span class="skill-chip">Git</span>
+                    <span class="skill-chip">CUDA</span>
+                    <span class="skill-chip">MPI</span>
+                    <span class="skill-chip">Linux</span>
+                    <span class="skill-chip">Hardhat</span>
+                </div>
+            </div>
         </div>
-        <div class="proj-arrow">→</div>
-      </div>
-      <div class="proj-card" data-key="ganas">
-        <div>
-          <div class="proj-num">02</div>
-          <div class="proj-name">GA-NAS</div>
-          <div class="proj-brief">Neural Architecture Search via Genetic Algorithms — evolved a 5-block residual network hitting 92.07% on CIFAR-10 with dual-GPU parallelization.</div>
-          <div class="proj-tags"><span class="tag">NAS</span><span class="tag">Genetic Algorithms</span><span class="tag">PyTorch</span><span class="tag">Multi-GPU</span><span class="tag">CIFAR-10</span></div>
-        </div>
-        <div class="proj-arrow">→</div>
-      </div>
-      <div class="proj-card" data-key="nexacred">
-        <div>
-          <div class="proj-num">03</div>
-          <div class="proj-name">NexaCred</div>
-          <div class="proj-brief">A P2P lending platform — LightGBM credit scoring, Solidity smart contracts for trustless lending, containerised with Docker and deployed on AWS.</div>
-          <div class="proj-tags"><span class="tag">LightGBM</span><span class="tag">Solidity</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">FastAPI</span></div>
-        </div>
-        <div class="proj-arrow">→</div>
-      </div>
-      <div class="proj-card" data-key="personad">
-        <div>
-          <div class="proj-num">04</div>
-          <div class="proj-name">PersonaD</div>
-          <div class="proj-brief">An LLM-based conversational imitation system that learns to replicate a person's communication style, vocabulary, and reasoning patterns.</div>
-          <div class="proj-tags"><span class="tag">LLM</span><span class="tag">Fine-tuning</span><span class="tag">NLP</span><span class="tag">Transformers</span></div>
-        </div>
-        <div class="proj-arrow">→</div>
-      </div>
-      <div class="proj-card" data-key="fer">
-        <div>
-          <div class="proj-num">05</div>
-          <div class="proj-name">Face Emotion Recognition</div>
-          <div class="proj-brief">Dual-pipeline system combining MediaPipe + Random Forest for real-time inference, and ResNet-18 fine-tuned on FER-2013 for high-accuracy classification.</div>
-          <div class="proj-tags"><span class="tag">MediaPipe</span><span class="tag">ResNet-18</span><span class="tag">TensorFlow</span><span class="tag">Computer Vision</span></div>
-        </div>
-        <div class="proj-arrow">→</div>
-      </div>
-      <div class="proj-card" data-key="artgallery">
-        <div>
-          <div class="proj-num">06</div>
-          <div class="proj-name">Art Gallery</div>
-          <div class="proj-brief">Full-stack web app for curating and browsing digital art collections, built with Next.js, React, and MySQL.</div>
-          <div class="proj-tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">MySQL</span><span class="tag">Full-Stack</span></div>
-        </div>
-        <div class="proj-arrow">→</div>
-      </div>
-    </div>
-  </section>
+    </section>
 </div>
 
-<!-- CONTACT -->
+<!-- ═══════════════════════════════════════════════════════════
+  03 — PROJECTS
+═══════════════════════════════════════════════════════════ -->
 <div class="wrap">
-  <section class="section" id="contact">
-    <div class="s-label">// 03 — Contact</div>
-    <h2 class="s-title reveal">Let's connect</h2>
-    <div class="contact-grid">
-      <div class="contact-text reveal">
-        <p>I'm open to interesting conversations — <strong>research ideas, internship opportunities</strong>, or just a good technical rabbit hole.</p>
-        <p>Find me here. Response time is fast; prefer <strong>email or GitHub</strong> for anything serious.</p>
-      </div>
-      <div class="links stagger">
-        <a href="https://github.com/Theroid00" class="link-row" target="_blank">
-          <div class="link-icon">GH</div>
-          <div><div class="link-label">GitHub</div><div class="link-val">github.com/Theroid00</div></div>
-        </a>
-        <a href="mailto:pranay35789@gmail.com" class="link-row" id="email-link">
-          <div class="link-icon">✉</div>
-          <div><div class="link-label">Email (Click to copy)</div><div class="link-val">pranay35789@gmail.com</div></div>
-        </a>
-        <a href="https://www.linkedin.com/in/pranay-kapoor-b57b34291/" class="link-row" target="_blank">
-          <div class="link-icon">in</div>
-          <div><div class="link-label">LinkedIn</div><div class="link-val">linkedin.com/in/Pranay-Kapoor</div></div>
-        </a>
-      </div>
-    </div>
-  </section>
+    <section class="section" id="projects">
+        <div class="s-label">// 03 — Projects</div>
+        <h2 class="s-title reveal">Things I've built</h2>
+        <div class="proj-list">
+
+            <!-- PROJECT 1: NOOS ── keep SVG schematic, ML project with no UI -->
+            <div class="proj-card" data-key="noos" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View NOOS project details">
+                <div>
+                    <div class="proj-num">01 <span class="live-badge"><span class="live-dot"></span>Active</span></div>
+                    <div class="proj-name">NOOS</div>
+                    <div class="proj-brief">A curiosity-driven belief graph engine using temperature-corrected Shannon entropy over LLM logit distributions as a traversal heuristic.</div>
+                    <div class="proj-tags"><span class="tag">LLM</span><span class="tag">Graph Engine</span><span class="tag">Ollama</span><span class="tag">Shannon Entropy</span><span class="tag">Python</span></div>
+                </div>
+                <div class="proj-visual">
+                    <svg class="schematic-svg" viewBox="0 0 400 250" fill="none" stroke="var(--accent)" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="80" cy="125" r="8" fill="var(--accent)"/>
+                        <circle cx="200" cy="75" r="8" fill="var(--accent2)"/>
+                        <circle cx="200" cy="175" r="8" fill="var(--accent2)"/>
+                        <circle cx="320" cy="125" r="8" fill="var(--accent)"/>
+                        <path d="M 88 121 L 192 79" stroke-width="1.5" stroke-dasharray="4 4"><animate attributeName="stroke-dashoffset" values="30;0" dur="2.5s" repeatCount="indefinite"/></path>
+                        <path d="M 88 129 L 192 171" stroke-width="1.5" stroke-dasharray="4 4"><animate attributeName="stroke-dashoffset" values="30;0" dur="2.5s" repeatCount="indefinite"/></path>
+                        <path d="M 208 79 L 312 121" stroke-width="1.5" stroke-dasharray="4 4"><animate attributeName="stroke-dashoffset" values="0;30" dur="2.5s" repeatCount="indefinite"/></path>
+                        <path d="M 208 171 L 312 129" stroke-width="1.5" stroke-dasharray="4 4"><animate attributeName="stroke-dashoffset" values="0;30" dur="2.5s" repeatCount="indefinite"/></path>
+                        <circle cx="200" cy="75" r="16" stroke="var(--accent2)" stroke-opacity="0.3" stroke-width="1"><animate attributeName="r" values="8;20;8" dur="3s" repeatCount="indefinite"/></circle>
+                        <circle cx="200" cy="175" r="16" stroke="var(--accent2)" stroke-opacity="0.3" stroke-width="1"><animate attributeName="r" values="8;20;8" dur="3s" repeatCount="indefinite"/></circle>
+                        <text x="80" y="102" fill="var(--cream)" font-family="monospace" font-size="9" text-anchor="middle">Input Logits</text>
+                        <text x="200" y="50" fill="var(--accent2)" font-family="monospace" font-size="9" text-anchor="middle">H(X) Entropy</text>
+                        <text x="200" y="210" fill="var(--accent2)" font-family="monospace" font-size="9" text-anchor="middle">Traversal Heuristic</text>
+                        <text x="320" y="102" fill="var(--cream)" font-family="monospace" font-size="9" text-anchor="middle">Belief Node</text>
+                    </svg>
+                </div>
+                <div class="proj-arrow">→</div>
+            </div>
+
+            <!-- PROJECT 2: GA-NAS ── keep SVG schematic, ML research project -->
+            <div class="proj-card" data-key="ganas" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View GA-NAS project details">
+                <div>
+                    <div class="proj-num">02</div>
+                    <div class="proj-name">GA-NAS</div>
+                    <div class="proj-brief">Neural Architecture Search via Genetic Algorithms — evolved a 5-block residual network hitting 92.07% on CIFAR-10 with dual-GPU parallelization.</div>
+                    <div class="proj-tags"><span class="tag">NAS</span><span class="tag">Genetic Algorithms</span><span class="tag">PyTorch</span><span class="tag">Multi-GPU</span><span class="tag">CIFAR-10</span></div>
+                </div>
+                <div class="proj-visual">
+                    <svg class="schematic-svg" viewBox="0 0 400 250" fill="none" stroke="var(--accent)" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="45" width="100" height="140" rx="8" stroke="var(--border)" fill="rgba(232,136,74,0.01)"/>
+                        <text x="80" y="32" fill="var(--muted)" font-family="monospace" font-size="9" text-anchor="middle">Gen N (Parent)</text>
+                        <rect x="45" y="65" width="70" height="20" rx="4" stroke="var(--accent)" fill="rgba(232,136,74,0.05)"/><text x="80" y="78" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">ResBlock A</text>
+                        <rect x="45" y="100" width="70" height="20" rx="4" stroke="var(--accent2)" fill="rgba(245,192,100,0.05)"/><text x="80" y="113" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">Conv 3x3</text>
+                        <rect x="45" y="135" width="70" height="20" rx="4" stroke="var(--accent)" fill="rgba(232,136,74,0.05)"/><text x="80" y="148" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">ResBlock B</text>
+                        <path d="M 140 115 L 230 115" stroke="var(--accent2)" stroke-width="1.8" stroke-dasharray="5 5"><animate attributeName="stroke-dashoffset" values="20;0" dur="2s" repeatCount="indefinite"/></path>
+                        <text x="185" y="102" fill="var(--accent2)" font-family="monospace" font-size="8" text-anchor="middle">Mutate</text>
+                        <rect x="240" y="45" width="130" height="140" rx="8" stroke="var(--accent)" fill="rgba(232,136,74,0.03)"/>
+                        <text x="305" y="32" fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle">Gen N+1 (92.07%)</text>
+                        <rect x="255" y="60" width="100" height="18" rx="4" stroke="var(--accent)" fill="rgba(232,136,74,0.08)"/><text x="305" y="72" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">ResBlock A</text>
+                        <rect x="255" y="85" width="100" height="18" rx="4" stroke="var(--accent2)" fill="rgba(245,192,100,0.08)"/><text x="305" y="97" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">Res B [Mutated]</text>
+                        <rect x="255" y="110" width="100" height="18" rx="4" stroke="var(--accent)" fill="rgba(232,136,74,0.08)"/><text x="305" y="122" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">Skip Conn</text>
+                        <rect x="255" y="135" width="100" height="18" rx="4" stroke="var(--accent2)" fill="rgba(245,192,100,0.08)"/><text x="305" y="147" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">Conv 3x3</text>
+                    </svg>
+                </div>
+                <div class="proj-arrow">→</div>
+            </div>
+
+            <!-- PROJECT 3: NEXACRED ── IMAGE PLACEHOLDER ──────────────────────────────────────
+                 WHAT TO ADD: A screenshot of the NexaCred dashboard/UI.
+                 BEST SHOT: The main lending page showing the credit score gauge on the left
+                            and the loan offer + Solidity contract status on the right.
+                            Use browser devtools → set viewport 1280×800 → screenshot.
+                 HOW TO ADD: Replace the <div class="img-slot">...</div> below with:
+                             <img src="./assets/nexacred-card.png" class="proj-img" alt="NexaCred UI">
+                 FILE: ./assets/nexacred-card.png  |  SIZE: 440×280px (880×560 @2x for retina)
+            ──────────────────────────────────────────────────────────────────────────────────── -->
+            <div class="proj-card" data-key="nexacred" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View NexaCred project details">
+                <div>
+                    <div class="proj-num">03</div>
+                    <div class="proj-name">NexaCred</div>
+                    <div class="proj-brief">A P2P lending platform — LightGBM credit scoring, Solidity smart contracts for trustless lending, containerised with Docker and deployed on AWS.</div>
+                    <div class="proj-tags"><span class="tag">LightGBM</span><span class="tag">Solidity</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">FastAPI</span></div>
+                </div>
+                <div class="proj-visual">
+                    <div class="img-slot">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <span>nexacred-card.png</span>
+                        <small>440 × 280px</small>
+                    </div>
+                </div>
+                <div class="proj-arrow">→</div>
+            </div>
+
+            <!-- PROJECT 4: PERSONAD ── keep SVG schematic, ML/NLP project -->
+            <div class="proj-card" data-key="personad" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View PersonaD project details">
+                <div>
+                    <div class="proj-num">04</div>
+                    <div class="proj-name">PersonaD</div>
+                    <div class="proj-brief">An LLM-based conversational imitation system that learns to replicate a person's communication style, vocabulary, and reasoning patterns.</div>
+                    <div class="proj-tags"><span class="tag">LLM</span><span class="tag">Fine-tuning</span><span class="tag">NLP</span><span class="tag">Transformers</span></div>
+                </div>
+                <div class="proj-visual">
+                    <svg class="schematic-svg" viewBox="0 0 400 250" fill="none" stroke="var(--accent)" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.25"><line x1="40" y1="60" x2="140" y2="60" stroke="var(--muted)" stroke-width="1"/><line x1="40" y1="90" x2="140" y2="90" stroke="var(--muted)" stroke-width="1"/><line x1="40" y1="120" x2="140" y2="120" stroke="var(--muted)" stroke-width="1"/><line x1="40" y1="150" x2="140" y2="150" stroke="var(--muted)" stroke-width="1"/><line x1="40" y1="180" x2="140" y2="180" stroke="var(--muted)" stroke-width="1"/></g>
+                        <text x="90" y="45" fill="var(--muted)" font-family="monospace" font-size="9" text-anchor="middle">Base Vector Corpus</text>
+                        <rect x="160" y="70" width="80" height="100" rx="6" stroke="var(--accent)" fill="rgba(232,136,74,0.05)"/>
+                        <text x="200" y="105" fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle">LoRA Adapter</text>
+                        <text x="200" y="122" fill="var(--cream)" font-family="monospace" font-size="9" text-anchor="middle">Weights</text>
+                        <text x="200" y="138" fill="var(--accent2)" font-family="monospace" font-size="8" text-anchor="middle">Alignment</text>
+                        <circle cx="310" cy="120" r="28" stroke="var(--accent2)" stroke-width="1.5" stroke-dasharray="4 2"><animate attributeName="stroke-dashoffset" values="0;20" dur="5s" repeatCount="indefinite"/></circle>
+                        <circle cx="310" cy="120" r="6" fill="var(--accent2)"/>
+                        <text x="310" y="75" fill="var(--accent2)" font-family="monospace" font-size="9" text-anchor="middle">Imitation Vector</text>
+                        <text x="310" y="165" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">Vocabulary Target</text>
+                        <path d="M 120 120 L 160 120" stroke="var(--accent)" stroke-width="1.5"/>
+                        <path d="M 240 120 L 282 120" stroke="var(--accent2)" stroke-width="1.5"/>
+                        <polygon points="282,120 274,116 274,124" fill="var(--accent2)"/>
+                    </svg>
+                </div>
+                <div class="proj-arrow">→</div>
+            </div>
+
+            <!-- PROJECT 5: FER ── VIDEO PLACEHOLDER ───────────────────────────────────────────
+                 WHAT TO ADD: A short demo video or GIF of the emotion detection running live.
+                 BEST SHOT: Webcam feed with face landmarks overlaid + emotion label "Happy: 84%"
+                            showing in real-time. Record with OBS Studio (Window Capture).
+                 HOW TO ADD — VIDEO (most impressive):
+                              Replace the <div class="vid-slot">...</div> with:
+                              <video src="./assets/fer-demo.mp4" class="proj-img"
+                                     autoplay loop muted playsinline></video>
+                              FILE: ./assets/fer-demo.mp4  |  DURATION: 5–10s, no audio
+                 HOW TO ADD — GIF (simpler):
+                              <img src="./assets/fer-demo.gif" class="proj-img" alt="FER demo">
+                              FILE: ./assets/fer-demo.gif  |  Optimise with ezgif.com
+            ──────────────────────────────────────────────────────────────────────────────────── -->
+            <div class="proj-card" data-key="fer" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View Face Emotion Recognition project details">
+                <div>
+                    <div class="proj-num">05</div>
+                    <div class="proj-name">Face Emotion Recognition</div>
+                    <div class="proj-brief">Dual-pipeline system combining MediaPipe + Random Forest for real-time inference, and ResNet-18 fine-tuned on FER-2013 for high-accuracy classification.</div>
+                    <div class="proj-tags"><span class="tag">MediaPipe</span><span class="tag">ResNet-18</span><span class="tag">TensorFlow</span><span class="tag">Computer Vision</span></div>
+                </div>
+                <div class="proj-visual">
+                    <div class="vid-slot">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                        <span>fer-demo.mp4</span>
+                        <small>5–10s · muted · loop</small>
+                    </div>
+                </div>
+                <div class="proj-arrow">→</div>
+            </div>
+
+            <!-- PROJECT 6: ART GALLERY ── IMAGE PLACEHOLDER ──────────────────────────────────
+                 WHAT TO ADD: A screenshot of the Art Gallery browse/grid page.
+                 BEST SHOT: The main gallery page with a dense grid of artwork thumbnails.
+                            Shows clearly it's a real web app — recruiters respond well to this.
+                 HOW TO ADD: Replace the <div class="img-slot">...</div> below with:
+                             <img src="./assets/artgallery-card.png" class="proj-img" alt="Art Gallery UI">
+                 FILE: ./assets/artgallery-card.png  |  SIZE: 440×280px (880×560 @2x for retina)
+            ──────────────────────────────────────────────────────────────────────────────────── -->
+            <div class="proj-card" data-key="artgallery" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View Art Gallery project details">
+                <div>
+                    <div class="proj-num">06</div>
+                    <div class="proj-name">Art Gallery</div>
+                    <div class="proj-brief">Full-stack web app for curating and browsing digital art collections, built with Next.js, React, and MySQL.</div>
+                    <div class="proj-tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">MySQL</span><span class="tag">Full-Stack</span></div>
+                </div>
+                <div class="proj-visual">
+                    <div class="img-slot">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <span>artgallery-card.png</span>
+                        <small>440 × 280px</small>
+                    </div>
+                </div>
+                <div class="proj-arrow">→</div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+  04 — CONTACT
+═══════════════════════════════════════════════════════════ -->
+<div class="wrap">
+    <section class="section" id="contact">
+        <div class="s-label">// 04 — Contact</div>
+        <h2 class="s-title reveal">Let's connect</h2>
+        <div class="contact-grid">
+            <div class="contact-text reveal">
+                <p>I'm open to interesting conversations — <strong>research ideas, internship opportunities</strong>, or just a good technical rabbit hole.</p>
+                <p>Find me here. Response is fast; prefer <strong>email or GitHub</strong> for anything serious.</p>
+            </div>
+            <div class="links stagger">
+                <a href="https://github.com/Theroid00" class="link-row" target="_blank" rel="noopener" aria-label="GitHub Profile">
+                    <div class="link-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    </div>
+                    <div><div class="link-label">GitHub</div><div class="link-val">github.com/Theroid00</div></div>
+                </a>
+                <a href="mailto:pranay35789@gmail.com" class="link-row" id="email-link" aria-label="Copy email address">
+                    <div class="link-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div><div class="link-label">Email (click to copy)</div><div class="link-val">pranay35789@gmail.com</div></div>
+                </a>
+                <a href="https://www.linkedin.com/in/pranay-kapoor-b57b34291/" class="link-row" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+                    <div class="link-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </div>
+                    <div><div class="link-label">LinkedIn</div><div class="link-val">linkedin.com/in/pranay-kapoor</div></div>
+                </a>
+            </div>
+        </div>
+    </section>
 </div>
 
 <footer>Pranay Kapoor &mdash; MIT Bengaluru &mdash; 2025</footer>
 
-<!-- MODAL -->
-<div class="overlay" id="overlay">
-  <div class="modal">
-    <button class="modal-x" id="mclose">✕</button>
-    <div class="modal-tag" id="mtag"></div>
-    <h3 class="modal-title" id="mtitle"></h3>
-    <div class="modal-body" id="mbody"></div>
-    <div class="modal-tags" id="mtags"></div>
-    <div class="modal-links" id="mlinks"></div>
-  </div>
+<!-- ═══════════════════════════════════════════════════════════
+  MODAL
+═══════════════════════════════════════════════════════════ -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mtitle">
+    <div class="modal">
+        <button class="modal-x" id="mclose" aria-label="Close modal">✕</button>
+        <div class="modal-content-grid">
+            <div class="modal-media" id="mmedia"><!-- injected by JS --></div>
+            <div class="modal-details">
+                <div class="modal-tag" id="mtag"></div>
+                <h3 class="modal-title" id="mtitle"></h3>
+                <div class="modal-body" id="mbody"></div>
+                <div class="modal-tags" id="mtags"></div>
+                <div class="modal-links" id="mlinks"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- TOAST NOTIFICATION -->
-<div id="toast" class="toast">Email copied to clipboard!</div>
+<div id="toast" class="toast" role="status" aria-live="polite">Email copied to clipboard!</div>
 
 <script>
-  /* ── PROJECT DATA ─────────────────────────────────── */
-  const DATA = {
-    noos:{
-      tag:"01 — LLM Inference", title:"NOOS",
-      body:`<p>NOOS is a curiosity-driven philosophical belief graph engine. Rather than asking an LLM what it <strong>"knows"</strong>, NOOS measures what the model finds <strong>uncertain</strong>.</p>
-<p>It computes <strong>temperature-corrected Shannon entropy</strong> over token probability distributions to identify belief graph nodes that are maximally informative to explore — steering exploration toward the edges of the model's understanding.</p>
+    /* ═══════════════════════════════════════════════════════════
+       PROJECT DATA
+       ─────────────────────────────────────────────────────────
+       media field:
+         null   → falls back to the animated SVG schematic from the card
+         image  → { type:'image',  source:'./assets/FILENAME.png' }
+         video  → { type:'video',  source:'./assets/FILENAME.mp4' }
+
+       For NexaCred, FER, Art Gallery: update `media: null` once
+       you've added your files to ./assets/
+    ═══════════════════════════════════════════════════════════ */
+    const DATA = {
+
+        noos: {
+            tag: "01 — LLM Inference · Active",
+            title: "NOOS",
+            // Keep null — the animated entropy graph is more informative than any screenshot
+            media: null,
+            body: `<p>NOOS is a curiosity-driven philosophical belief graph engine. Rather than asking an LLM what it <strong>"knows"</strong>, NOOS measures what the model finds <strong>uncertain</strong>.</p>
+<p>It computes <strong>temperature-corrected Shannon entropy</strong> over token probability distributions to identify belief graph nodes that are maximally informative to explore — steering the search toward the edges of the model's understanding.</p>
 <p>The whole system runs as <strong>inference-time orchestration</strong> of deepseek-r1:14b via Ollama. No training, no fine-tuning — just creative use of what the model already knows and doesn't know.</p>`,
-      tags:["LLM","Graph Engine","Ollama","Shannon Entropy","deepseek-r1:14b","Python"],
-      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
-    },
-    ganas:{
-      tag:"02 — ML Research", title:"GA-NAS",
-      body:`<p>GA-NAS applies <strong>Genetic Algorithms to Neural Architecture Search</strong> — automating the design of deep networks by treating architecture decisions as an evolving gene pool.</p>
+            tags: ["LLM","Graph Engine","Ollama","Shannon Entropy","deepseek-r1:14b","Python","Inference-time Orchestration"],
+            // ▸ UPDATE: replace with your actual NOOS repo link
+            links: [{ l:"GitHub", h:"https://github.com/Theroid00" }]
+        },
+
+        ganas: {
+            tag: "02 — ML Research",
+            title: "GA-NAS",
+            // Optional: add a training curve screenshot (accuracy vs generation plot)
+            // media: { type:'image', source:'./assets/ganas-results.png' }
+            media: null,
+            body: `<p>GA-NAS applies <strong>Genetic Algorithms to Neural Architecture Search</strong> — automating the design of deep networks by treating architecture decisions as an evolving gene pool.</p>
 <p>The system evolved a <strong>5-block residual architecture</strong> achieving 92.07% test accuracy on CIFAR-10. Genetic operations — selection, crossover, mutation — work directly on architecture gene encodings.</p>
-<p>Training was parallelized across a <strong>dual-GPU setup</strong>, significantly reducing generation evaluation time and allowing more generations to be explored within the compute budget.</p>`,
-      tags:["Neural Architecture Search","Genetic Algorithms","PyTorch","CIFAR-10","Multi-GPU","Python"],
-      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
-    },
-    nexacred:{
-      tag:"03 — FinTech", title:"NexaCred",
-      body:`<p>NexaCred is a full-stack <strong>peer-to-peer lending platform</strong> that removes traditional financial intermediaries using blockchain-based smart contracts.</p>
-<p>The ML core uses <strong>LightGBM</strong> to score borrower creditworthiness, generating dynamic interest rate offers. <strong>Solidity smart contracts</strong> govern the full loan lifecycle — disbursement, repayment, and default — without a central authority.</p>
+<p>Training was parallelised across a <strong>dual-GPU setup</strong>, significantly reducing generation evaluation time and allowing more generations to be explored within the compute budget.</p>`,
+            tags: ["Neural Architecture Search","Genetic Algorithms","PyTorch","CIFAR-10","Multi-GPU","Python","ResNet"],
+            links: [{ l:"GitHub", h:"https://github.com/Theroid00" }]
+        },
+
+        nexacred: {
+            tag: "03 — FinTech · Full-Stack",
+            title: "NexaCred",
+            // ══════════════════════════════════════════════════════════
+            // ADD MODAL IMAGE — change null to:
+            //   media: { type:'image', source:'./assets/nexacred-modal.png' }
+            //
+            // WHAT TO SCREENSHOT: The main NexaCred dashboard — credit score gauge
+            // on the left, loan offer details + smart contract status on the right.
+            // Size: 1280×800px. Works in light or dark mode.
+            // ══════════════════════════════════════════════════════════
+            media: null,
+            body: `<p>NexaCred is a full-stack <strong>peer-to-peer lending platform</strong> that removes traditional financial intermediaries using blockchain-based smart contracts.</p>
+<p>The ML core uses <strong>LightGBM</strong> to score borrower creditworthiness from financial features, generating dynamic interest rate offers. <strong>Solidity smart contracts</strong> govern the full loan lifecycle — disbursement, repayment, and default — without a central authority.</p>
 <p>The stack is containerised with <strong>Docker</strong> and deployed on <strong>AWS</strong>, with a React frontend and a Python/FastAPI backend.</p>`,
-      tags:["LightGBM","Solidity","Smart Contracts","Docker","AWS","FastAPI","React"],
-      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
-    },
-    personad:{
-      tag:"04 — NLP", title:"PersonaD",
-      body:`<p>PersonaD is a system for <strong>conversational persona imitation</strong> — training a language model to replicate how a specific individual communicates.</p>
-<p>Given a corpus of conversational data, PersonaD adapts a base LLM to match the target's <strong>vocabulary, reasoning style, tone, and response patterns</strong>.</p>
+            tags: ["LightGBM","Solidity","Smart Contracts","Docker","AWS","FastAPI","React","Web3"],
+            links: [
+                { l:"GitHub", h:"https://github.com/Theroid00" }
+                // ▸ ADD: { l:"Live Demo", h:"https://your-demo-url.com" }  if deployed
+            ]
+        },
+
+        personad: {
+            tag: "04 — NLP · LLM",
+            title: "PersonaD",
+            // Keep null — no real UI to show; LoRA adapter diagram is on-brand
+            media: null,
+            body: `<p>PersonaD is a system for <strong>conversational persona imitation</strong> — training a language model to replicate how a specific individual communicates.</p>
+<p>Given a corpus of conversational data, PersonaD adapts a base LLM to match the target's <strong>vocabulary, reasoning style, tone, and response patterns</strong> using parameter-efficient fine-tuning.</p>
 <p>The project probes questions around personality as a learnable distribution over language, and the limits of how much of a person can be captured in text.</p>`,
-      tags:["LLM Fine-tuning","NLP","Transformers","PyTorch","Python"],
-      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
-    },
-    fer:{
-      tag:"05 — Computer Vision", title:"Face Emotion Recognition",
-      body:`<p>A dual-pipeline system for <strong>real-time facial emotion classification</strong>, built to balance speed and accuracy across different hardware constraints.</p>
-<p><strong>Pipeline 1</strong>: MediaPipe landmark extraction feeding a Random Forest classifier — lightweight, runs in real-time on CPU.</p>
-<p><strong>Pipeline 2</strong>: ResNet-18 fine-tuned on FER-2013 — deeper, more accurate, captures spatial patterns that landmarks miss. Both pipelines are benchmarked on accuracy, latency, and robustness to lighting and pose variation.</p>`,
-      tags:["MediaPipe","ResNet-18","FER-2013","TensorFlow","Random Forest","Computer Vision"],
-      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
-    },
-    artgallery:{
-      tag:"06 — Full-Stack Web", title:"Art Gallery",
-      body:`<p>Art Gallery is a <strong>full-stack web application</strong> for browsing, curating, and managing digital art collections.</p>
+            tags: ["LLM Fine-tuning","NLP","Transformers","LoRA","PyTorch","Python"],
+            links: [{ l:"GitHub", h:"https://github.com/Theroid00" }]
+        },
+
+        fer: {
+            tag: "05 — Computer Vision",
+            title: "Face Emotion Recognition",
+            // ══════════════════════════════════════════════════════════
+            // ADD MODAL VIDEO — change null to:
+            //   media: { type:'video', source:'./assets/fer-demo.mp4' }
+            //
+            // WHAT TO RECORD: Webcam feed with face mesh landmarks overlaid
+            // and the emotion classification bar (Happy: 84%) updating in real-time.
+            // Duration: 8-12 seconds. Record with OBS Studio → Window Capture.
+            // Export: H.264 MP4, keep under 5MB (compress with Handbrake if needed).
+            //
+            // ALTERNATIVE — GIF:
+            //   media: { type:'image', source:'./assets/fer-demo.gif' }
+            //   Optimise at ezgif.com → keep under 3MB.
+            // ══════════════════════════════════════════════════════════
+            media: null,
+            body: `<p>A dual-pipeline system for <strong>real-time facial emotion classification</strong>, built to balance speed and accuracy across different hardware constraints.</p>
+<p><strong>Pipeline 1 (fast)</strong>: MediaPipe landmark extraction feeding a Random Forest classifier — lightweight, runs in real-time on CPU with &lt;20ms latency.</p>
+<p><strong>Pipeline 2 (accurate)</strong>: ResNet-18 fine-tuned on FER-2013 — deeper, captures spatial emotion patterns that landmarks miss. Both pipelines are benchmarked head-to-head on accuracy, latency, and robustness to lighting and pose variation.</p>`,
+            tags: ["MediaPipe","ResNet-18","FER-2013","TensorFlow","Random Forest","OpenCV","Computer Vision"],
+            links: [{ l:"GitHub", h:"https://github.com/Theroid00" }]
+        },
+
+        artgallery: {
+            tag: "06 — Full-Stack Web",
+            title: "Art Gallery",
+            // ══════════════════════════════════════════════════════════
+            // ADD MODAL IMAGE — change null to:
+            //   media: { type:'image', source:'./assets/artgallery-modal.png' }
+            //
+            // WHAT TO SCREENSHOT: The main gallery browse page with a dense
+            // grid of artwork thumbnails — it reads immediately as a real,
+            // polished web app. Size: 1280×800px.
+            // ══════════════════════════════════════════════════════════
+            media: null,
+            body: `<p>Art Gallery is a <strong>full-stack web application</strong> for browsing, curating, and managing digital art collections.</p>
 <p>Built with <strong>Next.js and React</strong> on the frontend, backed by a MySQL relational database. Features include gallery browsing, artist pages, and a curator dashboard for managing collections.</p>
-<p>Delivered as a complete academic project including database design, ER diagrams, normalization analysis, and a full project report.</p>`,
-      tags:["Next.js","React","MySQL","JavaScript","Full-Stack"],
-      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
-    }
-  };
-
-  /* ── MODAL ────────────────────────────────────────── */
-  const overlayEl = document.getElementById('overlay');
-  function openModal(k){
-    const d = DATA[k]; if(!d) return;
-    document.getElementById('mtag').textContent = d.tag;
-    document.getElementById('mtitle').textContent = d.title;
-    document.getElementById('mbody').innerHTML = d.body;
-    document.getElementById('mtags').innerHTML = d.tags.map(t=>`<span class="tag">${t}</span>`).join('');
-    document.getElementById('mlinks').innerHTML = d.links.map(x=>`<a href="${x.h}" class="btn btn-out" target="_blank">${x.l} ↗</a>`).join('');
-    overlayEl.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(){
-    overlayEl.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.getElementById('mclose').addEventListener('click', closeModal);
-  overlayEl.addEventListener('click', e => { if(e.target === overlayEl) closeModal(); });
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
-  document.querySelectorAll('.proj-card').forEach(c =>
-          c.addEventListener('click', () => openModal(c.dataset.key))
-  );
-
-  /* ── SCROLL REVEAL ────────────────────────────────── */
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-      } else {
-        e.target.classList.remove('in');
-      }
-    });
-  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal,.stagger').forEach(el => obs.observe(el));
-
-  const cobs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), 0);
-      } else {
-        e.target.classList.remove('in');
-      }
-    });
-  }, {threshold:0.1, rootMargin:'0px 0px -28px 0px'});
-  document.querySelectorAll('.proj-card').forEach((c,i) => {
-    c.style.transitionDuration = '.65s';
-    c.style.transitionDelay = `${i*0.07}s`;
-    cobs.observe(c);
-  });
-
-  /* ── CANVAS BACKGROUND ────────────────────────────── */
-  (function(){
-    const cv = document.getElementById('bg');
-    const cx = cv.getContext('2d');
-
-    // W, H, mx, my all initialised AFTER we know the window size
-    let W, H, mx, my;
-    let scrollT = 0;
-
-    function resize(){
-      W = cv.width  = window.innerWidth;
-      H = cv.height = window.innerHeight;
-      // safe to set mouse centre now
-      if(mx === undefined){ mx = W / 2; my = H / 2; }
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-    // Particles (normalised 0-1 coords so resize is free)
-    const N = 45;
-    const pts = Array.from({length: N}, () => ({
-      x: Math.random(), y: Math.random(),
-      vx: (Math.random() - .5) * 0.00055,
-      vy: (Math.random() - .5) * 0.00055,
-      r:  Math.random() * 1.2 + 0.4,
-      phase: Math.random() * Math.PI * 2,
-      spd:  Math.random() * 0.5 + 0.5,
-    }));
-
-    function drawOrb(x, y, r, color){
-      if(!isFinite(x)||!isFinite(y)||!isFinite(r)||r<=0) return;
-      const g = cx.createRadialGradient(x, y, 0, x, y, r);
-      g.addColorStop(0, color);
-      g.addColorStop(1, 'transparent');
-      cx.fillStyle = g;
-      cx.fillRect(0, 0, W, H);
-    }
-
-    function loop(){
-      requestAnimationFrame(loop);
-      const now = performance.now() * 0.001;
-
-      // Smooth scroll lerp (read directly from window.scrollY to avoid scroll listener overhead)
-      const max = document.body.scrollHeight - H;
-      const scrollTarget = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
-      scrollT += (scrollTarget - scrollT) * 0.04;
-      const t = scrollT;
-
-      cx.clearRect(0, 0, W, H);
-
-      // Orb A — travels top-left → bottom-right
-      drawOrb(
-              W * (0.05 + t * 0.80),
-              H * (0.10 + t * 0.75),
-              W * (0.55 - t * 0.10),
-              `rgba(232,136,74,${(0.07 - t * 0.025).toFixed(3)})`
-      );
-
-      // Orb B — counter-travels bottom-right → top-left
-      drawOrb(
-              W * (0.92 - t * 0.75),
-              H * (0.88 - t * 0.70),
-              W * (0.40 + t * 0.10),
-              `rgba(245,192,100,${(0.04 + t * 0.03).toFixed(3)})`
-      );
-
-      // Orb C — follows mouse softly
-      drawOrb(mx, my, W * 0.22, 'rgba(232,136,74,0.028)');
-
-      // Particle physics
-      const speedMul = 1 + Math.sin(t * Math.PI) * 1.2;
-      const connR    = 110 + Math.sin(t * Math.PI) * 70;
-      const hue      = 28  + Math.sin(t * Math.PI) * 14;
-
-      pts.forEach(p => {
-        p.x += p.vx * speedMul * p.spd + Math.sin(now * 0.3 + p.phase) * 0.00007;
-        p.y += p.vy * speedMul * p.spd + Math.cos(now * 0.25 + p.phase) * 0.00007;
-        if(p.x < 0) p.x = 1; if(p.x > 1) p.x = 0;
-        if(p.y < 0) p.y = 1; if(p.y > 1) p.y = 0;
-      });
-
-      // Connections
-      cx.lineWidth = 0.6;
-      for(let i = 0; i < N; i++){
-        for(let j = i + 1; j < N; j++){
-          const dx = (pts[i].x - pts[j].x) * W;
-          const dy = (pts[i].y - pts[j].y) * H;
-          const d  = Math.sqrt(dx*dx + dy*dy);
-          if(d < connR){
-            cx.strokeStyle = `hsla(${hue},68%,62%,${((1-d/connR)*0.14).toFixed(3)})`;
-            cx.beginPath();
-            cx.moveTo(pts[i].x*W, pts[i].y*H);
-            cx.lineTo(pts[j].x*W, pts[j].y*H);
-            cx.stroke();
-          }
+<p>Delivered as a complete academic project including database design, ER diagrams, normalisation analysis, and a full project report.</p>`,
+            tags: ["Next.js","React","MySQL","JavaScript","Full-Stack","REST API"],
+            links: [{ l:"GitHub", h:"https://github.com/Theroid00" }]
         }
-      }
+    };
 
-      // Nodes
-      cx.fillStyle = `hsla(${hue},68%,68%,0.55)`;
-      pts.forEach(p => {
-        cx.beginPath();
-        cx.arc(p.x*W, p.y*H, p.r, 0, Math.PI*2);
-        cx.fill();
-      });
+    /* ═══════════════════════════════════════════════════════════
+       MODAL LOGIC
+    ═══════════════════════════════════════════════════════════ */
+    const overlayEl = document.getElementById('overlay');
+    let prevFocus = null;
+
+    function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        const focusables = document.querySelector('.modal').querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+        if (!focusables.length) return;
+        const first = focusables[0], last = focusables[focusables.length-1];
+        if (e.shiftKey) { if (document.activeElement===first){ e.preventDefault(); last.focus(); } }
+        else { if (document.activeElement===last){ e.preventDefault(); first.focus(); } }
     }
 
-    loop();
-  })();
+    function openModal(k) {
+        const d = DATA[k]; if(!d) return;
+        prevFocus = document.activeElement;
+        document.getElementById('mtag').textContent = d.tag;
+        document.getElementById('mtitle').textContent = d.title;
+        document.getElementById('mbody').innerHTML = d.body;
+        document.getElementById('mtags').innerHTML = d.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+        document.getElementById('mlinks').innerHTML = d.links.map(x=>`<a href="${x.h}" class="btn btn-out" target="_blank" rel="noopener">${x.l} ↗</a>`).join('');
 
-  /* ── EMAIL COPY TO CLIPBOARD ──────────────────────── */
-  const emailLink = document.getElementById('email-link');
-  const toast = document.getElementById('toast');
-  if (emailLink && toast) {
-    emailLink.addEventListener('click', e => {
-      e.preventDefault();
-      const email = 'pranay35789@gmail.com';
-      navigator.clipboard.writeText(email).then(() => {
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
-      }).catch(err => {
-        console.error('Failed to copy text: ', err);
-        window.location.href = `mailto:${email}`;
-      });
+        const media = document.getElementById('mmedia');
+        if (d.media && d.media.type === 'video') {
+            media.innerHTML = `<video src="${d.media.source}" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>`;
+        } else if (d.media && d.media.type === 'image') {
+            media.innerHTML = `<img src="${d.media.source}" alt="${d.title} preview" style="width:100%;height:100%;object-fit:cover;display:block">`;
+        } else {
+            // Fallback: clone the animated SVG schematic from the card
+            const card = document.querySelector(`.proj-card[data-key="${k}"]`);
+            const vis = card && card.querySelector('.proj-visual');
+            media.innerHTML = vis ? vis.cloneNode(true).innerHTML
+                : `<div style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);padding:1rem">No preview available</div>`;
+        }
+
+        overlayEl.classList.add('open');
+        overlayEl.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('mclose').focus();
+        document.addEventListener('keydown', trapFocus);
+    }
+
+    function closeModal() {
+        overlayEl.classList.remove('open');
+        overlayEl.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', trapFocus);
+        if (prevFocus) prevFocus.focus();
+    }
+
+    document.getElementById('mclose').addEventListener('click', closeModal);
+    overlayEl.addEventListener('click', e => { if(e.target===overlayEl) closeModal(); });
+    document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+    document.querySelectorAll('.proj-card').forEach(c => {
+        c.addEventListener('click', () => openModal(c.dataset.key));
+        c.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal(c.dataset.key); } });
     });
-  }
 
-  /* ── ACTIVE NAV SCROLL SPY ────────────────────────── */
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const sections = document.querySelectorAll('section');
-  const spyObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
+    /* ═══════════════════════════════════════════════════════════
+       SCROLL REVEAL — one-directional (animate in once, unobserve)
+    ═══════════════════════════════════════════════════════════ */
+    const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('in');
+                observer.unobserve(e.target); // fire once only
+            }
         });
-      }
+    }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal,.stagger').forEach(el => obs.observe(el));
+
+    const cobs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('in'), 0);
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold:0.1, rootMargin:'0px 0px -28px 0px' });
+    document.querySelectorAll('.proj-card').forEach((c, i) => {
+        c.style.transitionDuration = '.65s';
+        c.style.transitionDelay = `${i*0.07}s`;
+        cobs.observe(c);
     });
-  }, { threshold: 0.2, rootMargin: '-20% 0px -55% 0px' });
-  sections.forEach(s => spyObs.observe(s));
+
+    /* ═══════════════════════════════════════════════════════════
+       CANVAS BACKGROUND
+    ═══════════════════════════════════════════════════════════ */
+    (function(){
+        const cv = document.getElementById('bg');
+        const cx = cv.getContext('2d');
+        let W, H, mx, my, scrollT = 0;
+        let isVisible = true;
+        document.addEventListener('visibilitychange', () => { isVisible = !document.hidden; });
+
+        function resize(){
+            W = cv.width = window.innerWidth;
+            H = cv.height = window.innerHeight;
+            if(mx===undefined){ mx=W/2; my=H/2; }
+        }
+        resize();
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+
+        const N = window.innerWidth < 768 ? 18 : 45;
+        const pts = Array.from({length:N}, () => ({
+            x:Math.random(), y:Math.random(),
+            vx:(Math.random()-.5)*.00055, vy:(Math.random()-.5)*.00055,
+            r:Math.random()*1.2+0.4, phase:Math.random()*Math.PI*2, spd:Math.random()*.5+.5
+        }));
+
+        function orb(x,y,r,c){ if(!isFinite(x)||!isFinite(y)||!isFinite(r)||r<=0)return; const g=cx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,c);g.addColorStop(1,'transparent');cx.fillStyle=g;cx.fillRect(0,0,W,H); }
+
+        function loop(){
+            requestAnimationFrame(loop);
+            if(!isVisible) return;
+            const now = performance.now()*.001;
+            const max = document.body.scrollHeight-H;
+            const st = max>0?Math.min(window.scrollY/max,1):0;
+            scrollT += (st-scrollT)*.04;
+            const t = scrollT;
+            cx.clearRect(0,0,W,H);
+            orb(W*(.05+t*.80), H*(.10+t*.75), W*(.55-t*.10), `rgba(232,136,74,${(.07-t*.025).toFixed(3)})`);
+            orb(W*(.92-t*.75), H*(.88-t*.70), W*(.40+t*.10), `rgba(245,192,100,${(.04+t*.03).toFixed(3)})`);
+            orb(mx, my, W*.22, 'rgba(232,136,74,0.028)');
+            const sm=1+Math.sin(t*Math.PI)*1.2, cr=110+Math.sin(t*Math.PI)*70, hue=28+Math.sin(t*Math.PI)*14;
+            pts.forEach(p=>{ p.x+=p.vx*sm*p.spd+Math.sin(now*.3+p.phase)*.00007; p.y+=p.vy*sm*p.spd+Math.cos(now*.25+p.phase)*.00007; if(p.x<0)p.x=1;if(p.x>1)p.x=0;if(p.y<0)p.y=1;if(p.y>1)p.y=0; });
+            cx.lineWidth=.6;
+            for(let i=0;i<N;i++) for(let j=i+1;j<N;j++){
+                const dx=(pts[i].x-pts[j].x)*W, dy=(pts[i].y-pts[j].y)*H, d=Math.sqrt(dx*dx+dy*dy);
+                if(d<cr){ cx.strokeStyle=`hsla(${hue},68%,62%,${((1-d/cr)*.14).toFixed(3)})`; cx.beginPath(); cx.moveTo(pts[i].x*W,pts[i].y*H); cx.lineTo(pts[j].x*W,pts[j].y*H); cx.stroke(); }
+            }
+            cx.fillStyle=`hsla(${hue},68%,68%,0.55)`;
+            pts.forEach(p=>{ cx.beginPath(); cx.arc(p.x*W,p.y*H,p.r,0,Math.PI*2); cx.fill(); });
+        }
+        loop();
+    })();
+
+    /* EMAIL COPY */
+    const emailLink = document.getElementById('email-link');
+    const toast = document.getElementById('toast');
+    if(emailLink&&toast){ emailLink.addEventListener('click',e=>{ e.preventDefault(); navigator.clipboard.writeText('pranay35789@gmail.com').then(()=>{ toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2500); }).catch(()=>{ window.location.href='mailto:pranay35789@gmail.com'; }); }); }
+
+    /* NAV SCROLL SPY */
+    const navAs = document.querySelectorAll('.nav-links a');
+    const spyObs = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{ if(entry.isIntersecting){ const id=entry.target.getAttribute('id'); navAs.forEach(a=>{ a.classList.toggle('active', a.getAttribute('href')===`#${id}`); }); } });
+    },{ threshold:.2, rootMargin:'-20% 0px -55% 0px' });
+    document.querySelectorAll('section').forEach(s=>spyObs.observe(s));
 </script>
 </body>
 </html>
