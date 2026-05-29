@@ -536,15 +536,18 @@
     const cv = document.getElementById('bg');
     const cx = cv.getContext('2d');
 
-    // W, H, mx, my all initialised AFTER we know the window size
-    let W, H, mx, my;
+    // W, H, target mouse coordinates, and smoothed cursor coordinates
+    let W, H, mx, my, cxX, cxY;
     let scrollT = 0;
 
     function resize(){
       W = cv.width  = window.innerWidth;
       H = cv.height = window.innerHeight;
       // safe to set mouse centre now
-      if(mx === undefined){ mx = W / 2; my = H / 2; }
+      if(mx === undefined){
+        mx = cxX = W / 2;
+        my = cxY = H / 2;
+      }
     }
     resize();
     window.addEventListener('resize', resize);
@@ -581,6 +584,10 @@
       scrollT += (scrollTarget - scrollT) * 0.04;
       const t = scrollT;
 
+      // Lerp mouse coordinates for a smooth trailing glow
+      cxX += (mx - cxX) * 0.07;
+      cxY += (my - cxY) * 0.07;
+
       cx.clearRect(0, 0, W, H);
 
       // Orb A — travels top-left → bottom-right
@@ -599,8 +606,8 @@
               `rgba(245,192,100,${(0.04 + t * 0.03).toFixed(3)})`
       );
 
-      // Orb C — follows mouse softly
-      drawOrb(mx, my, W * 0.22, 'rgba(232,136,74,0.028)');
+      // Orb C — follows mouse with a smooth trailing golden glow
+      drawOrb(cxX, cxY, W * 0.22, 'rgba(245, 194, 120, 0.035)');
 
       // Particle physics
       const speedMul = 1 + Math.sin(t * Math.PI) * 1.2;
