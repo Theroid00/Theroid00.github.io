@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranay Kapoor — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0e0c0a;
+      --card:#1c1814;
+      --accent:#e8884a;
+      --accent2:#f5c278;
+      --cream:#f0e6d3;
+      --muted:#8a7f74;
+      --border:rgba(232,136,74,0.13);
+      --ease:cubic-bezier(0.16,1,0.3,1);
+      --r:12px;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--bg);color:var(--cream);
+      font-family:'DM Sans',sans-serif;font-weight:300;
+      line-height:1.75;overflow-x:hidden;
+    }
+
+    /* CANVAS — fixed behind everything */
+    #bg{
+      position:fixed;inset:0;
+      z-index:0;pointer-events:none;
+    }
+
+    /* NAV */
+    nav{
+      position:sticky;top:0;z-index:100;
+      padding:1.1rem 3rem;
+      display:flex;justify-content:space-between;align-items:center;
+      background:rgba(14,12,10,0.82);backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-logo{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--cream);text-decoration:none}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{
+      font-family:'JetBrains Mono',monospace;font-size:.72rem;
+      color:var(--muted);text-decoration:none;letter-spacing:.09em;
+      text-transform:uppercase;transition:color .2s;
+    }
+    .nav-links a:hover{color:var(--accent)}
+
+    /* HERO */
+    #hero{
+      position:relative;z-index:1;
+      min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+      padding:5rem 3rem 4rem;overflow:hidden;
+    }
+    .hero-label{
+      font-family:'JetBrains Mono',monospace;font-size:.72rem;
+      color:var(--accent);letter-spacing:.18em;text-transform:uppercase;
+      margin-bottom:1.4rem;opacity:0;animation:fadeUp .8s var(--ease) .15s forwards;
+    }
+    .hero-name{
+      font-family:'Fraunces',serif;
+      font-size:clamp(3.2rem,8vw,6.8rem);
+      font-weight:300;line-height:1.0;letter-spacing:-.025em;
+      margin-bottom:1.6rem;opacity:0;animation:fadeUp .9s var(--ease) .3s forwards;
+    }
+    .hero-name em{font-style:italic;color:var(--accent)}
+    .hero-sub{
+      max-width:44ch;font-size:1.05rem;color:var(--muted);line-height:1.85;
+      margin-bottom:3rem;opacity:0;animation:fadeUp .9s var(--ease) .5s forwards;
+    }
+    .hero-btns{
+      display:flex;gap:1rem;flex-wrap:wrap;
+      opacity:0;animation:fadeUp .9s var(--ease) .7s forwards;
+    }
+    .btn{
+      display:inline-flex;align-items:center;gap:.45rem;
+      padding:.7rem 1.7rem;border-radius:var(--r);
+      font-family:'JetBrains Mono',monospace;font-size:.78rem;
+      letter-spacing:.06em;text-decoration:none;cursor:pointer;border:none;transition:all .22s;
+    }
+    .btn-fill{background:var(--accent);color:#0e0c0a}
+    .btn-fill:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,136,74,.28)}
+    .btn-out{background:transparent;color:var(--cream);border:1px solid var(--border)}
+    .btn-out:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+    .scroll-hint{
+      position:absolute;bottom:2.5rem;left:3rem;
+      display:flex;align-items:center;gap:.75rem;
+      font-family:'JetBrains Mono',monospace;font-size:.68rem;
+      color:var(--muted);letter-spacing:.12em;text-transform:uppercase;
+      opacity:0;animation:fadeUp .8s var(--ease) 1.1s forwards;
+    }
+    .scroll-line{width:36px;height:1px;background:var(--accent)}
+
+    /* SECTIONS */
+    .wrap{border-top:1px solid var(--border);position:relative;z-index:1}
+    .section{padding:6rem 3rem;max-width:1100px;margin:0 auto}
+    .s-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.9rem}
+    .s-title{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,2.9rem);font-weight:300;line-height:1.15;color:var(--cream);margin-bottom:3rem}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+    .about-text p{color:var(--muted);font-size:.98rem;margin-bottom:1.2rem;line-height:1.9}
+    .about-text strong{color:var(--cream);font-weight:500}
+    .stats{display:flex;flex-direction:column;gap:1rem}
+    .stat{
+      padding:1.1rem 1.4rem;background:var(--card);
+      border:1px solid var(--border);border-radius:var(--r);
+      transition:border-color .2s,transform .2s;
+    }
+    .stat:hover{border-color:rgba(232,136,74,.4);transform:translateX(5px)}
+    .stat-val{font-family:'Fraunces',serif;font-size:1.75rem;color:var(--accent);line-height:1;margin-bottom:.25rem}
+    .stat-desc{font-size:.78rem;color:var(--muted)}
+
+    /* PROJECTS */
+    .proj-list{display:flex;flex-direction:column;gap:1.4rem}
+    .proj-card{
+      padding:2rem 2.4rem;background:var(--card);
+      border:1px solid var(--border);border-radius:var(--r);
+      cursor:pointer;display:grid;grid-template-columns:1fr auto;
+      align-items:center;gap:2rem;
+      transition:border-color .3s var(--ease),background .3s,transform .3s var(--ease),box-shadow .3s;
+      opacity:0;transform:translateY(38px);
+    }
+    .proj-card.in{opacity:1;transform:translateY(0)}
+    .proj-card:hover{
+      border-color:rgba(232,136,74,.38);
+      background:rgba(232,136,74,.03);
+      transform:translateY(-3px);
+      box-shadow:0 18px 44px rgba(0,0,0,.4);
+    }
+    .proj-num{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.1em;opacity:.7;margin-bottom:.55rem}
+    .proj-name{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:300;color:var(--cream);margin-bottom:.45rem}
+    .proj-brief{font-size:.88rem;color:var(--muted);max-width:56ch}
+    .proj-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.9rem}
+    .tag{
+      font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.28rem .65rem;
+      background:rgba(232,136,74,.07);border:1px solid rgba(232,136,74,.2);
+      border-radius:4px;color:var(--accent);letter-spacing:.05em;
+    }
+    .proj-arrow{font-size:1.4rem;color:var(--accent);opacity:.45;transition:all .2s;flex-shrink:0}
+    .proj-card:hover .proj-arrow{opacity:1;transform:translateX(5px)}
+
+    /* MODAL */
+    .overlay{
+      position:fixed;inset:0;
+      background:rgba(8,6,4,.88);backdrop-filter:blur(10px);
+      z-index:200;display:flex;align-items:center;justify-content:center;
+      padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s;
+    }
+    .overlay.open{opacity:1;pointer-events:all}
+    .modal{
+      background:var(--card);border:1px solid var(--border);border-radius:16px;
+      max-width:660px;width:100%;max-height:82vh;overflow-y:auto;
+      padding:2.8rem;position:relative;
+      transform:translateY(22px) scale(.98);
+      transition:transform .38s var(--ease);
+    }
+    .overlay.open .modal{transform:translateY(0) scale(1)}
+    .modal-x{
+      position:absolute;top:1.4rem;right:1.4rem;
+      background:none;border:none;color:var(--muted);
+      font-size:1.3rem;cursor:pointer;padding:.3rem;line-height:1;transition:color .2s;
+    }
+    .modal-x:hover{color:var(--cream)}
+    .modal-tag{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.9rem}
+    .modal-title{font-family:'Fraunces',serif;font-size:2rem;font-weight:300;color:var(--cream);margin-bottom:1.5rem;line-height:1.1}
+    .modal-body{font-size:.93rem;color:var(--muted);line-height:1.9;margin-bottom:1.8rem}
+    .modal-body p{margin-bottom:.9rem}
+    .modal-body strong{color:var(--cream);font-weight:500}
+    .modal-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.8rem}
+    .modal-links{display:flex;gap:.9rem;flex-wrap:wrap}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .contact-text p{color:var(--muted);font-size:.98rem;line-height:1.9;margin-bottom:1rem}
+    .contact-text strong{color:var(--cream);font-weight:500}
+    .links{display:flex;flex-direction:column;gap:.9rem}
+    .link-row{
+      display:flex;align-items:center;gap:1rem;
+      padding:.95rem 1.4rem;background:var(--card);
+      border:1px solid var(--border);border-radius:var(--r);
+      text-decoration:none;transition:all .22s;
+    }
+    .link-row:hover{border-color:rgba(232,136,74,.38);transform:translateX(7px)}
+    .link-icon{
+      width:2rem;height:2rem;border-radius:8px;
+      background:rgba(232,136,74,.1);border:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);flex-shrink:0;
+    }
+    .link-label{font-size:.78rem;color:var(--muted)}
+    .link-val{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--cream)}
+
+    /* FOOTER */
+    footer{
+      text-align:center;padding:2.5rem;border-top:1px solid var(--border);
+      position:relative;z-index:1;
+      font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.08em;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .reveal.in{opacity:1;transform:translateY(0)}
+    .stagger > *{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+    .stagger.in > *:nth-child(1){opacity:1;transform:none;transition-delay:.00s}
+    .stagger.in > *:nth-child(2){opacity:1;transform:none;transition-delay:.09s}
+    .stagger.in > *:nth-child(3){opacity:1;transform:none;transition-delay:.18s}
+    .stagger.in > *:nth-child(4){opacity:1;transform:none;transition-delay:.27s}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+    /* MOBILE */
+    @media(max-width:768px){
+      nav{padding:1rem 1.4rem}
+      .nav-links{gap:1rem}
+      #hero{padding:5rem 1.4rem 3.5rem}
+      .scroll-hint{left:1.4rem}
+      .section{padding:4rem 1.4rem}
+      .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+      .proj-card{grid-template-columns:1fr}
+      .proj-arrow{display:none}
+      .modal{padding:2rem}
+      .modal-title{font-size:1.6rem}
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Pranay Kapoor</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-label">// CS Engineer &amp; ML Researcher</div>
+  <h1 class="hero-name">Pranay<br><em>Kapoor.</em></h1>
+  <p class="hero-sub">Building intelligent systems at the edge of machine learning, distributed systems, and language model internals. 3rd year CS at MIT Bengaluru.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-fill">View Projects →</a>
+    <a href="#contact" class="btn btn-out">Get in Touch</a>
+  </div>
+  <div class="scroll-hint"><span class="scroll-line"></span>Scroll to explore</div>
+</section>
+
+<!-- ABOUT -->
+<div class="wrap">
+  <section class="section" id="about">
+    <div class="s-label">// 01 — About</div>
+    <h2 class="s-title reveal">Who I am</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a <strong>Computer Science student</strong> at Manipal Institute of Technology, Bengaluru — drawn to problems at the frontier of what's understood: ML architecture design, language model internals, and distributed systems.</p>
+        <p>Outside code, I think about <strong>economics, global development trends</strong>, and what it means for software to be genuinely intelligent rather than just statistically fluent.</p>
+        <p>I run local LLMs on a <strong>dual RTX 4060 setup</strong> via Ollama, which lets me experiment with inference-time orchestration at a depth that cloud APIs don't easily allow.</p>
+      </div>
+      <div class="stats stagger">
+        <div class="stat"><div class="stat-val">8.68</div><div class="stat-desc">CGPA — Scholars Scholarship recipient</div></div>
+        <div class="stat"><div class="stat-val">3rd yr</div><div class="stat-desc">B.Tech Computer Science, MIT Bengaluru</div></div>
+        <div class="stat"><div class="stat-val">6+</div><div class="stat-desc">Projects across ML, Web &amp; Systems</div></div>
+        <div class="stat"><div class="stat-val">RTX ×2</div><div class="stat-desc">Dual GPU setup for local LLM inference</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PROJECTS -->
+<div class="wrap">
+  <section class="section" id="projects">
+    <div class="s-label">// 02 — Projects</div>
+    <h2 class="s-title reveal">Things I've built</h2>
+    <div class="proj-list">
+      <div class="proj-card" data-key="noos">
+        <div>
+          <div class="proj-num">01</div>
+          <div class="proj-name">NOOS</div>
+          <div class="proj-brief">A curiosity-driven belief graph engine using temperature-corrected Shannon entropy over LLM logit distributions as a traversal heuristic.</div>
+          <div class="proj-tags"><span class="tag">LLM</span><span class="tag">Graph Engine</span><span class="tag">Ollama</span><span class="tag">Shannon Entropy</span><span class="tag">Python</span></div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+      <div class="proj-card" data-key="ganas">
+        <div>
+          <div class="proj-num">02</div>
+          <div class="proj-name">GA-NAS</div>
+          <div class="proj-brief">Neural Architecture Search via Genetic Algorithms — evolved a 5-block residual network hitting 92.07% on CIFAR-10 with dual-GPU parallelization.</div>
+          <div class="proj-tags"><span class="tag">NAS</span><span class="tag">Genetic Algorithms</span><span class="tag">PyTorch</span><span class="tag">Multi-GPU</span><span class="tag">CIFAR-10</span></div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+      <div class="proj-card" data-key="nexacred">
+        <div>
+          <div class="proj-num">03</div>
+          <div class="proj-name">NexaCred</div>
+          <div class="proj-brief">A P2P lending platform — LightGBM credit scoring, Solidity smart contracts for trustless lending, containerised with Docker and deployed on AWS.</div>
+          <div class="proj-tags"><span class="tag">LightGBM</span><span class="tag">Solidity</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">FastAPI</span></div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+      <div class="proj-card" data-key="personad">
+        <div>
+          <div class="proj-num">04</div>
+          <div class="proj-name">PersonaD</div>
+          <div class="proj-brief">An LLM-based conversational imitation system that learns to replicate a person's communication style, vocabulary, and reasoning patterns.</div>
+          <div class="proj-tags"><span class="tag">LLM</span><span class="tag">Fine-tuning</span><span class="tag">NLP</span><span class="tag">Transformers</span></div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+      <div class="proj-card" data-key="fer">
+        <div>
+          <div class="proj-num">05</div>
+          <div class="proj-name">Face Emotion Recognition</div>
+          <div class="proj-brief">Dual-pipeline system combining MediaPipe + Random Forest for real-time inference, and ResNet-18 fine-tuned on FER-2013 for high-accuracy classification.</div>
+          <div class="proj-tags"><span class="tag">MediaPipe</span><span class="tag">ResNet-18</span><span class="tag">TensorFlow</span><span class="tag">Computer Vision</span></div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+      <div class="proj-card" data-key="artgallery">
+        <div>
+          <div class="proj-num">06</div>
+          <div class="proj-name">Art Gallery</div>
+          <div class="proj-brief">Full-stack web app for curating and browsing digital art collections, built with Next.js, React, and MySQL.</div>
+          <div class="proj-tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">MySQL</span><span class="tag">Full-Stack</span></div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div class="wrap">
+  <section class="section" id="contact">
+    <div class="s-label">// 03 — Contact</div>
+    <h2 class="s-title reveal">Let's connect</h2>
+    <div class="contact-grid">
+      <div class="contact-text reveal">
+        <p>I'm open to interesting conversations — <strong>research ideas, internship opportunities</strong>, or just a good technical rabbit hole.</p>
+        <p>Find me here. Response time is fast; prefer <strong>email or GitHub</strong> for anything serious.</p>
+      </div>
+      <div class="links stagger">
+        <a href="https://github.com/Theroid00" class="link-row" target="_blank">
+          <div class="link-icon">GH</div>
+          <div><div class="link-label">GitHub</div><div class="link-val">github.com/Theroid00</div></div>
+        </a>
+        <a href="mailto:your@email.com" class="link-row">
+          <div class="link-icon">✉</div>
+          <div><div class="link-label">Email</div><div class="link-val">your@email.com</div></div>
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" class="link-row" target="_blank">
+          <div class="link-icon">in</div>
+          <div><div class="link-label">LinkedIn</div><div class="link-val">linkedin.com/in/yourprofile</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>Pranay Kapoor &mdash; MIT Bengaluru &mdash; 2025</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <button class="modal-x" id="mclose">✕</button>
+    <div class="modal-tag" id="mtag"></div>
+    <h3 class="modal-title" id="mtitle"></h3>
+    <div class="modal-body" id="mbody"></div>
+    <div class="modal-tags" id="mtags"></div>
+    <div class="modal-links" id="mlinks"></div>
+  </div>
+</div>
+
+<script>
+  /* ── PROJECT DATA ─────────────────────────────────── */
+  const DATA = {
+    noos:{
+      tag:"01 — LLM Inference", title:"NOOS",
+      body:`<p>NOOS is a curiosity-driven philosophical belief graph engine. Rather than asking an LLM what it <strong>"knows"</strong>, NOOS measures what the model finds <strong>uncertain</strong>.</p>
+<p>It computes <strong>temperature-corrected Shannon entropy</strong> over token probability distributions to identify belief graph nodes that are maximally informative to explore — steering exploration toward the edges of the model's understanding.</p>
+<p>The whole system runs as <strong>inference-time orchestration</strong> of deepseek-r1:14b via Ollama. No training, no fine-tuning — just creative use of what the model already knows and doesn't know.</p>`,
+      tags:["LLM","Graph Engine","Ollama","Shannon Entropy","deepseek-r1:14b","Python"],
+      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
+    },
+    ganas:{
+      tag:"02 — ML Research", title:"GA-NAS",
+      body:`<p>GA-NAS applies <strong>Genetic Algorithms to Neural Architecture Search</strong> — automating the design of deep networks by treating architecture decisions as an evolving gene pool.</p>
+<p>The system evolved a <strong>5-block residual architecture</strong> achieving 92.07% test accuracy on CIFAR-10. Genetic operations — selection, crossover, mutation — work directly on architecture gene encodings.</p>
+<p>Training was parallelized across a <strong>dual-GPU setup</strong>, significantly reducing generation evaluation time and allowing more generations to be explored within the compute budget.</p>`,
+      tags:["Neural Architecture Search","Genetic Algorithms","PyTorch","CIFAR-10","Multi-GPU","Python"],
+      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
+    },
+    nexacred:{
+      tag:"03 — FinTech", title:"NexaCred",
+      body:`<p>NexaCred is a full-stack <strong>peer-to-peer lending platform</strong> that removes traditional financial intermediaries using blockchain-based smart contracts.</p>
+<p>The ML core uses <strong>LightGBM</strong> to score borrower creditworthiness, generating dynamic interest rate offers. <strong>Solidity smart contracts</strong> govern the full loan lifecycle — disbursement, repayment, and default — without a central authority.</p>
+<p>The stack is containerised with <strong>Docker</strong> and deployed on <strong>AWS</strong>, with a React frontend and a Python/FastAPI backend.</p>`,
+      tags:["LightGBM","Solidity","Smart Contracts","Docker","AWS","FastAPI","React"],
+      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
+    },
+    personad:{
+      tag:"04 — NLP", title:"PersonaD",
+      body:`<p>PersonaD is a system for <strong>conversational persona imitation</strong> — training a language model to replicate how a specific individual communicates.</p>
+<p>Given a corpus of conversational data, PersonaD adapts a base LLM to match the target's <strong>vocabulary, reasoning style, tone, and response patterns</strong>.</p>
+<p>The project probes questions around personality as a learnable distribution over language, and the limits of how much of a person can be captured in text.</p>`,
+      tags:["LLM Fine-tuning","NLP","Transformers","PyTorch","Python"],
+      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
+    },
+    fer:{
+      tag:"05 — Computer Vision", title:"Face Emotion Recognition",
+      body:`<p>A dual-pipeline system for <strong>real-time facial emotion classification</strong>, built to balance speed and accuracy across different hardware constraints.</p>
+<p><strong>Pipeline 1</strong>: MediaPipe landmark extraction feeding a Random Forest classifier — lightweight, runs in real-time on CPU.</p>
+<p><strong>Pipeline 2</strong>: ResNet-18 fine-tuned on FER-2013 — deeper, more accurate, captures spatial patterns that landmarks miss. Both pipelines are benchmarked on accuracy, latency, and robustness to lighting and pose variation.</p>`,
+      tags:["MediaPipe","ResNet-18","FER-2013","TensorFlow","Random Forest","Computer Vision"],
+      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
+    },
+    artgallery:{
+      tag:"06 — Full-Stack Web", title:"Art Gallery",
+      body:`<p>Art Gallery is a <strong>full-stack web application</strong> for browsing, curating, and managing digital art collections.</p>
+<p>Built with <strong>Next.js and React</strong> on the frontend, backed by a MySQL relational database. Features include gallery browsing, artist pages, and a curator dashboard for managing collections.</p>
+<p>Delivered as a complete academic project including database design, ER diagrams, normalization analysis, and a full project report.</p>`,
+      tags:["Next.js","React","MySQL","JavaScript","Full-Stack"],
+      links:[{l:"GitHub",h:"https://github.com/Theroid00"}]
+    }
+  };
+
+  /* ── MODAL ────────────────────────────────────────── */
+  const overlayEl = document.getElementById('overlay');
+  function openModal(k){
+    const d = DATA[k]; if(!d) return;
+    document.getElementById('mtag').textContent = d.tag;
+    document.getElementById('mtitle').textContent = d.title;
+    document.getElementById('mbody').innerHTML = d.body;
+    document.getElementById('mtags').innerHTML = d.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+    document.getElementById('mlinks').innerHTML = d.links.map(x=>`<a href="${x.h}" class="btn btn-out" target="_blank">${x.l} ↗</a>`).join('');
+    overlayEl.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    overlayEl.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('mclose').addEventListener('click', closeModal);
+  overlayEl.addEventListener('click', e => { if(e.target === overlayEl) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+  document.querySelectorAll('.proj-card').forEach(c =>
+          c.addEventListener('click', () => openModal(c.dataset.key))
+  );
+
+  /* ── SCROLL REVEAL ────────────────────────────────── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+      } else {
+        e.target.classList.remove('in');
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.stagger').forEach(el => obs.observe(el));
+
+  const cobs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), 0);
+      } else {
+        e.target.classList.remove('in');
+      }
+    });
+  }, {threshold:0.1, rootMargin:'0px 0px -28px 0px'});
+  document.querySelectorAll('.proj-card').forEach((c,i) => {
+    c.style.transitionDuration = '.65s';
+    c.style.transitionDelay = `${i*0.07}s`;
+    cobs.observe(c);
+  });
+
+  /* ── CANVAS BACKGROUND ────────────────────────────── */
+  (function(){
+    const cv = document.getElementById('bg');
+    const cx = cv.getContext('2d');
+
+    // W, H, mx, my all initialised AFTER we know the window size
+    let W, H, mx, my;
+    let scrollT = 0, scrollTarget = 0;
+
+    function resize(){
+      W = cv.width  = window.innerWidth;
+      H = cv.height = window.innerHeight;
+      // safe to set mouse centre now
+      if(mx === undefined){ mx = W / 2; my = H / 2; }
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    window.addEventListener('scroll', () => {
+      const max = document.body.scrollHeight - window.innerHeight;
+      scrollTarget = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    });
+
+    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+    // Particles (normalised 0-1 coords so resize is free)
+    const N = 70;
+    const pts = Array.from({length: N}, () => ({
+      x: Math.random(), y: Math.random(),
+      vx: (Math.random() - .5) * 0.00055,
+      vy: (Math.random() - .5) * 0.00055,
+      r:  Math.random() * 1.2 + 0.4,
+      phase: Math.random() * Math.PI * 2,
+      spd:  Math.random() * 0.5 + 0.5,
+    }));
+
+    function drawOrb(x, y, r, color){
+      if(!isFinite(x)||!isFinite(y)||!isFinite(r)||r<=0) return;
+      const g = cx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, color);
+      g.addColorStop(1, 'transparent');
+      cx.fillStyle = g;
+      cx.fillRect(0, 0, W, H);
+    }
+
+    function loop(){
+      requestAnimationFrame(loop);
+      const now = performance.now() * 0.001;
+
+      // Smooth scroll lerp
+      scrollT += (scrollTarget - scrollT) * 0.04;
+      const t = scrollT;
+
+      cx.clearRect(0, 0, W, H);
+
+      // Orb A — travels top-left → bottom-right
+      drawOrb(
+              W * (0.05 + t * 0.80),
+              H * (0.10 + t * 0.75),
+              W * (0.55 - t * 0.10),
+              `rgba(232,136,74,${(0.07 - t * 0.025).toFixed(3)})`
+      );
+
+      // Orb B — counter-travels bottom-right → top-left
+      drawOrb(
+              W * (0.92 - t * 0.75),
+              H * (0.88 - t * 0.70),
+              W * (0.40 + t * 0.10),
+              `rgba(245,192,100,${(0.04 + t * 0.03).toFixed(3)})`
+      );
+
+      // Orb C — follows mouse softly
+      drawOrb(mx, my, W * 0.22, 'rgba(232,136,74,0.028)');
+
+      // Particle physics
+      const speedMul = 1 + Math.sin(t * Math.PI) * 1.2;
+      const connR    = 110 + Math.sin(t * Math.PI) * 70;
+      const hue      = 28  + Math.sin(t * Math.PI) * 14;
+
+      pts.forEach(p => {
+        p.x += p.vx * speedMul * p.spd + Math.sin(now * 0.3 + p.phase) * 0.00007;
+        p.y += p.vy * speedMul * p.spd + Math.cos(now * 0.25 + p.phase) * 0.00007;
+        if(p.x < 0) p.x = 1; if(p.x > 1) p.x = 0;
+        if(p.y < 0) p.y = 1; if(p.y > 1) p.y = 0;
+      });
+
+      // Connections
+      cx.lineWidth = 0.6;
+      for(let i = 0; i < N; i++){
+        for(let j = i + 1; j < N; j++){
+          const dx = (pts[i].x - pts[j].x) * W;
+          const dy = (pts[i].y - pts[j].y) * H;
+          const d  = Math.sqrt(dx*dx + dy*dy);
+          if(d < connR){
+            cx.strokeStyle = `hsla(${hue},68%,62%,${((1-d/connR)*0.14).toFixed(3)})`;
+            cx.beginPath();
+            cx.moveTo(pts[i].x*W, pts[i].y*H);
+            cx.lineTo(pts[j].x*W, pts[j].y*H);
+            cx.stroke();
+          }
+        }
+      }
+
+      // Nodes
+      cx.fillStyle = `hsla(${hue},68%,68%,0.55)`;
+      pts.forEach(p => {
+        cx.beginPath();
+        cx.arc(p.x*W, p.y*H, p.r, 0, Math.PI*2);
+        cx.fill();
+      });
+    }
+
+    loop();
+  })();
+</script>
+</body>
+</html>
