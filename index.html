@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pranay Kapoor — Portfolio</title>
   <meta name="description" content="Portfolio of Pranay Kapoor, a Computer Science student and ML researcher at MIT Bengaluru. Exploring LLMs, distributed systems, and local inference orchestration.">
-  <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://pranaykapoor.github.io">
-  <meta property="og:title"       content="Pranay Kapoor — CS Engineer &amp; ML Researcher">
-  <meta property="og:description" content="Portfolio of Pranay Kapoor, exploring LLMs, distributed systems, and local inference orchestration on a dual RTX 4060 setup.">
-  <meta property="og:image"       content="./assets/og-preview.png">
-  <meta name="twitter:card"       content="summary_large_image">
-  <meta name="twitter:title"      content="Pranay Kapoor — CS Engineer &amp; ML Researcher">
-  <meta name="twitter:image"      content="./assets/og-preview.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pranaykapoor.github.io">
+  <meta property="og:title" content="Pranay Kapoor — CS Engineer & ML Researcher">
+  <meta property="og:description" content="Portfolio of Pranay Kapoor, a Computer Science student and ML researcher at MIT Bengaluru. Exploring LLMs, distributed systems, and local inference orchestration.">
+  <meta property="og:image" content="./assets/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pranay Kapoor — CS Engineer & ML Researcher">
+  <meta name="twitter:image" content="./assets/og-preview.png">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Person","name":"Pranay Kapoor","jobTitle":"Computer Science Student & ML Researcher","url":"https://pranaykapoor.github.io","sameAs":["https://github.com/Theroid00","https://linkedin.com/in/pranay-kapoor-b57b34291"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Manipal Institute of Technology, Bengaluru"}}
   </script>
@@ -38,24 +38,16 @@
 </nav>
 
 <!-- ═══════════════════════════════════════════════════════════
-  HERO — two-column: text left, terminal right
+  HERO
 ═══════════════════════════════════════════════════════════ -->
 <section id="hero">
-
-  <!-- LEFT: text content -->
   <div class="hero-content">
     <div class="hero-label">// CS Engineer &amp; ML Researcher</div>
     <h1 class="hero-name">Pranay<br><em>Kapoor.</em></h1>
     <p class="hero-sub">Building intelligent systems at the edge of machine learning, distributed systems, and language model internals. 3rd year CS at MIT Bengaluru.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn btn-fill">View Projects →</a>
-      <a href="#contact"  class="btn btn-out">Get in Touch</a>
-      <!--
-        ══════════════════════════════════════════════════════
-        RESUME BUTTON — drop your PDF into ./assets/ and update
-        the href. Recommended filename: pranay-kapoor-resume.pdf
-        ══════════════════════════════════════════════════════
-      -->
+      <a href="#contact" class="btn btn-out">Get in Touch</a>
       <a href="./assets/Pranay_Kapoor-Resume.pdf" class="btn btn-ghost" download aria-label="Download Resume PDF">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
@@ -65,29 +57,34 @@
     </div>
   </div>
 
-  <!-- RIGHT: terminal status card -->
   <div class="hero-panel">
-    <div class="terminal-card" aria-hidden="true">
-      <div class="terminal-bar">
-        <span class="t-dot r"></span>
-        <span class="t-dot y"></span>
-        <span class="t-dot g"></span>
-        <span class="t-file">~/pranay/status.sh</span>
-      </div>
-      <div class="terminal-body">
-        <div class="t-line cmd"><span class="t-p">$</span> git log --oneline -1</div>
-        <div class="t-line out"><span class="t-dim">3a7f2bc</span> <span class="t-hi">NOOS: entropy-based graph traversal</span></div>
-        <br>
-        <div class="t-line cmd"><span class="t-p">$</span> cat availability.txt</div>
-        <div class="t-line out"><span class="t-green">● open</span> <span class="t-hi">SWE / ML internships</span></div>
-        <div class="t-line out t-dim">&nbsp;&nbsp;Bengaluru · Remote</div>
-        <br>
-        <div class="t-line cmd"><span class="t-p">$</span> cat stack.sh</div>
-        <div class="t-line out"><span class="t-dim">→</span> <span class="t-hi">Python · PyTorch · FastAPI</span></div>
-        <div class="t-line out"><span class="t-dim">→</span> <span class="t-hi">Next.js · Solidity · Docker</span></div>
-        <div class="t-line out"><span class="t-dim">→</span> <span class="t-hi">Ollama · AWS · CUDA</span></div>
-        <br>
-        <div class="t-cursor">▋</div>
+    <!-- FIX: Float animation isolated on inner wrapper, not the positioning element -->
+    <div class="terminal-float-wrapper">
+      <div class="terminal-card" aria-hidden="true">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span>
+          <span class="t-dot y"></span>
+          <span class="t-dot g"></span>
+          <span class="t-file">~/pranay/status.sh</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line cmd"><span class="t-p">$</span> git log --oneline -1</div>
+          <div class="t-line out"><span class="t-dim">3a7f2bc</span> <span class="t-hi">Apiro: biomedical discovery graph</span></div>
+          <br>
+          <div class="t-line cmd"><span class="t-p">$</span> cat availability.txt</div>
+          <div class="t-line out"><span class="t-green">● open</span> <span class="t-hi">SWE / ML internships</span></div>
+          <div class="t-line out t-dim">&nbsp;&nbsp;Bengaluru · Remote · Jul 2023–Present</div>
+          <br>
+          <div class="t-line cmd"><span class="t-p">$</span> cat skills.json</div>
+          <div class="t-line out t-kv"><span class="t-dim">languages</span><span class="t-hi">Python · C · C++ · Java</span></div>
+          <div class="t-line out t-kv"><span class="t-dim">systems</span><span class="t-hi">OS · CUDA · MPI · OpenCL · ARM</span></div>
+          <div class="t-line out t-kv"><span class="t-dim">web/backend</span><span class="t-hi">Flask · FastAPI</span></div>
+          <div class="t-line out t-kv"><span class="t-dim">data</span><span class="t-hi">NumPy · Pandas · SQL · MongoDB</span></div>
+          <div class="t-line out t-kv"><span class="t-dim">ml / ai</span><span class="t-hi">PyTorch · TF · HuggingFace · OpenCV</span></div>
+          <div class="t-line out t-kv"><span class="t-dim">tools</span><span class="t-hi">Git · Docker · Linux · Windows</span></div>
+          <br>
+          <div class="t-cursor">▋</div>
+        </div>
       </div>
     </div>
   </div>
@@ -105,13 +102,13 @@
       <span class="avail-badge"><span class="avail-dot"></span>Available</span>
     </h2>
     <div class="about-grid">
-      <div class="about-text reveal">
+      <div class="about-text reveal-left">
         <p>I'm <strong>Pranay Kapoor</strong>, a 3rd-year B.Tech Computer Science student at <strong>Manipal Institute of Technology, Bengaluru</strong> — Scholars Scholarship recipient with an 8.68 CGPA.</p>
         <p>My work sits at the intersection of <strong>machine learning research</strong>, distributed systems, and language model internals. I'm especially interested in what happens at inference time — how models reason, where they are uncertain, and how to steer that.</p>
-        <p>Outside of code: I run local LLM inference on a <strong>dual RTX 4060 setup</strong>, explore curiosity-driven graph traversal with NOOS, and occasionally fine-tune things I probably shouldn't.</p>
+        <p>Outside of code: I run local LLM inference experiments, explore biomedical pathway discovery with Apiro, and occasionally fine-tune things I probably shouldn't.</p>
       </div>
       <div class="stats stagger" id="stats-grid">
-        <!-- Rendered dynamically from js/data.js → STATS_DATA -->
+        <!-- Rendered dynamically from js/render.js → STATS_DATA -->
       </div>
     </div>
   </section>
@@ -125,7 +122,7 @@
     <div class="s-label">// 02 — Skills</div>
     <h2 class="s-title reveal">What I build with</h2>
     <div class="skills-grid stagger" id="skills-grid">
-      <!-- Rendered dynamically from js/data.js → SKILLS_DATA -->
+      <!-- Rendered dynamically from js/render.js → SKILLS_DATA -->
     </div>
   </section>
 </div>
@@ -138,7 +135,7 @@
     <div class="s-label">// 03 — Projects</div>
     <h2 class="s-title reveal">Things I've built</h2>
     <div class="proj-list" id="projects-list">
-      <!-- Rendered dynamically from js/data.js → PROJECTS_DATA -->
+      <!-- Rendered dynamically from js/render.js → PROJECTS_DATA -->
     </div>
   </section>
 </div>
@@ -151,12 +148,12 @@
     <div class="s-label">// 04 — Contact</div>
     <h2 class="s-title reveal">Let's connect</h2>
     <div class="contact-grid">
-      <div class="contact-text reveal">
+      <div class="contact-text reveal-left">
         <p>I'm open to interesting conversations — <strong>research ideas, internship opportunities</strong>, or just a good technical rabbit hole.</p>
         <p>Find me here. Response is fast; prefer <strong>email or GitHub</strong> for anything serious.</p>
       </div>
       <div class="links stagger" id="contact-links">
-        <!-- Rendered dynamically from js/data.js → CONTACT_DATA -->
+        <!-- Rendered dynamically from js/render.js → CONTACT_DATA -->
       </div>
     </div>
   </section>
@@ -165,18 +162,18 @@
 <footer>Pranay Kapoor &mdash; MIT Bengaluru &mdash; <span id="copyright-year">2025</span></footer>
 
 <!-- ═══════════════════════════════════════════════════════════
-  MODAL
+  MODAL — Redesigned: full-bleed hero media at top
 ═══════════════════════════════════════════════════════════ -->
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mtitle">
   <div class="modal">
     <button class="modal-x" id="mclose" aria-label="Close modal">✕</button>
-    <div class="modal-content-grid">
-      <div class="modal-media" id="mmedia"><!-- injected by js/modal.js --></div>
-      <div class="modal-details">
-        <div class="modal-tag"   id="mtag"></div>
-        <h3 class="modal-title" id="mtitle"></h3>
-        <div class="modal-body"  id="mbody"></div>
-        <div class="modal-tags"  id="mtags"></div>
+    <div class="modal-hero-media" id="mmedia"><!-- injected by JS --></div>
+    <div class="modal-body-section">
+      <div class="modal-tag" id="mtag"></div>
+      <h3 class="modal-title" id="mtitle"></h3>
+      <div class="modal-desc" id="mbody"></div>
+      <div class="modal-foot">
+        <div class="modal-tags" id="mtags"></div>
         <div class="modal-links" id="mlinks"></div>
       </div>
     </div>
