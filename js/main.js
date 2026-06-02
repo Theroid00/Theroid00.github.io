@@ -20,6 +20,7 @@ import { initModal }     from './modal.js';
 import { initCanvas }    from './canvas.js';
 import { initObservers } from './observers.js';
 import { initNav }       from './nav.js';
+import { initTerminal }  from './terminal.js';
 
 // 1. Populate DOM with data
 renderStats();
@@ -35,3 +36,4 @@ initObservers();  // needs .proj-card + .reveal + .stagger elements
 // 3. Independent systems
 initCanvas();
 initNav();
+initTerminal();
