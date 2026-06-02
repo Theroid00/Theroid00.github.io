@@ -1864,6 +1864,71 @@ export const PROJECTS_DATA = {
       `
     },
     body: `<p>A machine learning utility framework implementing a <strong>Genetic Algorithm</strong> for joint hyperparameter optimization and feature selection across multiple classifier architectures (K-Nearest Neighbors, Support Vector Machines, and Random Forests).</p>
+<p>The framework achieves substantial optimization gains by co-optimizing feature sets and model hyperparameters. Below are the empirical benchmark results comparing the <strong>Baseline</strong> (Scikit-Learn defaults using all features) vs. the <strong>GA-Optimized</strong> pipeline across standard benchmark datasets:</p>
+
+<table style="width:100%; border-collapse:collapse; margin:1.2rem 0; font-size:0.8rem; font-family:monospace; border:1.2px solid var(--border)">
+  <thead>
+    <tr style="border-bottom:1.2px solid var(--border); background:rgba(232,136,74,0.04)">
+      <th style="padding:0.5rem; text-align:left; color:var(--cream)">Dataset</th>
+      <th style="padding:0.5rem; text-align:left; color:var(--cream)">Classifier</th>
+      <th style="padding:0.5rem; text-align:right; color:var(--cream)">Baseline Acc</th>
+      <th style="padding:0.5rem; text-align:right; color:var(--cream)">GA Acc</th>
+      <th style="padding:0.5rem; text-align:right; color:var(--accent)">Delta</th>
+      <th style="padding:0.5rem; text-align:right; color:var(--accent2)">Features Dropped</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+      <td style="padding:0.5rem; color:var(--cream)">Breast Cancer</td>
+      <td style="padding:0.5rem; color:var(--muted)">KNN</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--muted)">0.965</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--cream)">0.981</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent)">+1.6%</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent2)">↓19 features</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+      <td style="padding:0.5rem; color:var(--cream)">Breast Cancer</td>
+      <td style="padding:0.5rem; color:var(--muted)">SVM</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--muted)">0.974</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--cream)">0.986</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent)">+1.2%</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent2)">↓15 features</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+      <td style="padding:0.5rem; color:var(--cream)">Breast Cancer</td>
+      <td style="padding:0.5rem; color:var(--muted)">RF</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--muted)">0.956</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--cream)">0.972</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent)">+1.6%</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent2)">↓18 features</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+      <td style="padding:0.5rem; color:var(--cream)">Ionosphere</td>
+      <td style="padding:0.5rem; color:var(--muted)">KNN</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--muted)">0.849</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--cream)">0.940</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent)">+9.1%</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent2)">↓22 features</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+      <td style="padding:0.5rem; color:var(--cream)">Ionosphere</td>
+      <td style="padding:0.5rem; color:var(--muted)">SVM</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--muted)">0.951</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--cream)">0.969</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent)">+1.8%</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent2)">↓13 features</td>
+    </tr>
+    <tr style="border-bottom:1.2px solid var(--border)">
+      <td style="padding:0.5rem; color:var(--cream)">Ionosphere</td>
+      <td style="padding:0.5rem; color:var(--muted)">RF</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--muted)">0.940</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--cream)">0.951</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent)">+1.1%</td>
+      <td style="padding:0.5rem; text-align:right; color:var(--accent2)">↓20 features</td>
+    </tr>
+  </tbody>
+</table>
+
 <p>The optimization pipeline evaluates candidates and logs performance using the following primary metrics:</p>
 <ul>
   <li><strong>5-Fold Cross-Validation Accuracy (Baseline vs. Optimized)</strong>: Directly compares the default Scikit-Learn classifier configuration on the raw feature space against the GA-optimized model.</li>
