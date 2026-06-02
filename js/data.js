@@ -251,7 +251,7 @@ const ganasSvg = `
         font-family="monospace"
         font-size="12"
         text-anchor="middle">
-    Genetic Architecture Search
+    Neural Architecture Search (NAS)
   </text>
 
   <text x="90"
@@ -322,7 +322,7 @@ const personaDSvg = `
     </filter>
   </defs>
 
-  <!-- Conversation Corpus -->
+  <!-- Instagram DM Corpus -->
   <text
     x="105"
     y="42"
@@ -331,7 +331,7 @@ const personaDSvg = `
     font-size="11"
     text-anchor="middle"
   >
-    Conversation Corpus
+    Instagram DM Logs
   </text>
 
   <g opacity=".9">
@@ -382,7 +382,7 @@ const personaDSvg = `
     font-size="11"
     text-anchor="middle"
   >
-    PersonaD
+    LoRA Tuner
   </text>
 
   <text
@@ -393,7 +393,7 @@ const personaDSvg = `
     font-size="10"
     text-anchor="middle"
   >
-    LoRA Adapter
+    Instagram Style
   </text>
 
   <text
@@ -432,7 +432,7 @@ const personaDSvg = `
     font-size="8"
     text-anchor="middle"
   >
-    Tone
+    Slang
   </text>
 
   <text
@@ -443,7 +443,7 @@ const personaDSvg = `
     font-size="7.5"
     text-anchor="middle"
   >
-    Style
+    Chat
   </text>
 
   <text
@@ -454,7 +454,7 @@ const personaDSvg = `
     font-size="6.8"
     text-anchor="middle"
   >
-    Reasoning
+    Response
   </text>
 
   <text
@@ -465,7 +465,7 @@ const personaDSvg = `
     font-size="6.5"
     text-anchor="middle"
   >
-    Vocab
+    Emoji
   </text>
 
   <!-- Adapter to LLM -->
@@ -508,7 +508,7 @@ const personaDSvg = `
     font-size="11"
     text-anchor="middle"
   >
-    Base LLM
+    Base: GPT-2
   </text>
 
   <text
@@ -519,7 +519,7 @@ const personaDSvg = `
     font-size="9"
     text-anchor="middle"
   >
-    Adapted Model
+    Pre-trained
   </text>
 
   <!-- Persona Distribution -->
@@ -589,7 +589,7 @@ const personaDSvg = `
     font-size="10"
     text-anchor="middle"
   >
-    Persona Distribution
+    Imitation Model
   </text>
 
   <text
@@ -600,7 +600,7 @@ const personaDSvg = `
     font-size="8.5"
     text-anchor="middle"
   >
-    Learned Communication Pattern
+    Insta Conversation Clone
   </text>
 
   <text
@@ -612,7 +612,7 @@ const personaDSvg = `
     font-size="8"
     text-anchor="middle"
   >
-    Identity ≠ Language ?
+    Predicting Next Token...
   </text>
 </svg>
 `;
@@ -645,7 +645,7 @@ const nexacredSvg = `
     font-weight="bold"
     text-anchor="middle"
   >
-    NexaCred Enhanced: Production-Ready DeFi &amp; AI Credit Protocol
+    NexaCred: P2P Credit Scoring &amp; Lending Protocol
   </text>
 
   <text
@@ -656,7 +656,7 @@ const nexacredSvg = `
     font-size="10"
     text-anchor="middle"
   >
-    LightGBM Risk Analyzer · IBM Granite RAG · Solidity EVM Lending Contracts
+    LightGBM (DeFi Wallet Trained) · IBM Granite RAG · Solidity EVM Contracts
   </text>
 
   <!-- Connection Links (Main Pipeline) -->
@@ -753,8 +753,8 @@ const nexacredSvg = `
   </g>
   <text x="470" y="225" fill="var(--accent2)" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">FastAPI Engine</text>
   <text x="470" y="240" fill="var(--cream)" font-family="monospace" font-size="9.5" text-anchor="middle">LightGBM Model</text>
-  <text x="470" y="255" fill="var(--muted)" font-family="monospace" font-size="8.5" text-anchor="middle">On-Chain Analytics</text>
-  <text x="470" y="270" fill="var(--muted)" font-family="monospace" font-size="8" text-anchor="middle">Risk Scoring (300-850)</text>
+  <text x="470" y="255" fill="var(--muted)" font-family="monospace" font-size="8.5" text-anchor="middle">DeFi Credit Scorer</text>
+  <text x="470" y="270" fill="var(--muted)" font-family="monospace" font-size="8" text-anchor="middle">Risk Rating (300-850)</text>
 
   <!-- ================= NODE 4: Solidity Escrow ================= -->
   <rect
@@ -813,8 +813,8 @@ const nexacredSvg = `
     stroke-width="1.2"
     opacity="0.85"
   />
-  <text x="470" y="90" fill="var(--accent)" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">On-Chain Ledger</text>
-  <text x="470" y="105" fill="var(--cream)" font-family="monospace" font-size="9" text-anchor="middle">RPC History Ingest</text>
+  <text x="470" y="90" fill="var(--accent)" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">DeFi Credit Wallet</text>
+  <text x="470" y="105" fill="var(--cream)" font-family="monospace" font-size="9" text-anchor="middle">Training Data Ingestion</text>
 
   <!-- ================= BOTTOM BRANCH: IBM Granite RAG Chatbot ================= -->
   <rect
@@ -1445,10 +1445,10 @@ export const PROJECTS_DATA = {
     status: "inactive",
     tag: "02 — ML Research",
     title: "GA-NAS",
-    brief: "Neural Architecture Search via Genetic Algorithms — evolved a 5-block residual network hitting 92.07% on CIFAR-10 with multi-GPU parallelization.",
+    brief: "Neural Architecture Search via Genetic Algorithms — evolved optimal residual block network architectures to gain the best neural network structure.",
     media: { type: "svg", content: ganasSvg },
-    body: `<p>GA-NAS applies <strong>Genetic Algorithms to Neural Architecture Search</strong> — automating the design of deep networks by treating architecture decisions as an evolving gene pool.</p>
-<p>The system evolved a <strong>5-block residual architecture</strong> achieving 92.07% test accuracy on CIFAR-10. Genetic operations — selection, crossover, mutation — work directly on architecture gene encodings.</p>
+    body: `<p>GA-NAS applies <strong>Genetic Algorithms to Neural Architecture Search (NAS)</strong> — automating the design of deep networks to discover the optimal network architecture by treating design decisions as an evolving gene pool.</p>
+<p>The system evolved a <strong>5-block residual architecture</strong> achieving 92.07% test accuracy on CIFAR-10. Genetic operations — selection, crossover, mutation — dynamically searched the topology space to find the best performing structure.</p>
 <p>Training was parallelised across multiple GPUs, significantly reducing generation evaluation time and allowing more generations to be explored within the compute budget.</p>`,
     tags: ["Neural Architecture Search", "Genetic Algorithms", "PyTorch", "CIFAR-10", "Multi-GPU", "Python", "ResNet"],
     links: [{ l: "GitHub", h: "https://github.com/Theroid00/NAS" }]
@@ -1459,10 +1459,10 @@ export const PROJECTS_DATA = {
     status: "inactive",
     tag: "03 — FinTech · Full-Stack",
     title: "NexaCred",
-    brief: "A P2P lending platform — LightGBM credit scoring, Solidity smart contracts for trustless lending, containerised with Docker and deployed on AWS.",
+    brief: "A P2P lending platform — LightGBM credit scoring trained on DeFi credit wallet histories, Solidity smart contracts for trustless lending.",
     media: { type: "svg", content: nexacredSvg },
     body: `<p>NexaCred is a full-stack <strong>peer-to-peer lending platform</strong> that removes traditional financial intermediaries using blockchain-based smart contracts.</p>
-<p>The ML core uses <strong>LightGBM</strong> to score borrower creditworthiness from financial features, generating dynamic interest rate offers. <strong>Solidity smart contracts</strong> govern the full loan lifecycle — disbursement, repayment, and default — without a central authority.</p>
+<p>The ML core utilizes a <strong>LightGBM</strong> classifier trained on historical <strong>DeFi credit wallet</strong> data to evaluate borrower creditworthiness and compute dynamic risk-adjusted interest rates. <strong>Solidity smart contracts</strong> govern the full loan lifecycle — disbursement, repayment, and default — without a central authority.</p>
 <p>The stack is containerised with <strong>Docker</strong> and deployed on <strong>AWS</strong>, with a React frontend and a Python/FastAPI backend.</p>`,
     tags: ["LightGBM", "Solidity", "Smart Contracts", "Docker", "AWS", "FastAPI", "React", "Web3"],
     links: [{ l: "GitHub", h: "https://github.com/Theroid00/-nexacred-metamask-enhanced" }]
@@ -1473,11 +1473,10 @@ export const PROJECTS_DATA = {
     status: "inactive",
     tag: "04 — NLP · LLM",
     title: "PersonaD",
-    brief: "An LLM-based conversational imitation system that learns to replicate a person's communication style, vocabulary, and reasoning patterns.",
+    brief: "An LLM conversational clone fine-tuning GPT-2 on a personal Instagram DM dataset to replicate specific messaging styles and vocabulary.",
     media: { type: "svg", content: personaDSvg },
-    body: `<p>PersonaD is a system for <strong>conversational persona imitation</strong> — training a language model to replicate how a specific individual communicates.</p>
-<p>Given a corpus of conversational data, PersonaD adapts a base LLM to match the target's <strong>vocabulary, reasoning style, tone, and response patterns</strong> using parameter-efficient fine-tuning.</p>
-<p>The project probes questions around personality as a learnable distribution over language, and the limits of how much of a person can be captured in text.</p>`,
+    body: `<p>PersonaD is a <strong>conversational imitation model</strong> that learns to replicate a user's unique communication style by fine-tuning <strong>GPT-2</strong> on their personal <strong>Instagram DM history</strong>.</p>
+<p>By leveraging parameter-efficient fine-tuning, PersonaD adapts the base model to mirror specific conversational behaviors: colloquial vocabulary, sentence structure, emoji distributions, and response patterns.</p>`,
     tags: ["LLM Fine-tuning", "NLP", "Transformers", "LoRA", "PyTorch", "Python"],
     links: [{ l: "GitHub", h: "https://github.com/Theroid00/PersonaD" }]
   },
