@@ -90,6 +90,10 @@ nav{position:sticky;top:0;z-index:100;padding:1.3rem 3rem;display:flex;justify-c
 .t-dot.r{background:#ff5f56}.t-dot.y{background:#ffbd2e}.t-dot.g{background:#27c93f}
 .t-file{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.06em;margin-left:auto}
 
+@keyframes spin-fan{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.t-fan-spin{animation:spin-fan 1s linear infinite;transform-origin:center;display:inline-block;vertical-align:middle;margin-right:4px;color:var(--accent)}
+
+
 .terminal-body{
   padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.22rem;
   height:290px;box-sizing:border-box;
