@@ -1503,9 +1503,90 @@ export const PROJECTS_DATA = {
     title: "Art Gallery",
     brief: "Full-stack web app for curating and browsing digital art collections, built with Next.js, React, and MySQL.",
     media: {
-      type: "placeholder-image",
-      filename: "artgallery-card.png",
-      dims: "440 × 280px"
+      type: "svg",
+      content: `
+<svg class="schematic-svg" viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="artGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--accent)" />
+      <stop offset="100%" stop-color="var(--accent2)" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Title & Frame Outline -->
+  <text x="260" y="32" fill="var(--muted)" font-family="monospace" font-size="11" text-anchor="middle" letter-spacing="0.1em">Next.js Client ⇄ Relational MySQL</text>
+
+  <!-- Interface / Web Client representation (Left Pane) -->
+  <rect x="35" y="70" width="160" height="150" rx="8" stroke="var(--border)" stroke-width="1.2" fill="rgba(232,136,74,0.02)"/>
+  <rect x="35" y="70" width="160" height="20" rx="8" fill="rgba(232,136,74,0.06)" stroke="var(--border)" stroke-width="0.8"/>
+  <circle cx="48" cy="80" r="3" fill="#ff5f56"/>
+  <circle cx="56" cy="80" r="3" fill="#ffbd2e"/>
+  <circle cx="64" cy="80" r="3" fill="#27c93f"/>
+  <text x="115" y="83" fill="var(--muted)" font-family="monospace" font-size="8.5" text-anchor="middle">ArtGallery App</text>
+  
+  <!-- Interactive Client UI grid (mimicking art layout cards) -->
+  <rect x="47" y="105" width="62" height="42" rx="4" stroke="var(--accent)" stroke-width="1.2" fill="none" opacity="0.8"/>
+  <rect x="47" y="157" width="62" height="42" rx="4" stroke="var(--border)" stroke-width="1" fill="none" opacity="0.4"/>
+  <rect x="121" y="105" width="62" height="42" rx="4" stroke="var(--border)" stroke-width="1" fill="none" opacity="0.4"/>
+  <rect x="121" y="157" width="62" height="42" rx="4" stroke="var(--accent2)" stroke-width="1.2" fill="none" opacity="0.8"/>
+
+  <!-- Glowing interactive "Artwork" inside client view -->
+  <circle cx="78" cy="126" r="8" fill="url(#artGrad)" opacity="0.9" filter="url(#glow)">
+    <animate attributeName="r" values="7;10;7" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <polygon points="144,183 158,172 152,183" fill="url(#artGrad)" opacity="0.8">
+    <animateTransform attributeName="transform" type="rotate" from="0 152 178" to="360 152 178" dur="8s" repeatCount="indefinite"/>
+  </polygon>
+
+  <!-- Database / Schema representation (Right Pane) -->
+  <rect x="325" y="70" width="160" height="150" rx="8" stroke="var(--border)" stroke-width="1.2" fill="rgba(245,192,100,0.01)"/>
+  
+  <!-- Relational Tables (MySQL Schema ER illustration) -->
+  <!-- Table 1: Artworks -->
+  <rect x="345" y="88" width="120" height="32" rx="4" stroke="var(--accent)" stroke-width="1.2" fill="rgba(14,12,10,0.9)"/>
+  <text x="405" y="102" fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">Table: ARTWORKS</text>
+  <line x1="345" y1="108" x2="465" y2="108" stroke="var(--border)" stroke-width="0.8"/>
+  <text x="353" y="116" fill="var(--muted)" font-family="monospace" font-size="6.5">id [PK] · title · image_url</text>
+
+  <!-- Table 2: Exhibitions -->
+  <rect x="345" y="162" width="120" height="32" rx="4" stroke="var(--accent2)" stroke-width="1.2" fill="rgba(14,12,10,0.9)"/>
+  <text x="405" y="176" fill="var(--accent2)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">Table: CURATORS</text>
+  <line x1="345" y1="182" x2="465" y2="182" stroke="var(--border)" stroke-width="0.8"/>
+  <text x="353" y="190" fill="var(--muted)" font-family="monospace" font-size="6.5">id [PK] · name · role_type</text>
+
+  <!-- Connecting Schema relation line -->
+  <line x1="405" y1="120" x2="405" y2="162" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3"/>
+  <circle cx="405" cy="141" r="3.5" fill="var(--cream)" opacity="0.6"/>
+
+  <!-- Transaction Lines (Data Flows) -->
+  <!-- Query flow (Top curve) -->
+  <path d="M 195 120 Q 260 90 325 120" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="5 5">
+    <animate attributeName="stroke-dashoffset" values="30;0" dur="3s" repeatCount="indefinite"/>
+  </path>
+  <text x="260" y="93" fill="var(--accent)" font-family="monospace" font-size="8.5" text-anchor="middle">REST HTTP API</text>
+
+  <!-- Response flow (Bottom curve) -->
+  <path d="M 325 180 Q 260 210 195 180" fill="none" stroke="var(--accent2)" stroke-width="1.2" stroke-dasharray="5 5">
+    <animate attributeName="stroke-dashoffset" values="0;30" dur="3s" repeatCount="indefinite"/>
+  </path>
+  <text x="260" y="213" fill="var(--accent2)" font-family="monospace" font-size="8.5" text-anchor="middle">MySQL JSON Payload</text>
+
+  <!-- Moving network packet indicators -->
+  <circle r="3.5" fill="var(--accent2)">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 195 120 Q 260 90 325 120" />
+  </circle>
+  <circle r="3.5" fill="var(--accent)">
+    <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M 325 180 Q 260 210 195 180" />
+  </circle>
+
+  <!-- Status Telemetry -->
+  <text x="260" y="260" fill="var(--muted)" font-family="monospace" font-size="9" text-anchor="middle">Relational Schema Normalization: 3NF</text>
+</svg>
+      `
     },
     body: `<p>Art Gallery is a <strong>full-stack web application</strong> for browsing, curating, and managing digital art collections.</p>
 <p>Built with <strong>Next.js and React</strong> on the frontend, backed by a MySQL relational database. Features include gallery browsing, artist pages, and a curator dashboard for managing collections.</p>
