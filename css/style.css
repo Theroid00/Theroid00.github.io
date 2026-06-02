@@ -91,15 +91,16 @@ nav{position:sticky;top:0;z-index:100;padding:1.3rem 3rem;display:flex;justify-c
 .t-file{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.06em;margin-left:auto}
 
 .terminal-body{
-  padding:1.1rem 1.4rem;display:flex;flex-direction:column;gap:.22rem;
-  height:240px;box-sizing:border-box;
+  padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.22rem;
+  height:290px;box-sizing:border-box;
 }
 .t-stats-panel{
   display:flex;flex-direction:column;gap:.22rem;
 }
 .t-log-stream{
   flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:.22rem;
-  padding-right:4px;margin-top:0.4rem;
+  padding-right:4px;margin-top:0.3rem;
+  min-height:85px;
 }
 /* Custom scrollbar for log stream */
 .t-log-stream::-webkit-scrollbar{width:6px}
