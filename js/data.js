@@ -1864,7 +1864,12 @@ export const PROJECTS_DATA = {
       `
     },
     body: `<p>A machine learning utility framework implementing a <strong>Genetic Algorithm</strong> for joint hyperparameter optimization and feature selection across multiple classifier architectures (K-Nearest Neighbors, Support Vector Machines, and Random Forests).</p>
-<p>The system encodes feature column inclusions (binary bits) and hyperparameter configuration choices (discrete integer indices) into a single <strong>combined chromosome</strong> layout. The fitness heuristic evaluates candidates using <strong>5-Fold Cross-Validation accuracy</strong>, applying a small bonus for dimensionality reduction to break ties and prevent model overfitting. Recombination uses <strong>two-point crossovers</strong> and custom type-aware mutations.</p>
+<p>The optimization pipeline evaluates candidates and logs performance using the following primary metrics:</p>
+<ul>
+  <li><strong>5-Fold Cross-Validation Accuracy (Baseline vs. Optimized)</strong>: Directly compares the default Scikit-Learn classifier configuration on the raw feature space against the GA-optimized model.</li>
+  <li><strong>Feature Reduction Ratio</strong>: Quantifies dimensionality reduction efficiency (columns dropped vs. columns kept). The fitness function uses this as a tie-breaker: <code>Fitness = 0.99 × Accuracy + 0.01 × (1 - Selected_Features / Total_Features)</code>.</li>
+  <li><strong>Fitness Convergence Telemetry</strong>: Tracks fitness histories over generations to evaluate optimization trajectories.</li>
+</ul>
 <p>The framework also includes a robust, automated dataset ingestion pipeline that handles dynamic CSV/TSV separators, header parsing, stratified scaling, and target mapping natively.</p>`,
     tags: ["Python", "Numpy", "Pandas", "Scikit-Learn"],
     links: [
