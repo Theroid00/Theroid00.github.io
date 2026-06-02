@@ -90,7 +90,7 @@ export function renderProjects() {
                 ${p.links.map(x => {
                   const cls = x.type === 'live' ? 'btn btn-fill' : 'btn btn-ghost';
                   const sty = 'padding:.55rem 1.1rem;font-size:.74rem';
-                  return `<a href="${x.h}" class="${cls}" style="${sty}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${x.l} ↗</a>`;
+                  return `<a href="${x.h}" class="${cls}" style="${sty}" target="_blank" rel="noopener">${x.l} ↗</a>`;
                 }).join('')}
               </div>
             </div>

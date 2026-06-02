@@ -91,9 +91,17 @@ export function initModal() {
 
   // Bind click + keyboard triggers on all project cards
   document.querySelectorAll('.proj-card').forEach(c => {
-    c.addEventListener('click', () => openModal(c.dataset.key));
+    c.addEventListener('click', e => {
+      // If the click is on or inside an anchor tag, let the browser handle it
+      if (e.target.closest('a')) return;
+      openModal(c.dataset.key);
+    });
     c.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(c.dataset.key); }
+      if (e.target.closest('a')) return;
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(c.dataset.key);
+      }
     });
   });
 }
