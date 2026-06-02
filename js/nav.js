@@ -15,7 +15,7 @@ export function initNav() {
         });
       }
     });
-  }, { threshold: .2, rootMargin: '-20% 0px -55% 0px' });
+  }, { threshold: 0, rootMargin: '-20% 0px -20% 0px' });
 
   document.querySelectorAll('section').forEach(s => spyObs.observe(s));
 
