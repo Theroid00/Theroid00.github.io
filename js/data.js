@@ -10,10 +10,10 @@ export const STATS_DATA = [
 ];
 
 export const SKILLS_DATA = [
-  { category: "ML / AI", chips: ["PyTorch","TensorFlow","Keras","Scikit-learn","LightGBM","OpenCV","MediaPipe","CTGAN","Ollama","Transformers"] },
-  { category: "Languages", chips: ["Python","Java","JavaScript","C","Solidity","SQL"] },
-  { category: "Web / Full-Stack", chips: ["Next.js","React","FastAPI","Node.js","MySQL","MongoDB","REST APIs"] },
-  { category: "Systems & DevOps", chips: ["Docker","AWS","Git","CUDA","MPI","Linux","Hardhat"] }
+  { category: "ML / AI", chips: ["PyTorch","TensorFlow","Keras","Scikit-learn","OpenCV","MediaPipe","Ollama","Transformers"] },
+  { category: "Languages", chips: ["Python","Java","JavaScript","C","SQL"] },
+  { category: "Web / Full-Stack", chips: ["FastAPI","MySQL","MongoDB","REST APIs"] },
+  { category: "Systems & DevOps", chips: ["Docker","Git","CUDA","MPI","Linux"] }
 ];
 
 /* ── Apiro: canvas-based expanding biomedical graph (works in card AND modal) ── */
@@ -1441,22 +1441,22 @@ export const PROJECTS_DATA = {
     links: [{ l: "GitHub", h: "https://github.com/Theroid00/apiro" }]
   },
 
-//   ganas: {
-//     num: "02",
-//     status: "inactive",
-//     tag: "02 — ML Research",
-//     title: "GA-NAS",
-//     brief: "Neural Architecture Search via Genetic Algorithms — evolved optimal residual block network architectures to gain the best neural network structure.",
-//     media: { type: "svg", content: ganasSvg },
-//     body: `<p>GA-NAS applies <strong>Genetic Algorithms to Neural Architecture Search (NAS)</strong> — automating the design of deep networks to discover the optimal network architecture by treating design decisions as an evolving gene pool.</p>
-// <p>The system evolved a <strong>5-block residual architecture</strong> achieving 92.07% test accuracy on CIFAR-10. Genetic operations — selection, crossover, mutation — dynamically searched the topology space to find the best performing structure.</p>
-// <p>Training was parallelised across multiple GPUs, significantly reducing generation evaluation time and allowing more generations to be explored within the compute budget.</p>`,
-//     tags: ["Neural Architecture Search", "Genetic Algorithms", "PyTorch", "CIFAR-10", "Multi-GPU", "Python", "ResNet"],
-//     links: [{ l: "GitHub", h: "https://github.com/Theroid00/NAS" }]
-//   },
+  ganas: {
+    num: "02",
+    status: "inactive",
+    tag: "02 — ML Research",
+    title: "GA-NAS",
+    brief: "Neural Architecture Search via Genetic Algorithms — evolved optimal residual block network architectures to gain the best neural network structure.",
+    media: { type: "svg", content: ganasSvg },
+    body: `<p>GA-NAS applies <strong>Genetic Algorithms to Neural Architecture Search (NAS)</strong> — automating the design of deep networks to discover the optimal network architecture by treating design decisions as an evolving gene pool.</p>
+<p>The system evolved a <strong>5-block residual architecture</strong> achieving 92.07% test accuracy on CIFAR-10. Genetic operations — selection, crossover, mutation — dynamically searched the topology space to find the best performing structure.</p>
+<p>Training was parallelised across multiple GPUs, significantly reducing generation evaluation time and allowing more generations to be explored within the compute budget.</p>`,
+    tags: ["Neural Architecture Search", "Genetic Algorithms", "PyTorch", "CIFAR-10", "Multi-GPU", "Python", "ResNet"],
+    links: [{ l: "GitHub", h: "https://github.com/Theroid00/NAS" }]
+  },
 
   nexacred: {
-    num: "02",
+    num: "03",
     status: "inactive",
     tag: "03 — FinTech · Full-Stack",
     title: "NexaCred",
@@ -1470,7 +1470,7 @@ export const PROJECTS_DATA = {
   },
 
   personad: {
-    num: "03",
+    num: "04",
     status: "inactive",
     tag: "04 — NLP · LLM",
     title: "PersonaD",
@@ -1483,11 +1483,11 @@ export const PROJECTS_DATA = {
   },
 
   fer: {
-    num: "04",
+    num: "05",
     status: "inactive", // Updated to active as it includes functional Streamlit and OpenCV app scripts
     tag: "05 — Computer Vision",
     title: "Face Emotion Recognition",
-    brief: "Dual-pipeline facial emotion classifier featuring a lightweight landmark-based Random Forest model (sub-20ms CPU latency) and an end-to-end grayscale ResNet-18 fine-tuned on FER-2013.",
+    brief: "Dual-pipeline facial emotion classifier featuring a lightweight landmark-based Random Forest model and an end-to-end grayscale ResNet-18 fine-tuned on FER-2013.",
     media: { type: "svg", content: fersvg },
     body: `<p>A dual-pipeline system designed for <strong>real-time facial emotion recognition</strong> that balances execution speed and spatial classification accuracy across varied compute constraints.</p>
 <p><strong>Pipeline 1 (Handcrafted Landmarks)</strong>: Leverages MediaPipe Face Mesh to capture facial geometry. It extracts custom distance ratios (mouth width, eye openness, eyebrow height) and runs them through a Scikit-Learn Random Forest. This model is extremely lightweight, running inference in under 15ms directly on host CPU threads.</p>
@@ -1501,7 +1501,7 @@ export const PROJECTS_DATA = {
   },
 
   artgallery: {
-    num: "05",
+    num: "06",
     status: "inactive",
     tag: "06 — Full-Stack Web",
     title: "Art Gallery",
