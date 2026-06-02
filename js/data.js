@@ -1431,31 +1431,32 @@ export const PROJECTS_DATA = {
     status: "active",
     tag: "01 — Biomedicine · AI · Active",
     title: "Apiro",
-    brief: "A non-custodial biomedical discovery graph navigating gene-disease pathways and molecular target search spaces using entropy uncertainty heuristics.",
+    brief: "A biomedical belief-graph engine that navigates clinical pathways and gene-disease target spaces using LLM token-entropy as a traversal heuristic.",
     media: { type: "svg", content: apiroSvg },
-    body: `<p>Apiro is an advanced, non-custodial <strong>biomedical discovery engine</strong> and knowledge graph navigator that accelerates therapeutic target identification.</p>
-<p>Rather than relying solely on static publications, Apiro computes <strong>information-theoretic Shannon entropy</strong> over generative biomedical language models (LLM logit distributions). By measuring what the model finds maximally uncertain or under-explored at the boundaries of public data, it identifies novel genetic and pathway associations that are highly promising for laboratory validation.</p>
-<p>The orchestration runs high-speed inference-time traversal over structured gene-disease interaction vectors, dynamically visualising the expanding interactome in real time.</p>`,
+    body: `<p><strong>Think of Apiro as an AI detective for medical research.</strong> By analyzing where advanced medical AI models are most uncertain or "confused" when answering complex clinical questions, Apiro highlights hidden gaps and promising links between genes and diseases that are worth testing in the lab.</p>
+<p>Technically, it is a <strong>biomedical discovery engine</strong> and belief-graph navigator that accelerates clinical differential diagnosis and therapeutic target identification.</p>
+<p>Instead of relying on static literature, Apiro computes <strong>Shannon entropy</strong> over live LLM logit distributions. By measuring model uncertainty at clinical decision boundaries, it prioritizes exploration of highly generative, under-explored pathway associations.</p>
+<p>The system orchestrates real-time, evidence-grounded graph traversal, stopping automatically when epistemic uncertainty saturates and flagging reasoning rabbit holes.</p>`,
     tags: ["Bioinformatics", "LLM Inference", "Target Discovery", "Shannon Entropy", "Gene Ontology", "Pathways", "Python"],
     links: [{ l: "GitHub", h: "https://github.com/Theroid00/apiro" }]
   },
 
-  ganas: {
-    num: "02",
-    status: "inactive",
-    tag: "02 — ML Research",
-    title: "GA-NAS",
-    brief: "Neural Architecture Search via Genetic Algorithms — evolved optimal residual block network architectures to gain the best neural network structure.",
-    media: { type: "svg", content: ganasSvg },
-    body: `<p>GA-NAS applies <strong>Genetic Algorithms to Neural Architecture Search (NAS)</strong> — automating the design of deep networks to discover the optimal network architecture by treating design decisions as an evolving gene pool.</p>
-<p>The system evolved a <strong>5-block residual architecture</strong> achieving 92.07% test accuracy on CIFAR-10. Genetic operations — selection, crossover, mutation — dynamically searched the topology space to find the best performing structure.</p>
-<p>Training was parallelised across multiple GPUs, significantly reducing generation evaluation time and allowing more generations to be explored within the compute budget.</p>`,
-    tags: ["Neural Architecture Search", "Genetic Algorithms", "PyTorch", "CIFAR-10", "Multi-GPU", "Python", "ResNet"],
-    links: [{ l: "GitHub", h: "https://github.com/Theroid00/NAS" }]
-  },
+//   ganas: {
+//     num: "02",
+//     status: "inactive",
+//     tag: "02 — ML Research",
+//     title: "GA-NAS",
+//     brief: "Neural Architecture Search via Genetic Algorithms — evolved optimal residual block network architectures to gain the best neural network structure.",
+//     media: { type: "svg", content: ganasSvg },
+//     body: `<p>GA-NAS applies <strong>Genetic Algorithms to Neural Architecture Search (NAS)</strong> — automating the design of deep networks to discover the optimal network architecture by treating design decisions as an evolving gene pool.</p>
+// <p>The system evolved a <strong>5-block residual architecture</strong> achieving 92.07% test accuracy on CIFAR-10. Genetic operations — selection, crossover, mutation — dynamically searched the topology space to find the best performing structure.</p>
+// <p>Training was parallelised across multiple GPUs, significantly reducing generation evaluation time and allowing more generations to be explored within the compute budget.</p>`,
+//     tags: ["Neural Architecture Search", "Genetic Algorithms", "PyTorch", "CIFAR-10", "Multi-GPU", "Python", "ResNet"],
+//     links: [{ l: "GitHub", h: "https://github.com/Theroid00/NAS" }]
+//   },
 
   nexacred: {
-    num: "03",
+    num: "02",
     status: "inactive",
     tag: "03 — FinTech · Full-Stack",
     title: "NexaCred",
@@ -1463,13 +1464,13 @@ export const PROJECTS_DATA = {
     media: { type: "svg", content: nexacredSvg },
     body: `<p>NexaCred is a full-stack <strong>peer-to-peer lending platform</strong> that removes traditional financial intermediaries using blockchain-based smart contracts.</p>
 <p>The ML core utilizes a <strong>LightGBM</strong> classifier trained on historical <strong>DeFi credit wallet</strong> data to evaluate borrower creditworthiness and compute dynamic risk-adjusted interest rates. <strong>Solidity smart contracts</strong> govern the full loan lifecycle — disbursement, repayment, and default — without a central authority.</p>
-<p>The stack is containerised with <strong>Docker</strong> and deployed on <strong>AWS</strong>, with a React frontend and a Python/FastAPI backend.</p>`,
-    tags: ["LightGBM", "Solidity", "Smart Contracts", "Docker", "AWS", "FastAPI", "React", "Web3"],
+<p>The stack is containerised with <strong>Docker</strong> and was deployed on <strong>AWS</strong>, with a React frontend and a Python/FastAPI backend.</p>`,
+    tags: ["LightGBM", "Solidity", "Smart Contracts", "Docker", "FastAPI", "React", "Web3"],
     links: [{ l: "GitHub", h: "https://github.com/Theroid00/-nexacred-metamask-enhanced" }]
   },
 
   personad: {
-    num: "04",
+    num: "03",
     status: "inactive",
     tag: "04 — NLP · LLM",
     title: "PersonaD",
@@ -1482,21 +1483,25 @@ export const PROJECTS_DATA = {
   },
 
   fer: {
-    num: "05",
-    status: "inactive",
+    num: "04",
+    status: "inactive", // Updated to active as it includes functional Streamlit and OpenCV app scripts
     tag: "05 — Computer Vision",
     title: "Face Emotion Recognition",
-    brief: "Dual-pipeline system combining MediaPipe + Random Forest for real-time inference, and ResNet-18 fine-tuned on FER-2013 for high-accuracy classification.",
+    brief: "Dual-pipeline facial emotion classifier featuring a lightweight landmark-based Random Forest model (sub-20ms CPU latency) and an end-to-end grayscale ResNet-18 fine-tuned on FER-2013.",
     media: { type: "svg", content: fersvg },
-    body: `<p>A dual-pipeline system for <strong>real-time facial emotion classification</strong>, built to balance speed and accuracy across different hardware constraints.</p>
-<p><strong>Pipeline 1 (fast)</strong>: MediaPipe landmark extraction feeding a Random Forest classifier — lightweight, runs in real-time on CPU with &lt;20ms latency.</p>
-<p><strong>Pipeline 2 (accurate)</strong>: ResNet-18 fine-tuned on FER-2013 — deeper, captures spatial emotion patterns that landmarks miss. Both pipelines are benchmarked head-to-head on accuracy, latency, and robustness to lighting and pose variation.</p>`,
-    tags: ["MediaPipe", "ResNet-18", "FER-2013", "TensorFlow", "Random Forest", "OpenCV", "Computer Vision"],
-    links: [{ l: "GitHub", h: "https://github.com/Theroid00/face" }]
+    body: `<p>A dual-pipeline system designed for <strong>real-time facial emotion recognition</strong> that balances execution speed and spatial classification accuracy across varied compute constraints.</p>
+<p><strong>Pipeline 1 (Handcrafted Landmarks)</strong>: Leverages MediaPipe Face Mesh to capture facial geometry. It extracts custom distance ratios (mouth width, eye openness, eyebrow height) and runs them through a Scikit-Learn Random Forest. This model is extremely lightweight, running inference in under 15ms directly on host CPU threads.</p>
+<p><strong>Pipeline 2 (Deep Neural Network)</strong>: Features a PyTorch-based ResNet-18 architecture modified for 1-channel grayscale inputs. Fine-tuned on the FER-2013 dataset using class-weighted cross-entropy and extensive image augmentations, this pipeline specializes in capturing micro-expressions and high-dimensional spatial details that simple landmarks fail to capture.</p>
+<p>Inference is exposed via a desktop OpenCV windowing loop for local testing and an interactive Streamlit web dashboard supportable on hosting platforms like Hugging Face Spaces.</p>`,
+    tags: ["PyTorch", "ResNet-18", "MediaPipe", "Random Forest", "OpenCV", "Streamlit", "Scikit-Learn", "Computer Vision"],
+    links: [
+      { l: "Hugging Face", h: "https://huggingface.co/spaces/Theroid/FER", type: "live" },
+      { l: "GitHub", h: "https://github.com/Theroid00/face", type: "github" }
+    ]
   },
 
   artgallery: {
-    num: "06",
+    num: "05",
     status: "inactive",
     tag: "06 — Full-Stack Web",
     title: "Art Gallery",
@@ -1589,7 +1594,7 @@ export const PROJECTS_DATA = {
     },
     body: `<p>Art Gallery is a <strong>full-stack web application</strong> for browsing, curating, and managing digital art collections.</p>
 <p>Built with <strong>Next.js and React</strong> on the frontend, backed by a MySQL relational database. Features include gallery browsing, artist pages, and a curator dashboard for managing collections.</p>
-<p>Delivered as a complete academic project including database design, ER diagrams, normalisation analysis, and a full project report.</p>`,
+<p>Delivered as a complete deployed website.</p>`,
     tags: ["Next.js", "React", "MySQL", "JavaScript", "Full-Stack", "REST API"],
     links: [
       { l: "Live Site", h: "https://pranaykapoor.me/Art_gallery", type: "live" },
