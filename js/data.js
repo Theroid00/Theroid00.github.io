@@ -6,7 +6,7 @@
 export const STATS_DATA = [
   { val: "8.68", desc: "CGPA — Scholars Scholarship recipient" },
   { val: "3rd yr", desc: "B.Tech Computer Science, MIT Bengaluru" },
-  { val: "6+", desc: "Projects across ML, Web & Systems" }
+  { val: "9", desc: "Projects across ML, Web & Systems" }
 ];
 
 export const SKILLS_DATA = [
@@ -1599,6 +1599,276 @@ export const PROJECTS_DATA = {
     links: [
       { l: "Live Site", h: "https://pranaykapoor.me/Art_gallery", type: "live" },
       { l: "GitHub", h: "https://github.com/Theroid00/Art_gallery", type: "github" }
+    ]
+  },
+
+  compiler: {
+    num: "07",
+    status: "inactive",
+    tag: "07 — Systems Programming",
+    title: "Flux Compiler (fluxc)",
+    brief: "A custom handwritten recursive-descent compiler and C-target code generator for Flux (Functional Language for Universal eXpressions) featuring pipe desugaring, pattern matching, TAC IR, and interleaved diagnostics.",
+    media: {
+      type: "svg",
+      content: `
+<svg class="schematic-svg" viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="compilerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="260" y="32" fill="var(--muted)" font-family="monospace" font-size="11" text-anchor="middle" letter-spacing="0.1em">Handwritten Frontend ⇄ C Code Generator ⇄ GCC</text>
+
+  <!-- Source Code Node (Flux Source) -->
+  <rect x="20" y="90" width="80" height="100" rx="6" stroke="var(--border)" stroke-width="1.2" fill="rgba(232,136,74,0.02)"/>
+  <text x="60" y="110" fill="var(--cream)" font-family="monospace" font-size="9" text-anchor="middle">source.fx</text>
+  <text x="30" y="130" fill="var(--accent)" font-family="monospace" font-size="7.5">x |> func</text>
+  <text x="30" y="145" fill="var(--muted)" font-family="monospace" font-size="7.5">match y {</text>
+  <text x="30" y="160" fill="var(--accent2)" font-family="monospace" font-size="7.5">  _ => print</text>
+  <text x="30" y="175" fill="var(--muted)" font-family="monospace" font-size="7.5">}</text>
+
+  <!-- Connection Links -->
+  <g stroke="var(--border)" stroke-width="1" opacity="0.3">
+    <line x1="100" y1="140" x2="125" y2="140" />
+    <line x1="215" y1="140" x2="240" y2="140" />
+    <line x1="330" y1="140" x2="355" y2="140" />
+    <path d="M 170 175 v 35 h 20" fill="none" />
+  </g>
+
+  <!-- Stage 1: Handwritten Frontend -->
+  <rect x="125" y="102" width="90" height="76" rx="6" stroke="var(--accent)" stroke-width="1.2" fill="none"/>
+  <text x="170" y="120" fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">Frontend</text>
+  <text x="170" y="135" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">lexer.c (custom)</text>
+  <text x="170" y="147" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">parser.c (RD)</text>
+  <text x="170" y="162" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">AST Tree</text>
+
+  <!-- Stage 2: Code Gen & IR -->
+  <rect x="240" y="102" width="90" height="76" rx="6" stroke="var(--accent2)" stroke-width="1.2" fill="none"/>
+  <text x="285" y="120" fill="var(--accent2)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">Code Gen</text>
+  <text x="285" y="133" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">desugar.c (Pipe)</text>
+  <text x="285" y="145" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">irgen.c (TAC)</text>
+  <text x="285" y="160" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle">Generated C</text>
+
+  <!-- Stage 3: GCC Backend -->
+  <rect x="355" y="90" width="85" height="100" rx="6" stroke="var(--border)" stroke-width="1.2" fill="rgba(255,255,255,0.01)"/>
+  <text x="397" y="110" fill="var(--cream)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">GCC Compiler</text>
+  <text x="367" y="130" fill="var(--muted)" font-family="monospace" font-size="7">target.c</text>
+  <text x="367" y="145" fill="var(--accent)" font-family="monospace" font-size="7">gcc -O2</text>
+  <rect x="365" y="157" width="65" height="22" rx="3" fill="rgba(232,136,74,0.06)" stroke="var(--accent)" stroke-width="0.8" />
+  <text x="397" y="171" fill="var(--accent)" font-family="monospace" font-size="8" text-anchor="middle" font-weight="bold">Exec Binary</text>
+
+  <!-- Diagnostics listing file below -->
+  <rect x="190" y="205" width="180" height="55" rx="6" stroke="var(--border)" stroke-width="1" fill="rgba(255,0,0,0.02)"/>
+  <text x="280" y="218" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle" font-weight="bold">Diagnostics: output.lst</text>
+  <text x="200" y="232" fill="var(--muted)" font-family="monospace" font-size="6.5">Line 4 | x = "unmatched type {x}"</text>
+  <text x="200" y="244" fill="var(--accent)" font-family="monospace" font-size="6.5">  [ERROR] ^^^ Expected type Int</text>
+
+  <!-- Flow Paths with animated dash -->
+  <path d="M 100 140 L 125 140" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 215 140 L 240 140" fill="none" stroke="var(--accent2)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 330 140 L 355 140" fill="none" stroke="var(--cream)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 170 178 L 170 232 L 190 232" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 3">
+    <animate attributeName="stroke-dashoffset" values="6;0" dur="1.5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Streaming Data Particles -->
+  <circle r="3" fill="var(--accent)" filter="url(#compilerGlow)">
+    <animateMotion dur="2.4s" repeatCount="indefinite" path="M 100 140 L 125 140 M 215 140 L 240 140 M 330 140 L 355 140" />
+  </circle>
+
+  <!-- Status / Telemetry bottom -->
+  <text x="280" y="282" fill="var(--muted)" font-family="monospace" font-size="8.5" text-anchor="middle">Pipeline: Scan ➔ Parse ➔ Desugar ➔ TAC IR ➔ Code Gen ➔ GCC</text>
+</svg>
+      `
+    },
+    body: `<p>A complete <strong>compiler</strong> for Flux (Functional Language for Universal eXpressions) — a statically-typed language with functional influences. <code>fluxc</code> compiles source code into optimized C target code, which is then natively compiled using GCC into standalone binary executables.</p>
+<p>Unlike standard code-generated frontends, the frontend features a custom <strong>hand-written recursive descent parser</strong> (<code>parser.c</code>) and lexical scanner (<code>lexer.c</code>), giving precise control over error diagnostics and AST formatting. Functional paradigms such as the <strong>pipe operator (<code>|&gt;</code>)</strong>, pattern matching (<code>match</code>), and string interpolation are dynamically desugared into structured C control constructs.</p>
+<p>The compiler lowers the AST into a linear <strong>Three-Address Code (TAC)</strong> intermediate representation for analysis. When warnings or errors are raised, a dedicated diagnostics module outputs annotated <strong>interleaved listing files (<code>.lst</code>)</strong> highlighting offending line scopes.</p>`,
+    tags: ["C", "GCC","Compiler Design"] ,
+    links: [
+      { l: "GitHub", h: "https://github.com/Theroid00/compiler-design", type: "github" }
+    ]
+  },
+
+  arrodes: {
+    num: "08",
+    status: "inactive",
+    tag: "08 — API & Automation",
+    title: "Arrodes Discord Bot",
+    brief: "An wiki-scraping library and Discord integration that queries character data, mystical pathways, and lore from the Lord of the Mysteries universe.",
+    media: {
+      type: "svg",
+      content: `
+<svg class="schematic-svg" viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="arrodesGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="260" y="32" fill="var(--muted)" font-family="monospace" font-size="11" text-anchor="middle" letter-spacing="0.1em">Discord Gateway ⇄ Disnake Bot ⇄ BeautifulSoup4 Wiki Scraper</text>
+
+  <!-- Discord UI Mockup (Left) -->
+  <rect x="20" y="90" width="130" height="110" rx="6" stroke="var(--border)" stroke-width="1.2" fill="rgba(255,255,255,0.01)"/>
+  <rect x="20" y="90" width="130" height="18" rx="6" fill="rgba(88,101,242,0.1)" stroke="var(--border)" stroke-width="0.8"/>
+  <text x="30" y="102" fill="var(--cream)" font-family="sans-serif" font-size="8" font-weight="bold"># general-chat</text>
+  <!-- Discord Chat Bubble -->
+  <circle cx="35" cy="125" r="7" fill="var(--accent)"/>
+  <text x="35" y="128" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="8" text-anchor="middle">U</text>
+  <text x="48" y="123" fill="var(--cream)" font-family="sans-serif" font-size="7" font-weight="bold">User</text>
+  <text x="48" y="133" fill="var(--muted)" font-family="monospace" font-size="6.5">/birth Klein Moretti</text>
+
+  <!-- Bot Response -->
+  <circle cx="35" cy="155" r="7" fill="var(--accent2)"/>
+  <text x="35" y="158" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="8" text-anchor="middle">A</text>
+  <text x="48" y="153" fill="var(--accent2)" font-family="sans-serif" font-size="7" font-weight="bold">Arrodes BOT</text>
+  <text x="48" y="163" fill="var(--cream)" font-family="monospace" font-size="6.5">Born: June 15, 1349</text>
+
+  <!-- Connection Links -->
+  <g stroke="var(--border)" stroke-width="1" opacity="0.3">
+    <path d="M 150 145 H 200" />
+    <path d="M 290 145 H 345" />
+    <path d="M 405 175 V 205" opacity="0.5"/>
+  </g>
+
+  <!-- Stage 1: Disnake Bot Gateway (Middle) -->
+  <rect x="200" y="105" width="90" height="75" rx="6" stroke="var(--accent)" stroke-width="1.2" fill="none"/>
+  <text x="245" y="123" fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">Disnake Bot</text>
+  <text x="245" y="138" fill="var(--muted)" font-family="monospace" font-size="7.5" text-anchor="middle">cogs/lotm.py</text>
+  <text x="245" y="152" fill="var(--cream)" font-family="monospace" font-size="7.5" text-anchor="middle">Slash Commands</text>
+  <text x="245" y="165" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">Event Loop</text>
+
+  <!-- Stage 2: Wiki Scraping Engine (Right) -->
+  <rect x="340" y="90" width="160" height="110" rx="6" stroke="var(--accent2)" stroke-width="1.2" fill="none"/>
+  <text x="420" y="108" fill="var(--accent2)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">mystic API Wrapper</text>
+  <text x="350" y="128" fill="var(--cream)" font-family="monospace" font-size="7">BeautifulSoup4 Parser</text>
+  <text x="350" y="142" fill="var(--muted)" font-family="monospace" font-size="7">Requests HTML Getter</text>
+  <text x="350" y="156" fill="var(--muted)" font-family="monospace" font-size="7">Scraping lotm.fandom</text>
+  <rect x="350" y="168" width="140" height="22" rx="3" fill="rgba(232,136,74,0.06)" stroke="var(--border)" stroke-width="0.8"/>
+  <text x="420" y="182" fill="var(--accent)" font-family="monospace" font-size="7.5" text-anchor="middle">Character / Pathway Object</text>
+
+  <!-- Flow Paths with animated dash -->
+  <path d="M 150 145 L 200 145" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 290 145 L 340 145" fill="none" stroke="var(--accent2)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Streaming Data Particles -->
+  <circle r="3" fill="var(--accent)" filter="url(#arrodesGlow)">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 150 145 L 200 145 M 290 145 L 340 145" />
+  </circle>
+
+  <!-- Status / Telemetry bottom -->
+  <text x="260" y="250" fill="var(--muted)" font-family="monospace" font-size="9" text-anchor="middle">Wiki Target: https://lordofthemysteries.fandom.com/wiki/</text>
+  <text x="260" y="265" fill="var(--cream)" font-family="monospace" font-size="8.5" text-anchor="middle">Payload: JSON Data Mapping ➔ Cache: MEMORY</text>
+</svg>
+      `
+    },
+    body: `<p>A Discord bot and automated scraping interface designed for the <em>Lord of the Mysteries</em> web novel fandom. Named after the omniscient magic mirror <strong>Arrodes</strong>, the system serves as a rich, interactive encyclopedia directly integrated within Discord servers.</p>
+<p>The system is split into a modular backend scraping library (<code>mystic</code>) and a Discord interface gateway built using the <strong>Disnake</strong> library. The scraping engine utilizes <strong>BeautifulSoup4</strong> and <strong>Requests</strong> to dynamically fetch and parse unstructured fandom wiki markup. It automatically serializes data regarding character origins, pathways, titles, honorifics, mysticism symbols, and relationship trees into clean object models.</p>
+<p>Slash commands wired up inside modular <strong>Cogs</strong> (<code>lotm.py</code>) provide quick, low-latency access to the serialized data, transforming raw fandom pages into structured server interactions.</p>`,
+    tags: ["Python", "Disnake", "BeautifulSoup4", "Requests", "NLTK", "API Integration"],
+    links: [
+      { l: "GitHub", h: "https://github.com/Theroid00/Arrodes", type: "github" }
+    ]
+  },
+
+  genetic_algorithm: {
+    num: "09",
+    status: "inactive",
+    tag: "09 — Machine Learning",
+    title: "Genetic Feature Selection & Hyperparameter Optimizer",
+    brief: "A machine learning optimization framework utilizing Genetic Algorithms to perform joint feature selection and hyperparameter tuning dynamically across multiple classifiers.",
+    media: {
+      type: "svg",
+      content: `
+<svg class="schematic-svg" viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="gaGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="260" y="32" fill="var(--muted)" font-family="monospace" font-size="11" text-anchor="middle" letter-spacing="0.1em">Joint Chromosome ➔ Generation Loop ➔ 5-Fold CV Accuracy</text>
+
+  <!-- Chromosome Layout (Top) -->
+  <g transform="translate(45, 60)">
+    <rect x="0" y="0" width="430" height="30" rx="5" stroke="var(--border)" stroke-width="1.2" fill="rgba(255,255,255,0.01)"/>
+    <!-- Feature Genes -->
+    <rect x="5" y="5" width="230" height="20" rx="3" fill="rgba(232,136,74,0.06)" stroke="var(--accent)" stroke-width="0.8"/>
+    <text x="120" y="18" fill="var(--accent)" font-family="monospace" font-size="8" text-anchor="middle">Feature Selection Bits [1, 0, 1, 1, 0...]</text>
+    <!-- Hyperparameter Genes -->
+    <rect x="240" y="5" width="185" height="20" rx="3" fill="rgba(255,255,255,0.02)" stroke="var(--accent2)" stroke-width="0.8"/>
+    <text x="332" y="18" fill="var(--accent2)" font-family="monospace" font-size="8" text-anchor="middle">Hyperparam Gene Indices [2, 0, 1]</text>
+  </g>
+
+  <!-- Flow Diagrams (Bottom) -->
+  <!-- Population Node -->
+  <rect x="35" y="130" width="90" height="60" rx="6" stroke="var(--border)" stroke-width="1.2" fill="rgba(255,255,255,0.01)"/>
+  <text x="80" y="152" fill="var(--cream)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">Population</text>
+  <text x="80" y="167" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">20 Chromosomes</text>
+
+  <!-- Evaluator Node -->
+  <rect x="185" y="130" width="105" height="60" rx="6" stroke="var(--accent)" stroke-width="1.2" fill="none"/>
+  <text x="237" y="150" fill="var(--accent)" font-family="monospace" font-size="9.5" text-anchor="middle" font-weight="bold">Fitness (CV)</text>
+  <text x="237" y="163" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">0.99*Acc + 0.01*Red</text>
+  <text x="237" y="175" fill="var(--cream)" font-family="monospace" font-size="7" text-anchor="middle">5-Fold Classifier</text>
+
+  <!-- Selection / Breeding -->
+  <rect x="350" y="130" width="135" height="60" rx="6" stroke="var(--accent2)" stroke-width="1.2" fill="none"/>
+  <text x="417" y="150" fill="var(--accent2)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">Breeding</text>
+  <text x="417" y="163" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">2-Point Crossover</text>
+  <text x="417" y="175" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">Uniform Mutation (5%)</text>
+
+  <!-- Loop Connections -->
+  <g stroke="var(--border)" stroke-width="1" opacity="0.3" fill="none">
+    <path d="M 125 160 H 185" />
+    <path d="M 290 160 H 350" />
+    <path d="M 417 130 V 110 H 80 V 130" />
+  </g>
+
+  <!-- Flow Paths with animated dash -->
+  <path d="M 125 160 H 185" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 290 160 H 350" fill="none" stroke="var(--accent2)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 417 130 V 110 H 80 V 130" fill="none" stroke="var(--cream)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1.8s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Fitness progress sparkline at bottom -->
+  <rect x="150" y="215" width="220" height="40" rx="5" stroke="var(--border)" stroke-width="1" fill="rgba(255,255,255,0.01)"/>
+  <text x="260" y="228" fill="var(--cream)" font-family="monospace" font-size="8" text-anchor="middle" font-weight="bold">Fitness History (10 Generations)</text>
+  <path d="M 170 248 L 190 247 L 210 245 L 230 242 L 250 238 L 270 237 L 290 235 L 310 234 L 330 233 L 350 233" fill="none" stroke="var(--accent)" stroke-width="1.5" />
+  <circle cx="350" cy="233" r="2.5" fill="var(--accent)" filter="url(#gaGlow)" />
+
+  <text x="260" y="280" fill="var(--muted)" font-family="monospace" font-size="8.5" text-anchor="middle">Optimized: KNN / SVM / RF Accuracies + Feature Subsets</text>
+</svg>
+      `
+    },
+    body: `<p>A machine learning utility framework implementing a <strong>Genetic Algorithm</strong> for joint hyperparameter optimization and feature selection across multiple classifier architectures (K-Nearest Neighbors, Support Vector Machines, and Random Forests).</p>
+<p>The system encodes feature column inclusions (binary bits) and hyperparameter configuration choices (discrete integer indices) into a single <strong>combined chromosome</strong> layout. The fitness heuristic evaluates candidates using <strong>5-Fold Cross-Validation accuracy</strong>, applying a small bonus for dimensionality reduction to break ties and prevent model overfitting. Recombination uses <strong>two-point crossovers</strong> and custom type-aware mutations.</p>
+<p>The framework also includes a robust, automated dataset ingestion pipeline that handles dynamic CSV/TSV separators, header parsing, stratified scaling, and target mapping natively.</p>`,
+    tags: ["Python", "Numpy", "Pandas", "Scikit-Learn"],
+    links: [
+      { l: "GitHub", h: "https://github.com/Theroid00/Genetic_Algorithm", type: "github" }
     ]
   }
 };

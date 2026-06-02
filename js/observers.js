@@ -20,19 +20,19 @@ export function initObservers() {
       });
     }, { threshold, rootMargin });
 
-  /* proj-scale cards get a small exit-only delay reset so stagger
-     transition-delays don't interfere on re-entry */
+  /* proj-scale cards get a batch-based stagger delay so they render
+     immediately on scroll instead of waiting for a high index delay. */
   const makeProjObs = (threshold = 0.07, rootMargin = '0px 0px -30px 0px') =>
     new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-        } else {
-          e.target.classList.remove('in');
-          /* clear transition-delay when off-screen so re-entry
-             animates from its original staggered delay */
-          void e.target.offsetWidth; // force reflow
-        }
+      const intersecting = entries.filter(e => e.isIntersecting);
+      intersecting.forEach((e, idx) => {
+        e.target.style.transitionDelay = `${idx * 0.06}s`;
+        e.target.classList.add('in');
+      });
+
+      entries.filter(e => !e.isIntersecting).forEach(e => {
+        e.target.classList.remove('in');
+        e.target.style.transitionDelay = '0s';
       });
     }, { threshold, rootMargin });
 
@@ -42,8 +42,7 @@ export function initObservers() {
 
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
   document.querySelectorAll('.stagger').forEach(el => staggerObs.observe(el));
-  document.querySelectorAll('.reveal-scale').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.09}s`;
+  document.querySelectorAll('.reveal-scale').forEach(el => {
     projObs.observe(el);
   });
 }
