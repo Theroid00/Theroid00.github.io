@@ -132,6 +132,20 @@ function initApiroCanvas(canvas) {
   let raf = null;
   let tick = 0;
 
+  /* Mouse Interaction State */
+  let mouse = { x: null, y: null, active: false };
+
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+    mouse.active = true;
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    mouse.active = false;
+  });
+
   function resize() {
     const rect = canvas.parentElement.getBoundingClientRect();
     W = canvas.width  = rect.width  || 520;
@@ -194,6 +208,8 @@ function initApiroCanvas(canvas) {
       text: phrase,
       x: margin + Math.random() * (W - margin * 2),
       y: margin + Math.random() * (H - margin * 2),
+      vx: (Math.random() - 0.5) * 0.4, // gently drift left/right
+      vy: -0.3 - Math.random() * 0.4,  // slowly float upwards
       alpha: 0,
       life: 0,
       maxLife: 140 + Math.random() * 80,
@@ -307,6 +323,20 @@ function initApiroCanvas(canvas) {
 
     for (const n of nodes) {
       if (n.isRoot) continue;
+
+      // Mouse repulsion physics
+      if (mouse.active) {
+        const mdx = n.x - mouse.x;
+        const mdy = n.y - mouse.y;
+        const mdist = Math.sqrt(mdx * mdx + mdy * mdy) || 1;
+        const repulsionRadius = 90;
+        if (mdist < repulsionRadius) {
+          const force = (repulsionRadius - mdist) / repulsionRadius;
+          n.x += (mdx / mdist) * force * 4.5;
+          n.y += (mdy / mdist) * force * 4.5;
+        }
+      }
+
       if (n.targetX !== undefined) {
         n.x += (n.targetX - n.x) * 0.03;
         n.y += (n.targetY - n.y) * 0.03;
@@ -347,10 +377,13 @@ function initApiroCanvas(canvas) {
       drawNode(n, alpha);
     }
 
-    /* update & draw popups */
+    /* update & draw popups with drift physics */
     for (let i = popups.length - 1; i >= 0; i--) {
       const p = popups[i];
       p.life++;
+      p.x += p.vx;
+      p.y += p.vy;
+
       if (p.life < 20) p.alpha = p.life / 20;
       else if (p.life > p.maxLife - 30) p.alpha = Math.max(0, (p.maxLife - p.life) / 30);
       else p.alpha = 1;
