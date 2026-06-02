@@ -29,7 +29,7 @@ nav{position:sticky;top:0;z-index:100;padding:1.3rem 3rem;display:flex;justify-c
 /* ── HERO ─────────────────────────────────────────────────── */
 #hero{
   position:relative;z-index:1;min-height:100vh;overflow:hidden;
-  display:grid;grid-template-columns:1fr 360px;align-items:center;gap:3rem;
+  display:grid;grid-template-columns:1fr 420px;align-items:center;gap:3rem;
   padding:5rem 3rem 6rem;
 }
 .hero-label{font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem;opacity:0;animation:fadeUp .8s var(--ease) .15s forwards}
@@ -96,7 +96,7 @@ nav{position:sticky;top:0;z-index:100;padding:1.3rem 3rem;display:flex;justify-c
 
 .terminal-body{
   padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.22rem;
-  height:290px;box-sizing:border-box;
+  height:330px;box-sizing:border-box;
 }
 .t-stats-panel{
   display:flex;flex-direction:column;gap:.22rem;
