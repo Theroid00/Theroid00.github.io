@@ -60,18 +60,14 @@
   <div class="hero-panel">
     <!-- FIX: Float animation isolated on inner wrapper, not the positioning element -->
     <div class="terminal-float-wrapper">
-      <div class="terminal-card">
+      <div class="terminal-card" aria-hidden="true">
         <div class="terminal-bar">
           <div class="t-dots">
             <span class="t-dot r"></span>
             <span class="t-dot y"></span>
             <span class="t-dot g"></span>
           </div>
-          <div class="t-tabs">
-            <button class="t-tab active" data-tab="cli">cli.sh</button>
-            <button class="t-tab" data-tab="monitor">monitor.sh</button>
-            <button class="t-tab" data-tab="git">git_tree.sh</button>
-          </div>
+          <span class="t-file">~/pranay/monitor.sh</span>
         </div>
         <div class="terminal-body" id="terminal-content">
           <!-- Dynamically managed by js/terminal.js -->
