@@ -4,7 +4,6 @@
 ═══════════════════════════════════════════════════════════ */
 
 export const STATS_DATA = [
-  { val: "8.68", desc: "CGPA — Scholars Scholarship recipient" },
   { val: "3rd yr", desc: "B.Tech Computer Science, MIT Bengaluru" },
   { val: "9", desc: "Projects across ML, Web & Systems" }
 ];
@@ -1441,10 +1440,107 @@ export const PROJECTS_DATA = {
     links: [{ l: "GitHub", h: "https://github.com/Theroid00/apiro" }]
   },
 
-  ganas: {
+  arrodes: {
     num: "02",
     status: "inactive",
-    tag: "02 — ML Research",
+    tag: "02 — Systems & Bot Integration",
+    title: "Arrodes API & Discord Bot",
+    brief: "An NLP-powered MediaWiki API client and Discord bot featuring multi-tier caching, asynchronous thread delegation, and keep-alive container health checks.",
+    media: {
+      type: "svg",
+      content: `
+<svg class="schematic-svg" viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="arrodesGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="260" y="30" fill="var(--muted)" font-family="monospace" font-size="10.5" text-anchor="middle" letter-spacing="0.1em">Discord Gateway ⇄ NLTK POS Tagging ⇄ MediaWiki API ⇄ Cache</text>
+
+  <!-- Discord UI Mockup (Left) -->
+  <rect x="15" y="85" width="115" height="120" rx="6" stroke="var(--border)" stroke-width="1.2" fill="rgba(255,255,255,0.01)"/>
+  <rect x="15" y="85" width="115" height="18" rx="6" fill="rgba(88,101,242,0.1)" stroke="var(--border)" stroke-width="0.8"/>
+  <text x="25" y="97" fill="var(--cream)" font-family="sans-serif" font-size="7.5" font-weight="bold"># general-chat</text>
+  <!-- Discord Chat Bubble -->
+  <circle cx="28" cy="120" r="6" fill="var(--accent)"/>
+  <text x="28" y="123" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="7" text-anchor="middle">U</text>
+  <text x="38" y="118" fill="var(--cream)" font-family="sans-serif" font-size="6.5" font-weight="bold">User</text>
+  <text x="38" y="127" fill="var(--muted)" font-family="monospace" font-size="6">/pathway monster</text>
+
+  <!-- Bot Response -->
+  <circle cx="28" cy="155" r="6" fill="var(--accent2)"/>
+  <text x="28" y="158" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="7" text-anchor="middle">A</text>
+  <text x="38" y="153" fill="var(--accent2)" font-family="sans-serif" font-size="6.5" font-weight="bold">Arrodes BOT</text>
+  <text x="38" y="162" fill="var(--cream)" font-family="monospace" font-size="6">🔮 Wheel of Fortune</text>
+
+  <!-- Stage 1: NLTK Parser (Middle-Left) -->
+  <rect x="145" y="105" width="85" height="80" rx="6" stroke="var(--accent)" stroke-width="1.2" fill="none"/>
+  <text x="187" y="123" fill="var(--accent)" font-family="monospace" font-size="8.5" text-anchor="middle" font-weight="bold">NLTK POS</text>
+  <text x="187" y="138" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">pos_tag()</text>
+  <text x="187" y="150" fill="var(--cream)" font-family="monospace" font-size="7" text-anchor="middle">Format URL</text>
+  <text x="187" y="165" fill="var(--accent)" font-family="monospace" font-size="7.5" text-anchor="middle">Wheel_of_Fortune</text>
+
+  <!-- Stage 2: Disnake Bot Gateway (Middle-Right) -->
+  <rect x="245" y="105" width="90" height="80" rx="6" stroke="var(--border)" stroke-width="1.2" fill="none"/>
+  <text x="290" y="123" fill="var(--cream)" font-family="monospace" font-size="8.5" text-anchor="middle" font-weight="bold">Async Executor</text>
+  <text x="290" y="138" fill="var(--muted)" font-family="monospace" font-size="6.5" text-anchor="middle">asyncio.to_thread</text>
+  <text x="290" y="150" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">Memory Cache</text>
+  <text x="290" y="165" fill="var(--accent2)" font-family="monospace" font-size="7" text-anchor="middle">Non-blocking IO</text>
+
+  <!-- Stage 3: Wiki Scraping Engine (Right) -->
+  <rect x="350" y="90" width="155" height="110" rx="6" stroke="var(--accent2)" stroke-width="1.2" fill="none"/>
+  <text x="427" y="108" fill="var(--accent2)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">mystic Scraper</text>
+  <text x="360" y="128" fill="var(--cream)" font-family="monospace" font-size="7">MediaWiki API /api.php</text>
+  <text x="360" y="142" fill="var(--muted)" font-family="monospace" font-size="7">File Cache: .cache/*.html</text>
+  <text x="360" y="156" fill="var(--muted)" font-family="monospace" font-size="7">BeautifulSoup4 Parser</text>
+  <rect x="360" y="168" width="135" height="22" rx="3" fill="rgba(232,136,74,0.06)" stroke="var(--border)" stroke-width="0.8"/>
+  <text x="427" y="182" fill="var(--accent)" font-family="monospace" font-size="7.5" text-anchor="middle">Pathway / Artifact Object</text>
+
+  <!-- Connections -->
+  <g stroke="var(--border)" stroke-width="1" opacity="0.3" fill="none">
+    <path d="M 130 145 H 145" />
+    <path d="M 230 145 H 245" />
+    <path d="M 335 145 H 350" />
+  </g>
+
+  <!-- Flow Paths with animated dash -->
+  <path d="M 130 145 H 145" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 230 145 H 245" fill="none" stroke="var(--cream)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 335 145 H 350" fill="none" stroke="var(--accent2)" stroke-width="1.2" stroke-dasharray="4 4">
+    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Streaming Data Particles -->
+  <circle r="2.5" fill="var(--accent)" filter="url(#arrodesGlow)">
+    <animateMotion dur="2.2s" repeatCount="indefinite" path="M 130 145 H 145 M 230 145 H 245 M 335 145 H 350" />
+  </circle>
+
+  <!-- Status / Telemetry bottom -->
+  <text x="260" y="245" fill="var(--muted)" font-family="monospace" font-size="9" text-anchor="middle">Keep-Alive Server: Port 7860 | Container: Docker</text>
+  <text x="260" y="260" fill="var(--cream)" font-family="monospace" font-size="8.5" text-anchor="middle">Query: "monster" ➔ POS Normalizer ➔ Cache HIT (Local) ➔ Embed Out</text>
+</svg>
+      `
+    },
+    body: `<p>An advanced, containerized Discord bot and API client designed for the <em>Lord of the Mysteries</em> web novel fandom. Named after the omniscient magic mirror <strong>Arrodes</strong>, the system serves as a rich, interactive encyclopedia directly integrated within Discord servers.</p>
+<p>The core package (<code>mystic</code>) acts as an object-oriented wrapper around the <strong>MediaWiki API</strong>. It dynamically formats and tokenizes natural language queries using <strong>NLTK POS-tagging</strong> to normalize URL slugs, and uses <strong>BeautifulSoup4</strong> to parse nested DOM details. It employs a **two-tier cache** (in-memory caching in the cog gateway + local file-based caching) to mitigate network latency and prevent API rate-limiting.</p>
+<p>The bot runs asynchronously on <strong>Disnake</strong>, offloading blocking HTTP requests to worker threads via <code>asyncio.to_thread</code>. It features a lightweight multi-threaded HTTP keep-alive server to maintain uptime on free-tier containers and is fully containerized using **Docker**.</p>`,
+    tags: ["Python", "Disnake", "MediaWiki API", "Docker", "BeautifulSoup4", "NLTK", "Asyncio", "Caching"],
+    links: [
+      { l: "GitHub", h: "https://github.com/Theroid00/arrodes", type: "github" }
+    ]
+  },
+
+  ganas: {
+    num: "03",
+    status: "inactive",
+    tag: "03 — ML Research",
     title: "GA-NAS",
     brief: "Neural Architecture Search via Genetic Algorithms — evolved optimal residual block network architectures to gain the best neural network structure.",
     media: { type: "svg", content: ganasSvg },
@@ -1456,9 +1552,9 @@ export const PROJECTS_DATA = {
   },
 
   nexacred: {
-    num: "03",
+    num: "04",
     status: "inactive",
-    tag: "03 — FinTech · Full-Stack",
+    tag: "04 — FinTech · Full-Stack",
     title: "NexaCred",
     brief: "A P2P lending platform — LightGBM credit scoring trained on DeFi credit wallet histories, Solidity smart contracts for trustless lending.",
     media: { type: "svg", content: nexacredSvg },
@@ -1470,9 +1566,9 @@ export const PROJECTS_DATA = {
   },
 
   personad: {
-    num: "04",
+    num: "05",
     status: "inactive",
-    tag: "04 — NLP · LLM",
+    tag: "05 — NLP · LLM",
     title: "PersonaD",
     brief: "An LLM conversational clone fine-tuning GPT-2 on a personal Instagram DM dataset to replicate specific messaging styles and vocabulary.",
     media: { type: "svg", content: personaDSvg },
@@ -1483,9 +1579,9 @@ export const PROJECTS_DATA = {
   },
 
   fer: {
-    num: "05",
+    num: "06",
     status: "inactive", // Updated to active as it includes functional Streamlit and OpenCV app scripts
-    tag: "05 — Computer Vision",
+    tag: "06 — Computer Vision",
     title: "Face Emotion Recognition",
     brief: "Dual-pipeline facial emotion classifier featuring a lightweight landmark-based Random Forest model and an end-to-end grayscale ResNet-18 fine-tuned on FER-2013.",
     media: { type: "svg", content: fersvg },
@@ -1501,9 +1597,9 @@ export const PROJECTS_DATA = {
   },
 
   artgallery: {
-    num: "06",
+    num: "07",
     status: "inactive",
-    tag: "06 — Full-Stack Web",
+    tag: "07 — Full-Stack Web",
     title: "Art Gallery",
     brief: "Full-stack web app for curating and browsing digital art collections, built with Next.js, React, and MySQL.",
     media: {
@@ -1603,9 +1699,9 @@ export const PROJECTS_DATA = {
   },
 
   compiler: {
-    num: "07",
+    num: "08",
     status: "inactive",
-    tag: "07 — Systems Programming",
+    tag: "08 — Systems Programming",
     title: "Flux Compiler (fluxc)",
     brief: "A custom handwritten recursive-descent compiler and C-target code generator for Flux (Functional Language for Universal eXpressions) featuring pipe desugaring, pattern matching, TAC IR, and interleaved diagnostics.",
     media: {
@@ -1696,93 +1792,6 @@ export const PROJECTS_DATA = {
     tags: ["C", "GCC","Compiler Design"] ,
     links: [
       { l: "GitHub", h: "https://github.com/Theroid00/compiler-design", type: "github" }
-    ]
-  },
-
-  arrodes: {
-    num: "08",
-    status: "inactive",
-    tag: "08 — API & Automation",
-    title: "Arrodes Discord Bot",
-    brief: "An wiki-scraping library and Discord integration that queries character data, mystical pathways, and lore from the Lord of the Mysteries universe.",
-    media: {
-      type: "svg",
-      content: `
-<svg class="schematic-svg" viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="arrodesGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-  </defs>
-
-  <!-- Title -->
-  <text x="260" y="32" fill="var(--muted)" font-family="monospace" font-size="11" text-anchor="middle" letter-spacing="0.1em">Discord Gateway ⇄ Disnake Bot ⇄ BeautifulSoup4 Wiki Scraper</text>
-
-  <!-- Discord UI Mockup (Left) -->
-  <rect x="20" y="90" width="130" height="110" rx="6" stroke="var(--border)" stroke-width="1.2" fill="rgba(255,255,255,0.01)"/>
-  <rect x="20" y="90" width="130" height="18" rx="6" fill="rgba(88,101,242,0.1)" stroke="var(--border)" stroke-width="0.8"/>
-  <text x="30" y="102" fill="var(--cream)" font-family="sans-serif" font-size="8" font-weight="bold"># general-chat</text>
-  <!-- Discord Chat Bubble -->
-  <circle cx="35" cy="125" r="7" fill="var(--accent)"/>
-  <text x="35" y="128" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="8" text-anchor="middle">U</text>
-  <text x="48" y="123" fill="var(--cream)" font-family="sans-serif" font-size="7" font-weight="bold">User</text>
-  <text x="48" y="133" fill="var(--muted)" font-family="monospace" font-size="6.5">/birth Klein Moretti</text>
-
-  <!-- Bot Response -->
-  <circle cx="35" cy="155" r="7" fill="var(--accent2)"/>
-  <text x="35" y="158" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="8" text-anchor="middle">A</text>
-  <text x="48" y="153" fill="var(--accent2)" font-family="sans-serif" font-size="7" font-weight="bold">Arrodes BOT</text>
-  <text x="48" y="163" fill="var(--cream)" font-family="monospace" font-size="6.5">Born: June 15, 1349</text>
-
-  <!-- Connection Links -->
-  <g stroke="var(--border)" stroke-width="1" opacity="0.3">
-    <path d="M 150 145 H 200" />
-    <path d="M 290 145 H 345" />
-    <path d="M 405 175 V 205" opacity="0.5"/>
-  </g>
-
-  <!-- Stage 1: Disnake Bot Gateway (Middle) -->
-  <rect x="200" y="105" width="90" height="75" rx="6" stroke="var(--accent)" stroke-width="1.2" fill="none"/>
-  <text x="245" y="123" fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">Disnake Bot</text>
-  <text x="245" y="138" fill="var(--muted)" font-family="monospace" font-size="7.5" text-anchor="middle">cogs/lotm.py</text>
-  <text x="245" y="152" fill="var(--cream)" font-family="monospace" font-size="7.5" text-anchor="middle">Slash Commands</text>
-  <text x="245" y="165" fill="var(--muted)" font-family="monospace" font-size="7" text-anchor="middle">Event Loop</text>
-
-  <!-- Stage 2: Wiki Scraping Engine (Right) -->
-  <rect x="340" y="90" width="160" height="110" rx="6" stroke="var(--accent2)" stroke-width="1.2" fill="none"/>
-  <text x="420" y="108" fill="var(--accent2)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">mystic API Wrapper</text>
-  <text x="350" y="128" fill="var(--cream)" font-family="monospace" font-size="7">BeautifulSoup4 Parser</text>
-  <text x="350" y="142" fill="var(--muted)" font-family="monospace" font-size="7">Requests HTML Getter</text>
-  <text x="350" y="156" fill="var(--muted)" font-family="monospace" font-size="7">Scraping lotm.fandom</text>
-  <rect x="350" y="168" width="140" height="22" rx="3" fill="rgba(232,136,74,0.06)" stroke="var(--border)" stroke-width="0.8"/>
-  <text x="420" y="182" fill="var(--accent)" font-family="monospace" font-size="7.5" text-anchor="middle">Character / Pathway Object</text>
-
-  <!-- Flow Paths with animated dash -->
-  <path d="M 150 145 L 200 145" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 4">
-    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
-  </path>
-  <path d="M 290 145 L 340 145" fill="none" stroke="var(--accent2)" stroke-width="1.2" stroke-dasharray="4 4">
-    <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
-  </path>
-
-  <!-- Streaming Data Particles -->
-  <circle r="3" fill="var(--accent)" filter="url(#arrodesGlow)">
-    <animateMotion dur="2s" repeatCount="indefinite" path="M 150 145 L 200 145 M 290 145 L 340 145" />
-  </circle>
-
-  <!-- Status / Telemetry bottom -->
-  <text x="260" y="250" fill="var(--muted)" font-family="monospace" font-size="9" text-anchor="middle">Wiki Target: https://lordofthemysteries.fandom.com/wiki/</text>
-  <text x="260" y="265" fill="var(--cream)" font-family="monospace" font-size="8.5" text-anchor="middle">Payload: JSON Data Mapping ➔ Cache: MEMORY</text>
-</svg>
-      `
-    },
-    body: `<p>A Discord bot and automated scraping interface designed for the <em>Lord of the Mysteries</em> web novel fandom. Named after the omniscient magic mirror <strong>Arrodes</strong>, the system serves as a rich, interactive encyclopedia directly integrated within Discord servers.</p>
-<p>The system is split into a modular backend scraping library (<code>mystic</code>) and a Discord interface gateway built using the <strong>Disnake</strong> library. The scraping engine utilizes <strong>BeautifulSoup4</strong> and <strong>Requests</strong> to dynamically fetch and parse unstructured fandom wiki markup. It automatically serializes data regarding character origins, pathways, titles, honorifics, mysticism symbols, and relationship trees into clean object models.</p>
-<p>Slash commands wired up inside modular <strong>Cogs</strong> (<code>lotm.py</code>) provide quick, low-latency access to the serialized data, transforming raw fandom pages into structured server interactions.</p>`,
-    tags: ["Python", "Disnake", "BeautifulSoup4", "Requests", "NLTK", "API Integration"],
-    links: [
-      { l: "GitHub", h: "https://github.com/Theroid00/Arrodes", type: "github" }
     ]
   },
 
@@ -1934,7 +1943,7 @@ export const PROJECTS_DATA = {
   <li><strong>5-Fold Cross-Validation Accuracy (Baseline vs. Optimized)</strong>: Directly compares the default Scikit-Learn classifier configuration on the raw feature space against the GA-optimized model.</li>
   <li><strong>Feature Reduction Ratio</strong>: Quantifies dimensionality reduction efficiency (columns dropped vs. columns kept). The fitness function uses this as a tie-breaker: <code>Fitness = 0.99 × Accuracy + 0.01 × (1 - Selected_Features / Total_Features)</code>.</li>
   <li><strong>Fitness Convergence Telemetry</strong>: Tracks fitness histories over generations to evaluate optimization trajectories.</li>
-</ul>
+ </ul>
 <p>The framework also includes a robust, automated dataset ingestion pipeline that handles dynamic CSV/TSV separators, header parsing, stratified scaling, and target mapping natively.</p>`,
     tags: ["Python", "Numpy", "Pandas", "Scikit-Learn"],
     links: [
