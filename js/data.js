@@ -1562,7 +1562,10 @@ export const PROJECTS_DATA = {
 <p>The ML core utilizes a <strong>LightGBM</strong> classifier trained on historical <strong>DeFi credit wallet</strong> data to evaluate borrower creditworthiness and compute dynamic risk-adjusted interest rates. <strong>Solidity smart contracts</strong> govern the full loan lifecycle — disbursement, repayment, and default — without a central authority.</p>
 <p>The stack is containerised with <strong>Docker</strong> and was deployed on <strong>AWS</strong>, with a React frontend and a Python/FastAPI backend.</p>`,
     tags: ["LightGBM", "Solidity", "Smart Contracts", "Docker", "FastAPI", "React", "Web3"],
-    links: [{ l: "GitHub", h: "https://github.com/Theroid00/-nexacred-metamask-enhanced" }]
+    links: [
+      { l: "Live Site", h: "https://nexacred-metamask-enhanced.vercel.app/", type: "live" },
+      { l: "GitHub", h: "https://github.com/Theroid00/-nexacred-metamask-enhanced", type: "github" }
+    ]
   },
 
   personad: {
@@ -1947,6 +1950,7 @@ export const PROJECTS_DATA = {
 <p>The framework also includes a robust, automated dataset ingestion pipeline that handles dynamic CSV/TSV separators, header parsing, stratified scaling, and target mapping natively.</p>`,
     tags: ["Python", "Numpy", "Pandas", "Scikit-Learn"],
     links: [
+      { l: "Live Site", h: "https://huggingface.co/spaces/Theroid/Genetic_Feature_Selection", type: "live" },
       { l: "GitHub", h: "https://github.com/Theroid00/Genetic_Algorithm", type: "github" }
     ]
   }
